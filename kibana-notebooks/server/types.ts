@@ -14,6 +14,6 @@
  */
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface KibanaNotebooksPluginSetup {}
+export interface NotebooksPluginSetup {}
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface KibanaNotebooksPluginStart {}
+export interface NotebooksPluginStart {}

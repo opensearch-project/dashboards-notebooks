@@ -14,7 +14,7 @@
  */
 
 import React from 'react';
-import { I18nProvider } from '@kbn/i18n/react';
+import { I18nProvider } from '@osd/i18n/react';
 
 import { CoreStart } from '../../../../src/core/public';
 import { NavigationPublicPluginStart } from '../../../../src/plugins/navigation/public';
@@ -22,7 +22,7 @@ import { NavigationPublicPluginStart } from '../../../../src/plugins/navigation/
 import { DashboardStart } from '../../../../src/plugins/dashboard/public';
 import { Main } from './main';
 
-interface KibanaNotebooksAppDeps {
+interface NotebooksAppDeps {
   basename: string;
   notifications: CoreStart['notifications'];
   http: CoreStart['http'];
@@ -31,14 +31,14 @@ interface KibanaNotebooksAppDeps {
   DashboardContainerByValueRenderer: DashboardStart['DashboardContainerByValueRenderer'];
 }
 
-export const KibanaNotebooksApp = ({
+export const NotebooksApp = ({
   basename,
   notifications,
   http,
   chrome,
   navigation,
   DashboardContainerByValueRenderer,
-}: KibanaNotebooksAppDeps) => {
+}: NotebooksAppDeps) => {
   // Render the application DOM.
   return (
     <I18nProvider>

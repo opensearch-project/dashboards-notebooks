@@ -15,7 +15,7 @@
 
 import { RefObject } from 'react';
 
-export const PLUGIN_ID = 'opendistro-notebooks-kibana';
+export const PLUGIN_ID = 'opendistro-notebooks';
 export const PLUGIN_NAME = 'Notebooks';
 export const API_PREFIX = '/api/notebooks';
 export const SELECTED_BACKEND = 'DEFAULT'; // ZEPPELIN || DEFAULT
@@ -32,7 +32,7 @@ export const wreckOptions = {
 };
 
 const BASE_NOTEBOOKS_URI = '/_opendistro/_notebooks';
-export const ES_NOTEBOOKS_API = {
+export const OPENSEARCH_NOTEBOOKS_API = {
   GET_NOTEBOOKS: `${BASE_NOTEBOOKS_URI}/notebooks`,
   NOTEBOOK: `${BASE_NOTEBOOKS_URI}/notebook`,
 };

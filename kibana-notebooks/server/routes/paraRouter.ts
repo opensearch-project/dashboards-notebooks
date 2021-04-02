@@ -13,8 +13,8 @@
  * permissions and limitations under the License.
  */
 
-import { schema } from '@kbn/config-schema';
-import { IRouter, IKibanaResponse, ResponseError, ILegacyScopedClusterClient } from '../../../../src/core/server';
+import { schema } from '@osd/config-schema';
+import { IRouter, IOpenSearchDashboardsResponse, ResponseError, ILegacyScopedClusterClient } from '../../../../src/core/server';
 import { API_PREFIX, wreckOptions } from '../../common';
 import BACKEND from '../adaptors';
 import { DefaultNotebooks, DefaultParagraph } from '../helpers/default_notebook_schema';
@@ -35,7 +35,7 @@ export function ParaRouter(router: IRouter) {
         }),
       },
     },
-    async (context, request, response): Promise<IKibanaResponse<any | ResponseError>> => {
+    async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
       const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
         request
       );
@@ -71,7 +71,7 @@ export function ParaRouter(router: IRouter) {
         }),
       },
     },
-    async (context, request, response): Promise<IKibanaResponse<any | ResponseError>> => {
+    async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
       const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
         request
       );
@@ -108,7 +108,7 @@ export function ParaRouter(router: IRouter) {
         }),
       },
     },
-    async (context, request, response): Promise<IKibanaResponse<any | ResponseError>> => {
+    async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
       const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
         request
       );
@@ -148,7 +148,7 @@ export function ParaRouter(router: IRouter) {
         }),
       },
     },
-    async (context, request, response): Promise<IKibanaResponse<any | ResponseError>> => {
+    async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
       const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
         request
       );
@@ -182,7 +182,7 @@ export function ParaRouter(router: IRouter) {
         }),
       },
     },
-    async (context, request, response): Promise<IKibanaResponse<any | ResponseError>> => {
+    async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
       const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
         request
       );
@@ -216,7 +216,7 @@ export function ParaRouter(router: IRouter) {
         }),
       },
     },
-    async (context, request, response): Promise<IKibanaResponse<any | ResponseError>> => {
+    async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
       const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
         request
       );

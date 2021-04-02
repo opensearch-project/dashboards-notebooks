@@ -130,7 +130,7 @@ export const ParaInput = (props: {
           <EuiFlexItem grow={6}>
             <EuiFormRow label="Title" fullWidth>
               <EuiComboBox
-                placeholder="Find Kibana visualization"
+                placeholder="Find visualization"
                 singleSelection={{ asPlainText: true }}
                 options={props.visOptions}
                 selectedOptions={props.selectedVisOption}
@@ -174,7 +174,7 @@ export const ParaInput = (props: {
           <EuiOverlayMask>
             <EuiModal onClose={() => setIsModalOpen(false)} style={{ width: 500 }}>
               <EuiModalHeader>
-                <EuiModalHeaderTitle>Browse Kibana visualizations</EuiModalHeaderTitle>
+                <EuiModalHeaderTitle>Browse visualizations</EuiModalHeaderTitle>
               </EuiModalHeader>
 
               <EuiModalBody>

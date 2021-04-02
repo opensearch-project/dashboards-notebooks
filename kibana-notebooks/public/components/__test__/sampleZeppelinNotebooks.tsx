@@ -18,7 +18,7 @@ export const sampleNotebook1 = {
   paragraphs: [
     {
       text:
-        "%md \n\n### Hi Everyone\n* Here's a demo on **Kibana Notebooks**\n* You may use the top left buttons to play around with notebooks and Paragraphs",
+        "%md \n\n### Hi Everyone\n* Here's a demo on **OpenSearch Dashboards Notebooks**\n* You may use the top left buttons to play around with notebooks and Paragraphs",
       user: 'anonymous',
       dateUpdated: '2020-08-20 21:15:04.590',
       config: {},
@@ -29,7 +29,7 @@ export const sampleNotebook1 = {
           {
             type: 'HTML',
             data:
-              '<div class="markdown-body">\n<h3>Hi Everyone</h3>\n<ul>\n<li>Here&rsquo;s a demo on <strong>Kibana Notebooks</strong></li>\n<li>You may use the top left buttons to play around with notebooks and Paragraphs</li>\n</ul>\n\n</div>',
+              '<div class="markdown-body">\n<h3>Hi Everyone</h3>\n<ul>\n<li>Here&rsquo;s a demo on <strong>OpenSearch Dashboards Notebooks</strong></li>\n<li>You may use the top left buttons to play around with notebooks and Paragraphs</li>\n</ul>\n\n</div>',
           },
         ],
       },
@@ -84,12 +84,12 @@ export const sampleParsedParagraghs1 = [
     vizObjectInput: '',
     id: 1,
     inp:
-      "%md \n\n### Hi Everyone\n* Here's a demo on **Kibana Notebooks**\n* You may use the top left buttons to play around with notebooks and Paragraphs",
+      "%md \n\n### Hi Everyone\n* Here's a demo on **OpenSearch Dashboards Notebooks**\n* You may use the top left buttons to play around with notebooks and Paragraphs",
     lang: 'text/x-',
     editorLanguage: '',
     typeOut: ['HTML'],
     out: [
-      '<div class="markdown-body">\n<h3>Hi Everyone</h3>\n<ul>\n<li>Here&rsquo;s a demo on <strong>Kibana Notebooks</strong></li>\n<li>You may use the top left buttons to play around with notebooks and Paragraphs</li>\n</ul>\n\n</div>',
+      '<div class="markdown-body">\n<h3>Hi Everyone</h3>\n<ul>\n<li>Here&rsquo;s a demo on <strong>OpenSearch Dashboards Notebooks</strong></li>\n<li>You may use the top left buttons to play around with notebooks and Paragraphs</li>\n</ul>\n\n</div>',
     ],
   },
   {
@@ -119,7 +119,7 @@ export const sampleNotebook2 = {
   paragraphs: [
     {
       text:
-        "%md \n\n### Hi Everyone\n* Here's a demo on **Kibana Notebooks**\n* You may use the top left buttons to play around with notebooks and Paragraphs",
+        "%md \n\n### Hi Everyone\n* Here's a demo on **OpenSearch Dashboards Notebooks**\n* You may use the top left buttons to play around with notebooks and Paragraphs",
       user: 'anonymous',
       dateUpdated: '2020-08-20 21:15:04.590',
       config: {},
@@ -206,7 +206,7 @@ export const sampleParsedParagraghs2 = [
     vizObjectInput: '',
     id: 1,
     inp:
-      "%md \n\n### Hi Everyone\n* Here's a demo on **Kibana Notebooks**\n* You may use the top left buttons to play around with notebooks and Paragraphs",
+      "%md \n\n### Hi Everyone\n* Here's a demo on **OpenSearch Dashboards Notebooks**\n* You may use the top left buttons to play around with notebooks and Paragraphs",
     lang: 'text/x-',
     editorLanguage: '',
     typeOut: [],
@@ -276,7 +276,7 @@ export const sampleNotebook3 = {
   paragraphs: [
     {
       text:
-        "%md \n\n### Hi Everyone\n* Here's a demo on **Kibana Notebooks**\n* You may use the top left buttons to play around with notebooks and Paragraphs",
+        "%md \n\n### Hi Everyone\n* Here's a demo on **OpenSearch Dashboards Notebooks**\n* You may use the top left buttons to play around with notebooks and Paragraphs",
       user: 'anonymous',
       dateUpdated: '2020-08-20 21:15:04.590',
       config: {},
@@ -287,7 +287,7 @@ export const sampleNotebook3 = {
           {
             type: 'HTML',
             data:
-              '<div class="markdown-body">\n<h3>Hi Everyone</h3>\n<ul>\n<li>Here&rsquo;s a demo on <strong>Kibana Notebooks</strong></li>\n<li>You may use the top left buttons to play around with notebooks and Paragraphs</li>\n</ul>\n\n</div>',
+              '<div class="markdown-body">\n<h3>Hi Everyone</h3>\n<ul>\n<li>Here&rsquo;s a demo on <strong>OpenSearch Dashboards Notebooks</strong></li>\n<li>You may use the top left buttons to play around with notebooks and Paragraphs</li>\n</ul>\n\n</div>',
           },
         ],
       },

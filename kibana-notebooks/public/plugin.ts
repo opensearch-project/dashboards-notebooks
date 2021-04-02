@@ -13,18 +13,12 @@
  * permissions and limitations under the License.
  */
 
-import { i18n } from '@kbn/i18n';
 import { AppMountParameters, CoreSetup, CoreStart, Plugin } from '../../../src/core/public';
-import {
-  KibanaNotebooksPluginSetup,
-  KibanaNotebooksPluginStart,
-  AppPluginStartDependencies,
-} from './types';
-import { PLUGIN_NAME, PLUGIN_ID } from '../common';
+import { PLUGIN_ID, PLUGIN_NAME } from '../common';
+import { AppPluginStartDependencies, NotebooksPluginSetup, NotebooksPluginStart } from './types';
 
-export class KibanaNotebooksPlugin
-  implements Plugin<KibanaNotebooksPluginSetup, KibanaNotebooksPluginStart> {
-  public setup(core: CoreSetup): KibanaNotebooksPluginSetup {
+export class NotebooksPlugin implements Plugin<NotebooksPluginSetup, NotebooksPluginStart> {
+  public setup(core: CoreSetup): NotebooksPluginSetup {
     // Register an application into the side navigation menu
     core.application.register({
       id: PLUGIN_ID,
@@ -38,7 +32,7 @@ export class KibanaNotebooksPlugin
       async mount(params: AppMountParameters) {
         // Load application bundle
         const { renderApp } = await import('./application');
-        // Get start services as specified in kibana.json
+        // Get start services as specified in opensearch_dashboards.json
         const [coreStart, depsStart] = await core.getStartServices();
         // Render the application
         return renderApp(coreStart, depsStart as AppPluginStartDependencies, params);
@@ -49,7 +43,7 @@ export class KibanaNotebooksPlugin
     return {};
   }
 
-  public start(core: CoreStart): KibanaNotebooksPluginStart {
+  public start(core: CoreStart): NotebooksPluginStart {
     return {};
   }
 

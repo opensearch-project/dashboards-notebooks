@@ -28,7 +28,7 @@ export const MARKDOWN_TEXT = `%md
 
 ---
 #### Code block
-* Explain SQL to elasticsearch query DSL
+* Explain SQL
 \`\`\`
 POST _opendistro/_sql/_explain
 {
@@ -44,9 +44,9 @@ POST _opendistro/_sql/_explain
 `
 
 export const SQL_QUERY_TEXT = `%sql
-select * from kibana_sample_data_flights limit 20
+select * from opensearch_dashboards_sample_data_flights limit 20
 `
 
 export const PPL_QUERY_TEXT = `%ppl
-source=kibana_sample_data_flights
+source=opensearch_dashboards_sample_data_flights
 `

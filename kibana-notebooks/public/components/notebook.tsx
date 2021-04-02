@@ -69,7 +69,7 @@ const pageStyles: CSS.Properties = {
  * "Notebook" component is used to display an open notebook
  *
  * Props taken in as params are:
- * basename - base url for kibana notebooks
+ * basename - base url for OpenSearch Dashboards notebooks
  * DashboardContainerByValueRenderer - Dashboard container renderer for visualization
  * http object - for making API requests
  * setBreadcrumbs - sets breadcrumbs on top
@@ -613,7 +613,7 @@ export class Notebook extends Component<NotebookProps, NotebookState> {
             },
           },
           {
-            name: 'Kibana visualization',
+            name: 'Visualization',
             onClick: () => {
               this.setState({ isAddParaPopoverOpen: false });
               this.addPara(this.state.paragraphs.length, '', 'VISUALIZATION');
@@ -678,7 +678,7 @@ export class Notebook extends Component<NotebookProps, NotebookState> {
             },
           },
           {
-            name: 'Kibana visualization',
+            name: 'OpenSearch Dashboards visualization',
             onClick: () => {
               this.setState({ isParaActionsPopoverOpen: false });
               this.addPara(0, '', 'VISUALIZATION');
@@ -698,7 +698,7 @@ export class Notebook extends Component<NotebookProps, NotebookState> {
             },
           },
           {
-            name: 'Kibana visualization',
+            name: 'OpenSearch Dashboards visualization',
             onClick: () => {
               this.setState({ isParaActionsPopoverOpen: false });
               this.addPara(this.state.paragraphs.length, '', 'VISUALIZATION');
@@ -883,11 +883,11 @@ export class Notebook extends Component<NotebookProps, NotebookState> {
                       <EuiFlexItem grow={3}>
                         <EuiCard
                           icon={<EuiIcon size="xxl" type="visArea" />}
-                          title="Kibana visualization"
-                          description="Import Kibana visualizations to the notes"
+                          title="OpenSearch Dashboards visualization"
+                          description="Import OpenSearch Dashboards visualizations to the notes"
                           footer={
                             <EuiButton onClick={() => this.addPara(0, '', 'VISUALIZATION')} style={{ marginBottom: 17 }}>
-                              Add Kibana visualization paragraph
+                              Add visualization paragraph
                             </EuiButton>
                           }
                         />

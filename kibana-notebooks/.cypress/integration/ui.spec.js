@@ -26,7 +26,7 @@ import {
 
 describe('Adding sample data and visualization', () => {
   it('Adds sample flights data for visualization paragraph', () => {
-    cy.visit(`${Cypress.env('kibana')}/app/home#/tutorial_directory/sampleData`);
+    cy.visit(`${Cypress.env('opensearchDashboards')}/app/home#/tutorial_directory/sampleData`);
     cy.get('div[data-test-subj="sampleDataSetCardflights"]').contains(/(Add|View) data/).click();
     cy.wait(delay * 3);
   });
@@ -34,7 +34,7 @@ describe('Adding sample data and visualization', () => {
 
 describe('Testing notebooks table', () => {
   beforeEach(() => {
-    cy.visit(`${Cypress.env('kibana')}/app/opendistro-notebooks-kibana#`);
+    cy.visit(`${Cypress.env('opensearchDashboards')}/app/opendistro-notebooks#`);
     cy.wait(delay * 3);
   });
 
@@ -121,7 +121,7 @@ describe('Testing notebooks table', () => {
 
 describe('Testing paragraphs', () => {
   beforeEach(() => {
-    cy.visit(`${Cypress.env('kibana')}/app/opendistro-notebooks-kibana#`);
+    cy.visit(`${Cypress.env('opensearchDashboards')}/app/opendistro-notebooks#`);
     cy.get('.euiTableCellContent').contains(TEST_NOTEBOOK).click();
     cy.wait(delay * 3);
   });
@@ -200,7 +200,7 @@ describe('Testing paragraphs', () => {
   it('Adds a visualization paragraph', () => {
     cy.get('.euiButton__text').contains('Add paragraph').click();
     cy.wait(delay);
-    cy.get('.euiContextMenuItem__text').contains('Kibana visualization').click();
+    cy.get('.euiContextMenuItem__text').contains('Visualization').click();
     cy.wait(delay);
 
     cy.get('.euiButton__text').contains('Run').click();
@@ -230,7 +230,7 @@ describe('Testing paragraphs', () => {
     cy.get('.euiButton__text').contains('Run').click();
     cy.wait(delay);
 
-    cy.get('.sc-Axmtr > div:nth-child(1) > div:nth-child(1)').contains('select * from kibana_sample_data_flights limit 20');
+    cy.get('.sc-Axmtr > div:nth-child(1) > div:nth-child(1)').contains('select * from opensearch_dashboards_sample_data_flights limit 20');
 
     cy.get('.euiDataGrid__overflow').should('exist');
   });
@@ -246,7 +246,7 @@ describe('Testing paragraphs', () => {
     cy.get('.euiButton__text').contains('Run').click();
     cy.wait(delay);
 
-    cy.get('.sc-Axmtr > div:nth-child(1) > div:nth-child(1)').contains('source=kibana_sample_data_flights');
+    cy.get('.sc-Axmtr > div:nth-child(1) > div:nth-child(1)').contains('source=opensearch_dashboards_sample_data_flights');
 
     cy.get('.euiDataGrid__overflow').should('exist');
   });
@@ -285,7 +285,7 @@ describe('Testing paragraphs', () => {
     cy.get('.euiContextMenuItem__text').contains('Markdown').click();
     cy.wait(delay);
 
-    cy.get('.euiText').contains('[4] Kibana visualization').should('exist');
+    cy.get('.euiText').contains('[4] OpenSearch Dashboards visualization').should('exist');
     cy.get('.euiText').contains('[5] Code block').should('exist');
   });
 
@@ -296,7 +296,7 @@ describe('Testing paragraphs', () => {
     cy.get('.euiContextMenuItem__text').contains('Move to bottom').click();
     cy.wait(delay);
 
-    cy.get('.euiText').contains('[3] Kibana visualization').should('exist');
+    cy.get('.euiText').contains('[3] OpenSearch Dashboards visualization').should('exist');
   });
 
   it('Duplicates and renames the notebook', () => {

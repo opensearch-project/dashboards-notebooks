@@ -13,9 +13,9 @@
  * permissions and limitations under the License.
  */
 
-import { ES_NOTEBOOKS_API } from "../../common";
+import { OPENSEARCH_NOTEBOOKS_API } from "../../common";
 
-export function NotebooksPlugin(Client: any, config: any, components: any) {
+export function OpenSearchNotebooksPlugin(Client: any, config: any, components: any) {
   const clientAction = components.clientAction.factory;
 
   Client.prototype.notebooks = components.clientAction.namespaceFactory();
@@ -23,7 +23,7 @@ export function NotebooksPlugin(Client: any, config: any, components: any) {
 
   notebooks.getNotebooks = clientAction({
     url: {
-      fmt: ES_NOTEBOOKS_API.GET_NOTEBOOKS,
+      fmt: OPENSEARCH_NOTEBOOKS_API.GET_NOTEBOOKS,
       params: {
         fromIndex: {
           type: 'number',
@@ -38,7 +38,7 @@ export function NotebooksPlugin(Client: any, config: any, components: any) {
 
   notebooks.createNotebook = clientAction({
     url: {
-      fmt: ES_NOTEBOOKS_API.NOTEBOOK,
+      fmt: OPENSEARCH_NOTEBOOKS_API.NOTEBOOK,
     },
     method: 'POST',
     needBody: true,
@@ -46,7 +46,7 @@ export function NotebooksPlugin(Client: any, config: any, components: any) {
 
   notebooks.getNotebookById = clientAction({
     url: {
-      fmt: `${ES_NOTEBOOKS_API.NOTEBOOK}/<%=notebookId%>`,
+      fmt: `${OPENSEARCH_NOTEBOOKS_API.NOTEBOOK}/<%=notebookId%>`,
       req: {
         notebookId: {
           type: 'string',
@@ -59,7 +59,7 @@ export function NotebooksPlugin(Client: any, config: any, components: any) {
 
   notebooks.updateNotebookById = clientAction({
     url: {
-      fmt: `${ES_NOTEBOOKS_API.NOTEBOOK}/<%=notebookId%>`,
+      fmt: `${OPENSEARCH_NOTEBOOKS_API.NOTEBOOK}/<%=notebookId%>`,
       req: {
         notebookId: {
           type: 'string',
@@ -73,7 +73,7 @@ export function NotebooksPlugin(Client: any, config: any, components: any) {
 
   notebooks.deleteNotebookById = clientAction({
     url: {
-      fmt: `${ES_NOTEBOOKS_API.NOTEBOOK}/<%=notebookId%>`,
+      fmt: `${OPENSEARCH_NOTEBOOKS_API.NOTEBOOK}/<%=notebookId%>`,
       req: {
         notebookId: {
           type: 'string',

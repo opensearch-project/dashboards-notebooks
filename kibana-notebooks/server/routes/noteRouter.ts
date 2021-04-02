@@ -13,10 +13,10 @@
  * permissions and limitations under the License.
  */
 
-import { schema } from '@kbn/config-schema';
+import { schema } from '@osd/config-schema';
 import {
   IRouter,
-  IKibanaResponse,
+  IOpenSearchDashboardsResponse,
   ResponseError,
   ILegacyScopedClusterClient,
 } from '../../../../src/core/server';
@@ -30,7 +30,7 @@ export function NoteRouter(router: IRouter) {
       path: `${API_PREFIX}/`,
       validate: {},
     },
-    async (context, request, response): Promise<IKibanaResponse<any | ResponseError>> => {
+    async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
       const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
         request
       );
@@ -62,7 +62,7 @@ export function NoteRouter(router: IRouter) {
         }),
       },
     },
-    async (context, request, response): Promise<IKibanaResponse<any | ResponseError>> => {
+    async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
       const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
         request
       );
@@ -90,7 +90,7 @@ export function NoteRouter(router: IRouter) {
         }),
       },
     },
-    async (context, request, response): Promise<IKibanaResponse<any | ResponseError>> => {
+    async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
       const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
         request
       );
@@ -119,7 +119,7 @@ export function NoteRouter(router: IRouter) {
         }),
       },
     },
-    async (context, request, response): Promise<IKibanaResponse<any | ResponseError>> => {
+    async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
       const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
         request
       );
@@ -148,7 +148,7 @@ export function NoteRouter(router: IRouter) {
         }),
       },
     },
-    async (context, request, response): Promise<IKibanaResponse<any | ResponseError>> => {
+    async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
       const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
         request
       );
@@ -176,7 +176,7 @@ export function NoteRouter(router: IRouter) {
         }),
       },
     },
-    async (context, request, response): Promise<IKibanaResponse<any | ResponseError>> => {
+    async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
       const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
         request
       );

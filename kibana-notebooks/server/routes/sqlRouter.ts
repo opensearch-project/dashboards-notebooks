@@ -13,8 +13,8 @@
  *   permissions and limitations under the License.
  */
 
-import { schema } from '@kbn/config-schema';
-import { IKibanaResponse, IRouter, ResponseError } from '../../../../src/core/server';
+import { schema } from '@osd/config-schema';
+import { IOpenSearchDashboardsResponse, IRouter, ResponseError } from '../../../../src/core/server';
 import QueryService from '../services/queryService';
 
 export function sqlRouter(server: IRouter, service: QueryService) {
@@ -25,7 +25,11 @@ export function sqlRouter(server: IRouter, service: QueryService) {
         body: schema.any(),
       },
     },
-    async (context, request, response): Promise<IKibanaResponse<any | ResponseError>> => {
+    async (
+      context,
+      request,
+      response
+    ): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
       const retVal = await service.describeSQLQuery(request);
       return response.ok({
         body: retVal,
@@ -40,11 +44,15 @@ export function sqlRouter(server: IRouter, service: QueryService) {
         body: schema.any(),
       },
     },
-    async (context, request, response): Promise<IKibanaResponse<any | ResponseError>> => {
+    async (
+      context,
+      request,
+      response
+    ): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
       const retVal = await service.describePPLQuery(request);
       return response.ok({
         body: retVal,
       });
     }
   );
-} 
+}

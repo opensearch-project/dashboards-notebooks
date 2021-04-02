@@ -431,7 +431,7 @@ export const Paragraphs = forwardRef((props: ParagraphProps, ref) => {
   return (
     <>
       <EuiPanel>
-        {renderParaHeader(para.isVizualisation ? 'Kibana visualization' : 'Code block', index)}
+        {renderParaHeader(para.isVizualisation ? 'OpenSearch Dashboards visualization' : 'Code block', index)}
         <Cell key={index} onClick={() => paragraphSelector(index)}>
           {para.isInputExpanded &&
             <>

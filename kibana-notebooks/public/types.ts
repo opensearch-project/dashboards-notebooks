@@ -16,11 +16,11 @@
 import { NavigationPublicPluginStart } from '../../../src/plugins/navigation/public';
 import { DashboardStart } from '../../../src/plugins/dashboard/public';
 
-export interface KibanaNotebooksPluginSetup {
+export interface NotebooksPluginSetup {
   getGreeting: () => string;
 }
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface KibanaNotebooksPluginStart {}
+export interface NotebooksPluginStart {}
 
 export interface AppPluginStartDependencies {
   navigation: NavigationPublicPluginStart;

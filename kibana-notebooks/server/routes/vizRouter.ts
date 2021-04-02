@@ -13,7 +13,7 @@
  * permissions and limitations under the License.
  */
 
-import { IRouter, IKibanaResponse, ResponseError } from '../../../../src/core/server';
+import { IRouter, IOpenSearchDashboardsResponse, ResponseError } from '../../../../src/core/server';
 import { API_PREFIX, FETCH_SIZE } from '../../common';
 import { RequestParams } from '@elastic/elasticsearch';
 
@@ -24,14 +24,14 @@ export function vizRouter(router: IRouter) {
       path: `${API_PREFIX}/visualizations`,
       validate: {},
     },
-    async (context, request, response): Promise<IKibanaResponse<any | ResponseError>> => {
+    async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
       const params: RequestParams.Search = {
-        index: '.kibana',
+        index: '.opensearch_dashboards',
         size: FETCH_SIZE,
         q: 'type:visualization',
       };
       try {
-        const esClientResponse = await context.core.elasticsearch.legacy.client.callAsCurrentUser(
+        const esClientResponse = await context.core.opensearch.legacy.client.callAsCurrentUser(
           'search',
           params
         );
