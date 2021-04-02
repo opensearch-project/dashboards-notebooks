@@ -22,8 +22,8 @@ import com.amazon.opendistroforelasticsearch.notebooks.constructNotebookRequest
 import com.amazon.opendistroforelasticsearch.notebooks.jsonify
 import com.amazon.opendistroforelasticsearch.notebooks.validateErrorResponse
 import com.amazon.opendistroforelasticsearch.notebooks.validateTimeRecency
-import org.elasticsearch.rest.RestRequest
-import org.elasticsearch.rest.RestStatus
+import org.opensearch.rest.RestRequest
+import org.opensearch.rest.RestStatus
 import org.junit.Assert
 import java.time.Instant
 

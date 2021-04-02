@@ -28,19 +28,19 @@ import org.apache.http.impl.client.BasicCredentialsProvider
 import org.apache.http.impl.nio.client.HttpAsyncClientBuilder
 import org.apache.http.message.BasicHeader
 import org.apache.http.ssl.SSLContextBuilder
-import org.elasticsearch.client.Request
-import org.elasticsearch.client.RequestOptions
-import org.elasticsearch.client.Response
-import org.elasticsearch.client.ResponseException
-import org.elasticsearch.client.RestClient
-import org.elasticsearch.client.RestClientBuilder
-import org.elasticsearch.common.settings.Settings
-import org.elasticsearch.common.unit.TimeValue
-import org.elasticsearch.common.util.concurrent.ThreadContext
-import org.elasticsearch.common.xcontent.DeprecationHandler
-import org.elasticsearch.common.xcontent.NamedXContentRegistry
-import org.elasticsearch.common.xcontent.XContentType
-import org.elasticsearch.test.rest.ESRestTestCase
+import org.opensearch.client.Request
+import org.opensearch.client.RequestOptions
+import org.opensearch.client.Response
+import org.opensearch.client.ResponseException
+import org.opensearch.client.RestClient
+import org.opensearch.client.RestClientBuilder
+import org.opensearch.common.settings.Settings
+import org.opensearch.common.unit.TimeValue
+import org.opensearch.common.util.concurrent.ThreadContext
+import org.opensearch.common.xcontent.DeprecationHandler
+import org.opensearch.common.xcontent.NamedXContentRegistry
+import org.opensearch.common.xcontent.XContentType
+import org.opensearch.test.rest.ESRestTestCase
 import org.junit.After
 import org.junit.Before
 import org.junit.AfterClass
@@ -258,7 +258,7 @@ abstract class PluginRestTestCase : ESRestTestCase() {
         @JvmStatic
         @AfterClass
         fun dumpCoverage() {
-            // jacoco.dir set in esplugin-coverage.gradle, if it doesn't exist we don't
+            // jacoco.dir set in opensearchplugin-coverage.gradle, if it doesn't exist we don't
             // want to collect coverage, so we can return early
             val jacocoBuildPath = System.getProperty("jacoco.dir") ?: return
             val serverUrl = "service:jmx:rmi:///jndi/rmi://127.0.0.1:7777/jmxrmi"

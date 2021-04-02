@@ -26,13 +26,13 @@ import com.amazon.opendistroforelasticsearch.notebooks.model.RestTag.UPDATED_TIM
 import com.amazon.opendistroforelasticsearch.notebooks.security.UserAccessManager.DEFAULT_TENANT
 import com.amazon.opendistroforelasticsearch.notebooks.util.logger
 import com.amazon.opendistroforelasticsearch.notebooks.util.stringList
-import org.elasticsearch.common.xcontent.ToXContent
-import org.elasticsearch.common.xcontent.ToXContent.EMPTY_PARAMS
-import org.elasticsearch.common.xcontent.ToXContentObject
-import org.elasticsearch.common.xcontent.XContentBuilder
-import org.elasticsearch.common.xcontent.XContentFactory
-import org.elasticsearch.common.xcontent.XContentParser
-import org.elasticsearch.common.xcontent.XContentParserUtils
+import org.opensearch.common.xcontent.ToXContent
+import org.opensearch.common.xcontent.ToXContent.EMPTY_PARAMS
+import org.opensearch.common.xcontent.ToXContentObject
+import org.opensearch.common.xcontent.XContentBuilder
+import org.opensearch.common.xcontent.XContentFactory
+import org.opensearch.common.xcontent.XContentParser
+import org.opensearch.common.xcontent.XContentParserUtils
 import java.time.Instant
 
 /**

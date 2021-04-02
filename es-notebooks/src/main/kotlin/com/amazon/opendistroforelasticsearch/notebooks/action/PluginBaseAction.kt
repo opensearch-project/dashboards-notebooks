@@ -23,21 +23,21 @@ import com.amazon.opendistroforelasticsearch.notebooks.util.logger
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.elasticsearch.ElasticsearchSecurityException
-import org.elasticsearch.ElasticsearchStatusException
-import org.elasticsearch.action.ActionListener
-import org.elasticsearch.action.ActionRequest
-import org.elasticsearch.action.ActionResponse
-import org.elasticsearch.action.support.ActionFilters
-import org.elasticsearch.action.support.HandledTransportAction
-import org.elasticsearch.client.Client
-import org.elasticsearch.common.io.stream.Writeable
-import org.elasticsearch.index.IndexNotFoundException
-import org.elasticsearch.index.engine.VersionConflictEngineException
-import org.elasticsearch.indices.InvalidIndexNameException
-import org.elasticsearch.rest.RestStatus
-import org.elasticsearch.tasks.Task
-import org.elasticsearch.transport.TransportService
+import org.opensearch.ElasticsearchSecurityException
+import org.opensearch.ElasticsearchStatusException
+import org.opensearch.action.ActionListener
+import org.opensearch.action.ActionRequest
+import org.opensearch.action.ActionResponse
+import org.opensearch.action.support.ActionFilters
+import org.opensearch.action.support.HandledTransportAction
+import org.opensearch.client.Client
+import org.opensearch.common.io.stream.Writeable
+import org.opensearch.index.IndexNotFoundException
+import org.opensearch.index.engine.VersionConflictEngineException
+import org.opensearch.indices.InvalidIndexNameException
+import org.opensearch.rest.RestStatus
+import org.opensearch.tasks.Task
+import org.opensearch.transport.TransportService
 import java.io.IOException
 
 abstract class PluginBaseAction<Request : ActionRequest, Response : ActionResponse>(

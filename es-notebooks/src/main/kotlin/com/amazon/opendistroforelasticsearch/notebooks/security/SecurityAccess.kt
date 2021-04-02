@@ -16,7 +16,7 @@
 
 package com.amazon.opendistroforelasticsearch.notebooks.security
 
-import org.elasticsearch.SpecialPermission
+import org.opensearch.SpecialPermission
 import java.security.AccessController
 import java.security.PrivilegedActionException
 import java.security.PrivilegedExceptionAction

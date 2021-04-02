@@ -32,8 +32,8 @@ import com.amazon.opendistroforelasticsearch.notebooks.model.UpdateNotebookReque
 import com.amazon.opendistroforelasticsearch.notebooks.model.UpdateNotebookResponse
 import com.amazon.opendistroforelasticsearch.notebooks.security.UserAccessManager
 import com.amazon.opendistroforelasticsearch.notebooks.util.logger
-import org.elasticsearch.ElasticsearchStatusException
-import org.elasticsearch.rest.RestStatus
+import org.opensearch.ElasticsearchStatusException
+import org.opensearch.rest.RestStatus
 import java.time.Instant
 
 /**

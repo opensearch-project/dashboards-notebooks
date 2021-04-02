@@ -16,7 +16,7 @@
 
 package com.amazon.opendistroforelasticsearch.notebooks.model
 
-import org.elasticsearch.index.seqno.SequenceNumbers
+import org.opensearch.index.seqno.SequenceNumbers
 
 internal data class NotebookDetailsDoc(
     val notebookDetails: NotebookDetails,

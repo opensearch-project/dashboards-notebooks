@@ -19,8 +19,8 @@ package com.amazon.opendistroforelasticsearch.notebooks.security
 import com.amazon.opendistroforelasticsearch.commons.authuser.User
 import com.amazon.opendistroforelasticsearch.notebooks.settings.PluginSettings
 import com.amazon.opendistroforelasticsearch.notebooks.settings.PluginSettings.FilterBy
-import org.elasticsearch.ElasticsearchStatusException
-import org.elasticsearch.rest.RestStatus
+import org.opensearch.ElasticsearchStatusException
+import org.opensearch.rest.RestStatus
 import java.util.stream.Collectors
 
 /**

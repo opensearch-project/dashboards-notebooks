@@ -22,14 +22,14 @@ import com.amazon.opendistroforelasticsearch.notebooks.model.GetAllNotebooksRequ
 import com.amazon.opendistroforelasticsearch.notebooks.model.RestTag.FROM_INDEX_FIELD
 import com.amazon.opendistroforelasticsearch.notebooks.model.RestTag.MAX_ITEMS_FIELD
 import com.amazon.opendistroforelasticsearch.notebooks.settings.PluginSettings
-import org.elasticsearch.client.node.NodeClient
-import org.elasticsearch.rest.BaseRestHandler
-import org.elasticsearch.rest.BaseRestHandler.RestChannelConsumer
-import org.elasticsearch.rest.BytesRestResponse
-import org.elasticsearch.rest.RestHandler.Route
-import org.elasticsearch.rest.RestRequest
-import org.elasticsearch.rest.RestRequest.Method.GET
-import org.elasticsearch.rest.RestStatus
+import org.opensearch.client.node.NodeClient
+import org.opensearch.rest.BaseRestHandler
+import org.opensearch.rest.BaseRestHandler.RestChannelConsumer
+import org.opensearch.rest.BytesRestResponse
+import org.opensearch.rest.RestHandler.Route
+import org.opensearch.rest.RestRequest
+import org.opensearch.rest.RestRequest.Method.GET
+import org.opensearch.rest.RestStatus
 
 /**
  * Rest handler for getting list of notebooks.

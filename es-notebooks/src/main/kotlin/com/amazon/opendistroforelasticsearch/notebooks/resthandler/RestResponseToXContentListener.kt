@@ -17,9 +17,9 @@
 package com.amazon.opendistroforelasticsearch.notebooks.resthandler
 
 import com.amazon.opendistroforelasticsearch.notebooks.model.BaseResponse
-import org.elasticsearch.rest.RestChannel
-import org.elasticsearch.rest.RestStatus
-import org.elasticsearch.rest.action.RestToXContentListener
+import org.opensearch.rest.RestChannel
+import org.opensearch.rest.RestStatus
+import org.opensearch.rest.action.RestToXContentListener
 
 /**
  * Overrides RestToXContentListener REST based action listener that assumes the response is of type
