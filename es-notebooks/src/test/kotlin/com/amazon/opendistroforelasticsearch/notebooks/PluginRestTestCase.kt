@@ -40,7 +40,7 @@ import org.opensearch.common.util.concurrent.ThreadContext
 import org.opensearch.common.xcontent.DeprecationHandler
 import org.opensearch.common.xcontent.NamedXContentRegistry
 import org.opensearch.common.xcontent.XContentType
-import org.opensearch.test.rest.ESRestTestCase
+import org.opensearch.test.rest.OpenSearchRestTestCase
 import org.junit.After
 import org.junit.Before
 import org.junit.AfterClass
@@ -56,7 +56,7 @@ import javax.management.ObjectName
 import javax.management.remote.JMXConnectorFactory
 import javax.management.remote.JMXServiceURL
 
-abstract class PluginRestTestCase : ESRestTestCase() {
+abstract class PluginRestTestCase : OpenSearchRestTestCase() {
 
     private fun isHttps(): Boolean {
         return System.getProperty("https", "false")!!.toBoolean()

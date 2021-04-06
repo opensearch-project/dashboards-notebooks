@@ -15,9 +15,9 @@
  */
 package com.amazon.opendistroforelasticsearch.notebooks
 
-import org.opensearch.test.ESTestCase
+import org.opensearch.test.OpenSearchTestCase
 
-class NotebooksPluginTests : ESTestCase() {
+class NotebooksPluginTests : OpenSearchTestCase() {
     fun testSample() {
     }
 }

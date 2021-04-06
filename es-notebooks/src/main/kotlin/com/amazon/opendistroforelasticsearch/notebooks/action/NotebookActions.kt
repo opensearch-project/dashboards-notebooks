@@ -32,7 +32,7 @@ import com.amazon.opendistroforelasticsearch.notebooks.model.UpdateNotebookReque
 import com.amazon.opendistroforelasticsearch.notebooks.model.UpdateNotebookResponse
 import com.amazon.opendistroforelasticsearch.notebooks.security.UserAccessManager
 import com.amazon.opendistroforelasticsearch.notebooks.util.logger
-import org.opensearch.ElasticsearchStatusException
+import org.opensearch.OpenSearchStatusException
 import org.opensearch.rest.RestStatus
 import java.time.Instant
 
@@ -60,7 +60,7 @@ internal object NotebookActions {
             request.notebook
         )
         val docId = NotebooksIndex.createNotebook(notebookDetails)
-        docId ?: throw ElasticsearchStatusException(
+        docId ?: throw OpenSearchStatusException(
             "Notebook Creation failed",
             RestStatus.INTERNAL_SERVER_ERROR
         )
@@ -77,9 +77,9 @@ internal object NotebookActions {
         UserAccessManager.validateUser(user)
         val currentNotebookDetails = NotebooksIndex.getNotebook(request.notebookId)
         currentNotebookDetails
-            ?: throw ElasticsearchStatusException("Notebook ${request.notebookId} not found", RestStatus.NOT_FOUND)
+            ?: throw OpenSearchStatusException("Notebook ${request.notebookId} not found", RestStatus.NOT_FOUND)
         if (!UserAccessManager.doesUserHasAccess(user, currentNotebookDetails.tenant, currentNotebookDetails.access)) {
-            throw ElasticsearchStatusException(
+            throw OpenSearchStatusException(
                 "Permission denied for Notebook ${request.notebookId}",
                 RestStatus.FORBIDDEN
             )
@@ -94,7 +94,7 @@ internal object NotebookActions {
             request.notebook
         )
         if (!NotebooksIndex.updateNotebook(request.notebookId, notebookDetails)) {
-            throw ElasticsearchStatusException("Notebook Update failed", RestStatus.INTERNAL_SERVER_ERROR)
+            throw OpenSearchStatusException("Notebook Update failed", RestStatus.INTERNAL_SERVER_ERROR)
         }
         return UpdateNotebookResponse(request.notebookId)
     }
@@ -109,9 +109,9 @@ internal object NotebookActions {
         UserAccessManager.validateUser(user)
         val notebookDetails = NotebooksIndex.getNotebook(request.notebookId)
         notebookDetails
-            ?: throw ElasticsearchStatusException("Notebook ${request.notebookId} not found", RestStatus.NOT_FOUND)
+            ?: throw OpenSearchStatusException("Notebook ${request.notebookId} not found", RestStatus.NOT_FOUND)
         if (!UserAccessManager.doesUserHasAccess(user, notebookDetails.tenant, notebookDetails.access)) {
-            throw ElasticsearchStatusException(
+            throw OpenSearchStatusException(
                 "Permission denied for Notebook ${request.notebookId}",
                 RestStatus.FORBIDDEN
             )
@@ -129,7 +129,7 @@ internal object NotebookActions {
         UserAccessManager.validateUser(user)
         val notebookDetails = NotebooksIndex.getNotebook(request.notebookId)
         notebookDetails
-            ?: throw ElasticsearchStatusException(
+            ?: throw OpenSearchStatusException(
                 "Notebook ${request.notebookId} not found",
                 RestStatus.NOT_FOUND
             )
@@ -139,13 +139,13 @@ internal object NotebookActions {
                 notebookDetails.access
             )
         ) {
-            throw ElasticsearchStatusException(
+            throw OpenSearchStatusException(
                 "Permission denied for Notebook ${request.notebookId}",
                 RestStatus.FORBIDDEN
             )
         }
         if (!NotebooksIndex.deleteNotebook(request.notebookId)) {
-            throw ElasticsearchStatusException(
+            throw OpenSearchStatusException(
                 "Notebook ${request.notebookId} delete failed",
                 RestStatus.REQUEST_TIMEOUT
             )

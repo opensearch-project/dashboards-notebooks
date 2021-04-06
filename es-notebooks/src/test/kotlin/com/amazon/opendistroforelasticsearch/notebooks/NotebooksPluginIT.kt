@@ -19,9 +19,9 @@ import org.opensearch.action.admin.cluster.node.info.NodesInfoRequest
 import org.opensearch.action.admin.cluster.node.info.PluginsAndModules
 import org.opensearch.cluster.health.ClusterHealthStatus
 import org.opensearch.plugins.PluginInfo
-import org.opensearch.test.ESIntegTestCase
+import org.opensearch.test.OpenSearchIntegTestCase
 
-class NotebooksPluginIT : ESIntegTestCase() {
+class NotebooksPluginIT : OpenSearchIntegTestCase() {
     fun testPluginsAreInstalled() {
         val request = ClusterHealthRequest()
         val response = client().admin().cluster().health(request).actionGet()

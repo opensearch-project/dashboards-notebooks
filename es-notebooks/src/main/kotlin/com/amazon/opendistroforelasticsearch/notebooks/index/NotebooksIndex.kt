@@ -44,7 +44,7 @@ import org.opensearch.search.builder.SearchSourceBuilder
 import java.util.concurrent.TimeUnit
 
 /**
- * Class for doing ES index operation to maintain notebooks in cluster.
+ * Class for doing OpenSearch index operation to maintain notebooks in cluster.
  */
 internal object NotebooksIndex {
     private val log by logger(NotebooksIndex::class.java)
@@ -58,8 +58,8 @@ internal object NotebooksIndex {
 
     /**
      * Initialize the class
-     * @param client The ES client
-     * @param clusterService The ES cluster service
+     * @param client The OpenSearch client
+     * @param clusterService The OpenSearch cluster service
      */
     fun initialize(client: Client, clusterService: ClusterService) {
         this.client = SecureIndexClient(client)

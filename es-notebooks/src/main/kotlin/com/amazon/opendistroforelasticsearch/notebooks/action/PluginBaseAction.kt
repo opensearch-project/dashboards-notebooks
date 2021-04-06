@@ -23,8 +23,8 @@ import com.amazon.opendistroforelasticsearch.notebooks.util.logger
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.opensearch.ElasticsearchSecurityException
-import org.opensearch.ElasticsearchStatusException
+import org.opensearch.OpenSearchSecurityException
+import org.opensearch.OpenSearchStatusException
 import org.opensearch.action.ActionListener
 import org.opensearch.action.ActionRequest
 import org.opensearch.action.ActionResponse
@@ -66,34 +66,34 @@ abstract class PluginBaseAction<Request : ActionRequest, Response : ActionRespon
         scope.launch {
             try {
                 listener.onResponse(executeRequest(request, user))
-            } catch (exception: ElasticsearchStatusException) {
-                log.warn("$LOG_PREFIX:ElasticsearchStatusException: message:${exception.message}")
+            } catch (exception: OpenSearchStatusException) {
+                log.warn("$LOG_PREFIX:OpenSearchStatusException: message:${exception.message}")
                 listener.onFailure(exception)
-            } catch (exception: ElasticsearchSecurityException) {
-                log.warn("$LOG_PREFIX:ElasticsearchSecurityException:", exception)
-                listener.onFailure(ElasticsearchStatusException("Permissions denied: ${exception.message} - Contact administrator",
+            } catch (exception: OpenSearchSecurityException) {
+                log.warn("$LOG_PREFIX:OpenSearchSecurityException:", exception)
+                listener.onFailure(OpenSearchStatusException("Permissions denied: ${exception.message} - Contact administrator",
                     RestStatus.FORBIDDEN))
             } catch (exception: VersionConflictEngineException) {
                 log.warn("$LOG_PREFIX:VersionConflictEngineException:", exception)
-                listener.onFailure(ElasticsearchStatusException(exception.message, RestStatus.CONFLICT))
+                listener.onFailure(OpenSearchStatusException(exception.message, RestStatus.CONFLICT))
             } catch (exception: IndexNotFoundException) {
                 log.warn("$LOG_PREFIX:IndexNotFoundException:", exception)
-                listener.onFailure(ElasticsearchStatusException(exception.message, RestStatus.NOT_FOUND))
+                listener.onFailure(OpenSearchStatusException(exception.message, RestStatus.NOT_FOUND))
             } catch (exception: InvalidIndexNameException) {
                 log.warn("$LOG_PREFIX:InvalidIndexNameException:", exception)
-                listener.onFailure(ElasticsearchStatusException(exception.message, RestStatus.BAD_REQUEST))
+                listener.onFailure(OpenSearchStatusException(exception.message, RestStatus.BAD_REQUEST))
             } catch (exception: IllegalArgumentException) {
                 log.warn("$LOG_PREFIX:IllegalArgumentException:", exception)
-                listener.onFailure(ElasticsearchStatusException(exception.message, RestStatus.BAD_REQUEST))
+                listener.onFailure(OpenSearchStatusException(exception.message, RestStatus.BAD_REQUEST))
             } catch (exception: IllegalStateException) {
                 log.warn("$LOG_PREFIX:IllegalStateException:", exception)
-                listener.onFailure(ElasticsearchStatusException(exception.message, RestStatus.SERVICE_UNAVAILABLE))
+                listener.onFailure(OpenSearchStatusException(exception.message, RestStatus.SERVICE_UNAVAILABLE))
             } catch (exception: IOException) {
                 log.error("$LOG_PREFIX:Uncaught IOException:", exception)
-                listener.onFailure(ElasticsearchStatusException(exception.message, RestStatus.FAILED_DEPENDENCY))
+                listener.onFailure(OpenSearchStatusException(exception.message, RestStatus.FAILED_DEPENDENCY))
             } catch (exception: Exception) {
                 log.error("$LOG_PREFIX:Uncaught Exception:", exception)
-                listener.onFailure(ElasticsearchStatusException(exception.message, RestStatus.INTERNAL_SERVER_ERROR))
+                listener.onFailure(OpenSearchStatusException(exception.message, RestStatus.INTERNAL_SERVER_ERROR))
             }
         }
     }
