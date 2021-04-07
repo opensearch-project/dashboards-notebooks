@@ -1,4 +1,4 @@
-name: Test and Build Notebooks ES Plugin
+name: Test and Build OpenSearch Notebooks Backend Plugin
 
 on: [push, pull_request]
 
@@ -16,16 +16,16 @@ jobs:
 
       - name: Build with Gradle
         run: |
-          cd es-notebooks
+          cd opensearch-notebooks
           ./gradlew build
 
       - name: Create Artifact Path
         run: |
-          mkdir -p es-notebooks-builds
-          cp -r ./es-notebooks/build/distributions/*.zip es-notebooks-builds/
+          mkdir -p opensearch-notebooks-builds
+          cp -r ./opensearch-notebooks/build/distributions/*.zip opensearch-notebooks-builds/
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v1
         with:
-          name: es-notebooks
-          path: es-notebooks-builds
+          name: opensearch-notebooks
+          path: opensearch-notebooks-builds

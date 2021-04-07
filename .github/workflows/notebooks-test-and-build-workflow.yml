@@ -1,11 +1,11 @@
 
-name: Test and Build Kibana Notebooks
+name: Test and Build Notebooks
 
 on: [pull_request, push]
 
 env:
-  PLUGIN_NAME: opendistroNotebooksKibana
-  OD_VERSION: 1.13.0.0
+  PLUGIN_NAME: opendistroNotebooksOpenSearchDashboards
+  OD_VERSION: 1.15.0.0
 
 jobs:
 
@@ -17,29 +17,29 @@ jobs:
       - name: Checkout Plugin
         uses: actions/checkout@v1
 
-      - name: Checkout Kibana
+      - name: Checkout OpenSearch Dashboards
         uses: actions/checkout@v1
         with:
           repository: elastic/kibana
           ref: v7.10.2
-          path: kibana-notebooks/kibana
+          path: reponame/Opensearch-Dashboards
 
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: '10.23.1'
 
-      - name: Move Kibana Notebooks to Plugins Dir
-        run: mv kibana-notebooks kibana/plugins/kibana-notebooks
+      - name: Move Notebooks to Plugins Dir
+        run: mv notebooks OpenSearch-Dashboards/plugins/notebooks
 
-      - name: Kibana Pluign Bootstrap
+      - name: OpenSearch Dashboards Pluign Bootstrap
         run: |
-          cd kibana/plugins/kibana-notebooks
-          yarn kbn bootstrap
+          cd OpenSearch-Dashboards/plugins/notebooks
+          yarn osd bootstrap
 
       - name: Build Artifact
         run: |
-          cd kibana/plugins/kibana-notebooks
+          cd OpenSearch-Dashboards/plugins/notebooks
           yarn build
           mv ./build/*.zip ./build/${{ env.PLUGIN_NAME }}-${{ env.OD_VERSION }}.zip
 
@@ -47,4 +47,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: kibana-notebooks
-          path: kibana/plugins/kibana-notebooks/build
+          path: OpenSearch-Dashboards/plugins/notebooks/build

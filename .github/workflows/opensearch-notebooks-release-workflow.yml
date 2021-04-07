@@ -1,4 +1,4 @@
-name: Release Notebooks ES Plugin Artifacts
+name: Release OpenSearch Notebooks Backend Plugin Artifacts
 # This workflow is triggered on creating tags to master or an opendistro release branch
 on:
   push:
@@ -27,7 +27,7 @@ jobs:
 
       - name: Run build
         run: |
-          cd es-notebooks
+          cd opensearch-notebooks
           ./gradlew build buildDeb buildRpm --no-daemon --refresh-dependencies -Dbuild.snapshot=false
           artifact=`ls ./build/distributions/*.zip`
           rpm_artifact=`ls ./build/distributions/*.rpm`
