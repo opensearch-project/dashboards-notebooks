@@ -27,7 +27,7 @@
       3. Also, [Notebooks](http://zeppelin.apache.org/docs/0.9.0-preview1/setup/security/notebook_authorization.html) can have access control based on Shiro defined users
 3. **Deployment:**
    1. Recommended way is to use stand alone docker
-   2. Create a **custom docker** with new Shiro & Zeppelin configs and set interpreter config for Elasticsearch and ODFE-sql.
+   2. Create a **custom docker** with new Shiro & Zeppelin configs and set interpreter config for OpenSearch and ODFE-sql.
    3. Sample scripts available in `scripts/docker/spark-cluster-managers`
 4. **Storage:**
    1. Apache Zeppelin has a pluggable notebook storage mechanism controlled by `zeppelin.notebook.storage` configuration option with multiple implementations.
@@ -53,10 +53,10 @@
     - Then restart the service
 - **[Optional] Setup ES Interpreter:**
 
-  - [Zeppelin Elasticsearch interpreter Documentation](https://zeppelin.apache.org/docs/0.9.0-preview2/interpreter/elasticsearch.html)
+  - [Zeppelin OpenSearch interpreter Documentation](https://zeppelin.apache.org/docs/0.9.0-preview2/interpreter/elasticsearch.html)
   - This interpreter can be used for ODFE:
 
-    - **Note: current issues with Elasticsearch Interpreter in Zeppelin**
+    - **Note: current issues with OpenSearch Interpreter in Zeppelin**
     - User needs to remove ssl flag from the ES config as Zeppelin doesn’t support ssl request yet: https://issues.apache.org/jira/browse/ZEPPELIN-2031 so run the ODFE service without ssl enabled
     - Zeppelin has “no support for ssl” (only uses http) in elastic interpreter:
       - [Code](https://github.com/apache/zeppelin/blob/0b8423c62ae52f3716d4bb63d60762fee6910788/elasticsearch/src/main/java/org/apache/zeppelin/elasticsearch/client/HttpBasedClient.java#L105)
@@ -77,7 +77,7 @@
       - host → localhost (if running on same machine as Zeppelin) & port → 9200
       - username: admin & password: admin
       - Once configured the screen should look like this:
-        ![ES Interpreter](images/es-zeppelin.png)
+        ![ES Interpreter](images/opensearch-zeppelin.png)
 
     - Start a new notebook to try out the below commands
     - Run a shell command from notebook to check availability of ES:
@@ -105,7 +105,7 @@ index movies/default/1 {
       - Click on "+ Create" Button
       - Add ODFE-SQL interpreter with type JDBC **configure name: “odfesql”**
       - Note: The name you assign to the interpreter is used later for accessing paragraphs in notebook - “%odfesql”
-      - Edit config for with ODFE-SQL Driver details (Please refer to the [Github README](https://github.com/opendistro-for-elasticsearch/sql-jdbc))
+      - Edit config for with ODFE-SQL Driver details (Please refer to the [Github README](https://github.com/opensearch-project/sql/tree/main/sql-jdbc))
     - **If using the default settings, add below mentioned changes in interpreter config:**
       - Edit the url: `jdbc:elasticsearch://localhost:9200`
       - Edit the driver class: `com.amazon.opendistroforelasticsearch.jdbc.Driver`

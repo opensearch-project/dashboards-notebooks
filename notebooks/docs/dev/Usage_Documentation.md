@@ -1,12 +1,12 @@
-# Using Kibana Notebooks
+# Using OpenSearch Dashboards Notebooks
 
 ## Usage & Interface
 
-![Kibana Notebooks](./images/kibana-notebooks.gif)
+![OpenSearch Dashboards Notebooks](./images/dashboards-notebooks.gif)
 
 ### 1. Notebook Functionalities
 
-![Kibana Notebooks](./images/notebook-buttons.png)
+![OpenSearch Dashboards Notebooks](./images/notebook-buttons.png)
 
 - **Create Notebook** - creates a new notebook document
 - **Rename Notebook** - renames the current notebook with new name
@@ -17,7 +17,7 @@
 
 ### 2. Paragraph Functionalities
 
-![Kibana Notebooks](./images/paragraph-buttons.png)
+![OpenSearch Dashboards Notebooks](./images/paragraph-buttons.png)
 NOTE: Please select a paragraph before using these buttons
 
 - **Run Paragraph** - Runs the selected paragraph and saves it
@@ -36,5 +36,5 @@ NOTE: Please select a paragraph before using these buttons
 
 ## Import Example Notebooks
 
-- Import sample notebooks from [example_notebooks folder](https://github.com/opendistro-for-elasticsearch/kibana-notebooks/tree/dev) based on your backend
+- Import sample notebooks from [example_notebooks folder](https://github.com/opensearch-project/dashboards-notebooks/tree/dev) based on your backend
 - A notebook from one backend is incompatible to the other

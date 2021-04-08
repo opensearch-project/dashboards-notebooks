@@ -1,4 +1,4 @@
-# RFC - Kibana Notebooks
+# RFC - OpenSearch Dashboards Notebooks
 
 ## Contents
 
@@ -15,7 +15,7 @@
 
 ### **1.1 Introduction**
 
-Kibana Notebooks enable data-driven, interactive data analytics and collaborative documents to be created and used as live notes in Kibana. They allow devops, support specialists, solution and presales specialists, customer success experts and engineers to create and share stories. They facilitate combining visualizations, timelines and text, code and adding annotations. Here are a few Kibana Notebooks use-cases:
+OpenSearch Dashboards Notebooks enable data-driven, interactive data analytics and collaborative documents to be created and used as live notes in OpenSearch Dashboards. They allow devops, support specialists, solution and presales specialists, customer success experts and engineers to create and share stories. They facilitate combining visualizations, timelines and text, code and adding annotations. Here are a few OpenSearch Dashboards Notebooks use-cases:
 
 1. Create post-mortem documents
 2. Design runbooks
@@ -24,16 +24,16 @@ Kibana Notebooks enable data-driven, interactive data analytics and collaborativ
 
 ### **1.2 Motivation**
 
-- **Existing Solution:** Kibana Dashboards offer a solution for a few selected use cases, and are a great tool if you’re focused on monitoring a known set of metrics over time. Current issues include:
+- **Existing Solution:** OpenSearch Dashboards Dashboards offer a solution for a few selected use cases, and are a great tool if you’re focused on monitoring a known set of metrics over time. Current issues include:
   - Dashboards are static in nature and are not user-friendly to make quick changes in iterations
   - Dashboards lack context for visualizations
   - Dashboards do not have multi-timeline support which are needed for post-mortem and cause analysis
-  - Dashboards are restricted to data sources within the Elasticsearch environment
+  - Dashboards are restricted to data sources within the OpenSearch environment
 
-* **Our Solution:** Kibana Notebooks provide:
+* **Our Solution:** OpenSearch Dashboards Notebooks provide:
   - Familiar notebooks user-interface for faster iterations as live notes
   - Markdown/Code interpreters for contextual use of data with detailed explanations by allowing a user to combine saved visualizations, text and graphs
-  - Adaptors to embellish existing data in Elasticsearch with other reference data sources.
+  - Adaptors to embellish existing data in OpenSearch with other reference data sources.
   - Support multiple timelines to compare and contrast visualizations
 
 ### **1.3 Glossary**
@@ -49,7 +49,7 @@ Kibana Notebooks enable data-driven, interactive data analytics and collaborativ
 **Functional:**
 
 1. **Notebooks**
-   1. As a user, I should be able to use Kibana Notebooks plugin UI for all the interactions
+   1. As a user, I should be able to use OpenSearch Dashboards Notebooks plugin UI for all the interactions
    2. As a user, I should be able to View all the notebooks available
    3. As a user, I should be able to Create, Edit, Rename, Delete and Clone Notebooks
    4. As a user, I should be able to Import and Export Notebooks for collaborative story telling
@@ -65,7 +65,7 @@ Kibana Notebooks enable data-driven, interactive data analytics and collaborativ
 4. **Default Backend**
    1. As a user, I should be able to use Visualizations and Markdown interpreter in Notebooks
    2. As a user, I should be able to use SQL and DSL query interpreters in Notebooks
-   3. As a user, I should be able to store Notebooks as Elasticsearch indices
+   3. As a user, I should be able to store Notebooks as OpenSearch indices
 5. **Backend Adaptors**
    1. As a user, I should be able to plug an add-on external backend services (like [Apache Zeppelin](https://zeppelin.apache.org/), [Amazon SageMaker](https://aws.amazon.com/sagemaker/), [Jupyter](https://jupyter.org/)) to the plugin using adaptors
    2. As a user, I should be able to use all the interpreters provided by the plugged backend service in addition to those provided by default
@@ -75,7 +75,7 @@ Kibana Notebooks enable data-driven, interactive data analytics and collaborativ
 **Non-functional:**
 
 1. **Default Backend** - As a user, I should be able to use the plugin’s default interpreters without setting up any external backend service
-2. **Backend Adaptors** - As a user, I should be free to create and use external data planes/environments and bring them to Kibana via supported adaptors
+2. **Backend Adaptors** - As a user, I should be free to create and use external data planes/environments and bring them to OpenSearch Dashboards via supported adaptors
 3. **Security** - As a user, I should be able to view/clone/read/save/edit notebooks adhering to my role settings
 
 ## 3. User Stories
@@ -102,7 +102,7 @@ Kibana Notebooks enable data-driven, interactive data analytics and collaborativ
 
 **Share, export and download notebooks**
 
-1. As a creator of notebooks, I should be able to share a Kibana Notebook with other users so that they can view and/or edit the notebooks as per the privileges and permissions they have.
+1. As a creator of notebooks, I should be able to share a OpenSearch Dashboards Notebook with other users so that they can view and/or edit the notebooks as per the privileges and permissions they have.
 2. I should also be able to share the notebook as a pdf via email. I should also be able to download the story as a pdf.
 
 **List of Notebooks**
@@ -120,12 +120,12 @@ Kibana Notebooks enable data-driven, interactive data analytics and collaborativ
 
 ### **4.2 Where (Notebooks Storage)**
 
-- Notebooks are stored as Elasticsearch indices in the default backend. If backend adaptors are used by user, the storage is switched to storage options provided by the external backend service.
+- Notebooks are stored as OpenSearch indices in the default backend. If backend adaptors are used by user, the storage is switched to storage options provided by the external backend service.
 - For example: Apache Zeppelin backend service supports files, Git, Amazon S3, mongo and other storage options.
 
 ### **4.3 How (Releases)**
 
-- Kibana Notebooks will be released as a Kibana plugin shipped with the Open-Distro for Elasticsearch solution.
+- OpenSearch Dashboards Notebooks will be released as a OpenSearch Dashboards plugin shipped with the Open-Distro for OpenSearch solution.
 
 ### **4.4 Architecture**
 
@@ -138,7 +138,7 @@ Kibana Notebooks enable data-driven, interactive data analytics and collaborativ
   - Zeppelin Backend will provide one stop shop for interpreters, runtime-environments and storage adaptors
 - Cons:
   - Users will not be free to customize Zeppelin Backend runtime-environment/storage adaptors
-  - Need to develop a new storage adaptor for Zeppelin to store notebooks as Elasticsearch indices [POC details](../../poc/docs/Zeppelin_ODFE_Storage.md)
+  - Need to develop a new storage adaptor for Zeppelin to store notebooks as OpenSearch indices [POC details](../../poc/docs/Zeppelin_ODFE_Storage.md)
   - Difficult to maintain releases, as we have to sync version currency/patches to Zeppelin code repository
 
 **4.4.2 Version 2:** In this architecture, Backends are switchable with two options of Default backend (Markdown, Visualization support) or Apache Zeppelin Backend (25+ interpreter support)
@@ -162,16 +162,16 @@ Kibana Notebooks enable data-driven, interactive data analytics and collaborativ
 - Cons:
   - Need to develop UI as a decoupled service and need to development of multiple parsers as notebook structures change with different backend adaptors
 
-**4.4.4 Decision:** Even though “Version 1” provides good coupling and ease of development, the maintenance and releases are a big issue striking this option out. "Version 2" provides switchable backends which is easy to use but this switching happens at a cost of not supporting a core functionality of visualizations with Zeppelin backend. Finally, we selected "version 3" as it provides user flexibility to bring their own external backend services to connect to Kibana Notebooks.
+**4.4.4 Decision:** Even though “Version 1” provides good coupling and ease of development, the maintenance and releases are a big issue striking this option out. "Version 2" provides switchable backends which is easy to use but this switching happens at a cost of not supporting a core functionality of visualizations with Zeppelin backend. Finally, we selected "version 3" as it provides user flexibility to bring their own external backend services to connect to OpenSearch Dashboards Notebooks.
 
 ## 5. Design Details and Implementation
 
-### **5.1 Kibana Notebooks Plugin UI**
+### **5.1 OpenSearch Dashboards Notebooks Plugin UI**
 
-1. **React based UI**, uses elements from [Elasticsearch UI](https://elastic.github.io/eui/#/) elements & [Nteract.io components](https://components.nteract.io/)
-2. **Elasticsearch UI Components**
-   1. Used for blending notebooks in Kibana Plugins environment
-   2. All container UI components and buttons use Elasticsearch UI components
+1. **React based UI**, uses elements from [OpenSearch UI](https://elastic.github.io/eui/#/) elements & [Nteract.io components](https://components.nteract.io/)
+2. **OpenSearch UI Components**
+   1. Used for blending notebooks in OpenSearch Dashboards Plugins environment
+   2. All container UI components and buttons use OpenSearch UI components
 3. **Nteract Components**
    1. [_Presentational-components_](https://components.nteract.io/#section-nteractpresentational-components) module of nteract is used specifically for notebook UI
    2. _[Outputs](https://components.nteract.io/#section-nteractoutputs)_ module is used for rendering markdown if backend adaptor doesn't have a markdown interpreter
@@ -181,11 +181,11 @@ Kibana Notebooks enable data-driven, interactive data analytics and collaborativ
    3. FUTURE: Can shift this module to the backend, need to weigh pros and cons as behavior of APIs will change especially for Import and Export would change drastically
 5. Here’s a sample wireframe
 
-![Kibana Notebooks UI](images/UI.png)
+![OpenSearch Dashboards Notebooks UI](images/UI.png)
 
-### **5.2 Kibana Notebooks Plugin Backend**
+### **5.2 OpenSearch Dashboards Notebooks Plugin Backend**
 
-1. Uses the Hapi Backend Contianer provided by Kibana
+1. Uses the Hapi Backend Contianer provided by OpenSearch Dashboards
 2. Provides API routes for connecting UI components to a backend service
 3. **_Router Modules_:**
    1. NotebookConnector - routes Notebook CRUD operations
@@ -207,22 +207,22 @@ Kibana Notebooks enable data-driven, interactive data analytics and collaborativ
       - [Interpreter APIs](http://zeppelin.apache.org/docs/0.9.0-preview1/usage/rest_api/interpreter.html) Get interpreter settings, create/update/restart/delete interpreter setting
       - [Notebook APIs](http://zeppelin.apache.org/docs/0.9.0-preview1/usage/rest_api/notebook.html) Create/update/restart/delete noteboooks and paragraphs
       - Provides inter-paragraph communication capabilities
-      - Can be setup to provide Elasticsearch and ODFE-SQL interpreters
+      - Can be setup to provide OpenSearch and ODFE-SQL interpreters
       - Can be connected with python environment to use ML/plot libraries
 
 ### **5.3 Data Model**
 
-- **Default Backend Notebook Schema:** Each notebook object contains it’s name, unique id, date of creation/modification, Kibana Notebooks plugin version and an array of paragraphs. The paragraphs contain their unique id, date of creation/modification and input/output cells. An input cell contains a code or text and it’s type (markdown/visualization). Each paragraph contains an array of outputs, this is an array as execution of code can result into multiple outputs like a text with an image. Each output contains the type of output, result value and execution time.
+- **Default Backend Notebook Schema:** Each notebook object contains it’s name, unique id, date of creation/modification, OpenSearch Dashboards Notebooks plugin version and an array of paragraphs. The paragraphs contain their unique id, date of creation/modification and input/output cells. An input cell contains a code or text and it’s type (markdown/visualization). Each paragraph contains an array of outputs, this is an array as execution of code can result into multiple outputs like a text with an image. Each output contains the type of output, result value and execution time.
 
 ![Default Notebooks](images/Default_Notebooks_Schemav2.png)
 
 ### **5.4 WorkFlows**
 
-- **Default Backend -** _View Notebooks:_ View notebooks operation is responsible for loading the sidemenu with folder tree. When user loads the plugin a call is made to the backend server. The default backend fetches all the notebooks from “.notebooks” Elasticsearch index and responds with notebook Ids and paths. This response load is then used to populate the folder tree with default parser on UI.
+- **Default Backend -** _View Notebooks:_ View notebooks operation is responsible for loading the sidemenu with folder tree. When user loads the plugin a call is made to the backend server. The default backend fetches all the notebooks from “.notebooks” OpenSearch index and responds with notebook Ids and paths. This response load is then used to populate the folder tree with default parser on UI.
 
   ![View Notebook](images/default_view_notebook.png)
 
-- **Default Backend -** _Create/Edit/Delete Notebooks_: All the other notebook operations like create/delete/clone/import/export and editing paragraphs in notebooks use this workflow. When a use interacts with these notebook functionalities a backend request is made with payload [like paragraphInput, paragraphId] if necessary. The default backend first searches the “.notebooks” Elasticsearch index to get the current state of the notebook. Once fetched/searched, it performs the required operation and then indexes/updates/deletes the notebook. After the successful completion of operations a response is sent back to the UI with either whole or partial notebook information (as required) and parsed by default parser taking the notebook schema into consideration.
+- **Default Backend -** _Create/Edit/Delete Notebooks_: All the other notebook operations like create/delete/clone/import/export and editing paragraphs in notebooks use this workflow. When a use interacts with these notebook functionalities a backend request is made with payload [like paragraphInput, paragraphId] if necessary. The default backend first searches the “.notebooks” OpenSearch index to get the current state of the notebook. Once fetched/searched, it performs the required operation and then indexes/updates/deletes the notebook. After the successful completion of operations a response is sent back to the UI with either whole or partial notebook information (as required) and parsed by default parser taking the notebook schema into consideration.
 
   ![View Notebook](images/default_operation_notebook.png)
 
@@ -240,7 +240,7 @@ Kibana Notebooks enable data-driven, interactive data analytics and collaborativ
 
 ## 7. Appendix
 
-### **7.1** POC: [Embeddable API & Usage](../../poc/docs/Kibana_Embeddable_Documentation.md)
+### **7.1** POC: [Embeddable API & Usage](../../poc/docs/OpenSearch Dashboards_Embeddable_Documentation.md)
 
 ### **7.2** POC: [Zeppelin ODFE Storage](../../poc/docs/Zeppelin_ODFE_Storage.md)
 
@@ -257,10 +257,10 @@ Kibana Notebooks enable data-driven, interactive data analytics and collaborativ
 
 - **Zeppelin Backend Adaptor**
 
-  - **Zeppelin Adaptor in Kibana Notebooks**:
+  - **Zeppelin Adaptor in OpenSearch Dashboards Notebooks**:
     ![Sample UI](images/Zeppelin_ss.png)
-  - **Make requests to Elastic Service**:
-    ![Elastic service UI](images/elastic_ss.png)
+  - **Make requests to OpenSearch Service**:
+    ![OpenSearch service UI](images/opensearch_ss.png)
   - **Transmit Data between Interpreters**:
 
     - Use output of an ODFE Query as save as a Zeppelin Context in a variable

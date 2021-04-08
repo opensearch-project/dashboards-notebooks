@@ -2,7 +2,7 @@
 
 ### **Requirement:**
 
-- Use Zeppelin as a backend service for Kibana Notebooks and store notebooks as ODFE indices
+- Use Zeppelin as a backend service for OpenSearch Dashboards Notebooks and store notebooks as indices
 - Use Zeppelin’s storage adaptor interface and implement a new storage adaptor using Elasticsearch Client
 
 ### **Design:**
@@ -27,7 +27,7 @@
 ### **Usage:**
 
 
-1. Clone [kibana-notebooks](https://github.com/opendistro-for-elasticsearch/kibana-notebooks) repository
+1. Clone [dashbaords-notebooks](https://github.com/opensearch-project/dashboards-notebooks/) repository
 
 2. Clone [Apache Zeppelin](https://github.com/apache/zeppelin) and checkout to 'v0.9.0-preview2' branch in a separate folder
 
@@ -36,16 +36,16 @@ cd zeppelin
 git checkout v0.9.0-preview2
 ```
 
-3. Apply patch from kibana-notebooks
+3. Apply patch from dashboards-notebooks
 
 ```
-git apply /path/to/kibana-notebooks/poc/zeppelin-patch.txt
+git apply /path/to/dashboards-notebooks/poc/zeppelin-patch.txt
 ```
 
 4. Once, in this branch copy "odfe" storage adaptor to your zeppelin files
 
 ```
-cp -r /path/to/kibana-notebooks/poc/zeppelin/zeppelin-plugins/notebookrepo/odfe path/to/your/zeppelin/zeppelin-plugins/notebookrepo/.
+cp -r /path/to/dashboards-notebooks/poc/zeppelin/zeppelin-plugins/notebookrepo/odfe path/to/your/zeppelin/zeppelin-plugins/notebookrepo/.
 ```
 
 5. Add ODFE storage property in zeppelin config file "conf/zeppelin-site.xml" and you should comment default git storage

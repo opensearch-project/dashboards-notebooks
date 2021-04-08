@@ -8,7 +8,7 @@
 4. [**Future Work**](#future-work)
 5. [**References**](#references)
 
-## Kibana Notebooks REST APIs
+## OpenSearch Dashboards Notebooks REST APIs
 
 **_NOTE:_** The Notebook/Paragraph structure used in body & responses, are with Zeppelin Backend Adaptor. The structure of noteboook and paragraph changes with change in backend, but format of request body and response body remains the same.
 
@@ -481,13 +481,13 @@ NOTE: This API call doesn’t execute the paragraph input, should be used to sav
     {
         "noteId": "2FF3GW3H8", // notebook id
         "paragraphId": "paragraph_1596519508360_932236116", // para id
-        "paragraphInput": "%md \n\n### Hi Everyone\n* Here's a demo on **Kibana Notebooks**\n* I was not present in previous input"
+        "paragraphInput": "%md \n\n### Hi Everyone\n* Here's a demo on **OpenSearch Dashboards Notebooks**\n* I was not present in previous input"
         // new input
     }
 
     RESPONSE BODY
     {
-        "text": "%md \n\n### Hi Everyone\n* Here's a demo on **Kibana Notebooks**\n* I was present in previous input",
+        "text": "%md \n\n### Hi Everyone\n* Here's a demo on **OpenSearch Dashboards Notebooks**\n* I was present in previous input",
         "user": "anonymous",
         "dateUpdated": "Aug 11, 2020 5:52:14 PM",
         "config": {},
@@ -500,7 +500,7 @@ NOTE: This API call doesn’t execute the paragraph input, should be used to sav
             "msg": [{
                 "type": "HTML",
                 // old result
-                "data": "<div class=\"markdown-body\">\n<h3>Hi Everyone</h3>\n<ul>\n<li>Here&rsquo;s a demo on <strong>Kibana Notebooks</strong></li>\n</ul>\n\n</div>"
+                "data": "<div class=\"markdown-body\">\n<h3>Hi Everyone</h3>\n<ul>\n<li>Here&rsquo;s a demo on <strong>OpenSearch Dashboards Notebooks</strong></li>\n</ul>\n\n</div>"
             }]
         },
         "apps": [],
@@ -529,14 +529,14 @@ Does the following backend tasks:
     {
         "noteId": "2FF3GW3H8", // notebook id
         "paragraphIndex": 1, // index to create a new para
-        "paragraphInput": "%elasticsearch\n" // input to be provided in the new para
+        "paragraphInput": "%opensearch\n" // input to be provided in the new para
         "inputType": "CODE" // a paragraph can be of type CODE or VISUALIZATION
     }
 
     RESPONSE BODY
     {
         "title": "Paragraph inserted",
-        "text": "%elasticsearch\n",
+        "text": "%opensearch\n",
         "user": "anonymous",
         "dateUpdated": "Aug 11, 2020 5:56:23 PM",
         "config": {},
@@ -601,7 +601,7 @@ Does the following backend tasks:
             "status": "FINISHED"
         }, {
             "title": "Paragraph inserted",
-            "text": "%elasticsearch\n",
+            "text": "%opensearch\n",
             "user": "anonymous",
             "dateUpdated": "Aug 11, 2020 6:55:07 PM",
             "config": {},

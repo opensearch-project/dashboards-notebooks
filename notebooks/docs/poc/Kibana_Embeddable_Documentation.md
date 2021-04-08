@@ -1,11 +1,11 @@
-# Kibana Embeddable API & Embedding Visualizations
+# OpenSearch Dashboards Embeddable API & Embedding Visualizations
 
-**NOTE:** The embeddable API and Visualizations have been in high flux for past 6 releases 7.4→7.9 versions in Kibana
+**NOTE:** The embeddable API and Visualizations have been in high flux for past 6 releases 7.4→7.9 versions in OpenSearch Dashboards
 
 ## **In Version 7.5 and older**
 
 1. [Elastic blog](https://www.elastic.co/blog/developing-new-kibana-visualizations) on embedding Visualization
-2. [Test Plugin](https://github.com/elastic/kibana/tree/7.5/test/plugin_functional/plugins/kbn_tp_visualize_embedding) for Kibana Visualization embedding
+2. [Test Plugin](https://github.com/elastic/kibana/tree/7.5/test/plugin_functional/plugins/kbn_tp_visualize_embedding) for OpenSearch Dashboards Visualization embedding
 
 **Between 7.6 and 7.8 - Embeddable API has changed at a high frequency, better to use it from 7.9**
 
@@ -33,7 +33,7 @@
 
 **Embeddable Examples**
 
-- Examples folder in Kibana has all the usage samples for new APIs
+- Examples folder in OpenSearch Dashboards has all the usage samples for new APIs
 - Use <EmbeddableRenderer/> to create new embeddable objects
 - [Embeddable Examples](https://github.com/elastic/kibana/tree/master/examples/embeddable_examples) shows how to create new embeddable inheriting the API
 - [Embeddable Explorer](https://github.com/elastic/kibana/tree/master/examples/embeddable_explorer)shows usage of these embeddable examples in a Panel Container
@@ -41,7 +41,7 @@
 
 **Embeddable Renderer**
 
-- The Kibana react Element/Prop to create new embeddable objects: [Code](https://github.com/elastic/kibana/blob/master/src/plugins/embeddable/public/lib/embeddables/embeddable_renderer.tsx)
+- The OpenSearch Dashboards react Element/Prop to create new embeddable objects: [Code](https://github.com/elastic/kibana/blob/master/src/plugins/embeddable/public/lib/embeddables/embeddable_renderer.tsx)
 - Embeddable container use the renderer to create/update each child(an embeddable object)
   - [Example Dashboard Container](https://github.com/elastic/kibana/blob/master/src/plugins/dashboard/public/application/embeddable/dashboard_container_by_value_renderer.tsx)
   - [Example of Static Embedding](https://github.com/elastic/kibana/blob/master/examples/embeddable_explorer/public/hello_world_embeddable_example.tsx#L59) (without factory)
