@@ -19,7 +19,7 @@ yarn-error.log
 .history/
 .eslintcache
 
-# Kibana
+# OpenSearch Dashboards
 .empty
 
 ### Java ###

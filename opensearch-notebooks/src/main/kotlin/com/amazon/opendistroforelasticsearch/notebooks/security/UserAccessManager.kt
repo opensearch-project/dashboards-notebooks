@@ -31,7 +31,7 @@ internal object UserAccessManager {
     private const val ROLE_TAG = "Role:"
     private const val BACKEND_ROLE_TAG = "BERole:"
     private const val ALL_ACCESS_ROLE = "all_access"
-    private const val KIBANA_SERVER_USER = "kibanaserver" // TODO: Change it to background user when created.
+    private const val OPENSEARCH_DASHBOARDS_SERVER_USER = "kibanaserver" // TODO: Change it to background user when created.
     private const val PRIVATE_TENANT = "__user__"
     const val DEFAULT_TENANT = ""
 
@@ -82,7 +82,7 @@ internal object UserAccessManager {
      */
     fun validatePollingUser(user: User?) {
         if (user != null) { // Check only if security is enabled
-            if (user.name != KIBANA_SERVER_USER) {
+            if (user.name != OPENSEARCH_DASHBOARDS_SERVER_USER) {
                 throw OpenSearchStatusException("Permission denied", RestStatus.FORBIDDEN)
             }
         }
