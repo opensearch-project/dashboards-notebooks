@@ -1,5 +1,5 @@
 
-name: Test and Build Notebooks
+name: Test and Build Dashboards Notebooks
 
 on: [pull_request, push]
 
@@ -22,7 +22,7 @@ jobs:
         with:
           repository: elastic/kibana
           ref: v7.10.2
-          path: reponame/Opensearch-Dashboards
+          path: dashboards-notebooks/Opensearch-Dashboards
 
       - name: Setup Node
         uses: actions/setup-node@v1
@@ -30,21 +30,21 @@ jobs:
           node-version: '10.23.1'
 
       - name: Move Notebooks to Plugins Dir
-        run: mv notebooks OpenSearch-Dashboards/plugins/notebooks
+        run: mv dashboards-notebooks OpenSearch-Dashboards/plugins/dashboards-notebooks
 
       - name: OpenSearch Dashboards Pluign Bootstrap
         run: |
-          cd OpenSearch-Dashboards/plugins/notebooks
+          cd OpenSearch-Dashboards/plugins/dashboards-notebooks
           yarn osd bootstrap
 
       - name: Build Artifact
         run: |
-          cd OpenSearch-Dashboards/plugins/notebooks
+          cd OpenSearch-Dashboards/plugins/dashboards-notebooks
           yarn build
           mv ./build/*.zip ./build/${{ env.PLUGIN_NAME }}-${{ env.OD_VERSION }}.zip
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
-          name: kibana-notebooks
-          path: OpenSearch-Dashboards/plugins/notebooks/build
+          name: dashboards-notebooks
+          path: OpenSearch-Dashboards/plugins/dashboards-notebooks/build
