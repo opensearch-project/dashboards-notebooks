@@ -172,7 +172,7 @@ internal object PluginSettings {
      * Default filter-by method.
      */
     private val DEFAULT_IGNORED_ROLES = listOf("own_index",
-        "kibana_user",
+        "opensearch_dashboards_user",
         "notebooks_full_access",
         "notebooks_read_access")
 
