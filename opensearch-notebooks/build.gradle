@@ -65,7 +65,7 @@ def usingMultiNode = project.properties.containsKey('numNodes')
 check.dependsOn jacocoTestReport
 
 opensearchplugin {
-    name 'opendistro-notebooks'
+    name 'opensearch-notebooks'
     description 'OpenSearch Plugin for OpenSearch Dashboards Notebooks'
     classname "com.amazon.opendistroforelasticsearch.notebooks.NotebooksPlugin"
 }

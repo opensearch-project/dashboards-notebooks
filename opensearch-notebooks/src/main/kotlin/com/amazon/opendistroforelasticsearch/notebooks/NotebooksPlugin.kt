@@ -56,7 +56,7 @@ import java.util.function.Supplier
 class NotebooksPlugin : Plugin(), ActionPlugin {
 
     companion object {
-        const val PLUGIN_NAME = "opendistro-notebooks"
+        const val PLUGIN_NAME = "opensearch-notebooks"
         const val LOG_PREFIX = "notebooks"
         const val BASE_NOTEBOOKS_URI = "/_opendistro/_notebooks"
     }
