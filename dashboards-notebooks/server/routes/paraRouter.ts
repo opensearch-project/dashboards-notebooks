@@ -36,12 +36,12 @@ export function ParaRouter(router: IRouter) {
       },
     },
     async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
-      const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
+      const opensearchNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.opensearchNotebooksClient.asScoped(
         request
       );
       try {
         const runResponse = await BACKEND.updateRunFetchParagraph(
-          context.notebooks_plugin.esNotebooksClient,
+          context.notebooks_plugin.opensearchNotebooksClient,
           request,
           wreckOptions
         );
@@ -72,12 +72,12 @@ export function ParaRouter(router: IRouter) {
       },
     },
     async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
-      const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
+      const opensearchNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.opensearchNotebooksClient.asScoped(
         request
       );
       try {
         const saveResponse = await BACKEND.updateFetchParagraph(
-          esNotebooksClient,
+          opensearchNotebooksClient,
           request.body,
           wreckOptions
         );
@@ -109,11 +109,11 @@ export function ParaRouter(router: IRouter) {
       },
     },
     async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
-      const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
+      const opensearchNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.opensearchNotebooksClient.asScoped(
         request
       );
       try {
-        const addResponse = await BACKEND.addFetchNewParagraph(esNotebooksClient, request.body, wreckOptions);
+        const addResponse = await BACKEND.addFetchNewParagraph(opensearchNotebooksClient, request.body, wreckOptions);
         return response.ok({
           body: addResponse,
         });
@@ -149,7 +149,7 @@ export function ParaRouter(router: IRouter) {
       },
     },
     async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
-      const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
+      const opensearchNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.opensearchNotebooksClient.asScoped(
         request
       );
       try {
@@ -157,7 +157,7 @@ export function ParaRouter(router: IRouter) {
           paragraphs: request.body.paragraphs as Array<DefaultParagraph>,
           dateModified: new Date().toISOString(),
         };
-        const updateResponse = await BACKEND.updateNote(esNotebooksClient, request.body.noteId, updateNotebook);
+        const updateResponse = await BACKEND.updateNote(opensearchNotebooksClient, request.body.noteId, updateNotebook);
         return response.ok({
           body: updateResponse,
         });
@@ -183,7 +183,7 @@ export function ParaRouter(router: IRouter) {
       },
     },
     async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
-      const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
+      const opensearchNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.opensearchNotebooksClient.asScoped(
         request
       );
       const params = {
@@ -191,7 +191,7 @@ export function ParaRouter(router: IRouter) {
         paragraphId: request.params.ids.split('/')[1],
       };
       try {
-        const deleteResponse = await BACKEND.deleteFetchParagraphs(esNotebooksClient, params, wreckOptions);
+        const deleteResponse = await BACKEND.deleteFetchParagraphs(opensearchNotebooksClient, params, wreckOptions);
         return response.ok({
           body: deleteResponse,
         });
@@ -217,12 +217,12 @@ export function ParaRouter(router: IRouter) {
       },
     },
     async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
-      const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
+      const opensearchNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.opensearchNotebooksClient.asScoped(
         request
       );
       try {
         const clearParaResponse = await BACKEND.clearAllFetchParagraphs(
-          esNotebooksClient,
+          opensearchNotebooksClient,
           request.body,
           wreckOptions
         );

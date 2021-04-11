@@ -140,8 +140,8 @@ export class DefaultBackend implements NotebookAdaptor {
   ) {
     try {
       const newNotebook = this.createNewNotebook(params.name);
-      const esClientResponse = await this.indexNote(client, newNotebook.object);
-      return { status: 'OK', message: esClientResponse, body: esClientResponse.notebookId };
+      const opensearchClientResponse = await this.indexNote(client, newNotebook.object);
+      return { status: 'OK', message: opensearchClientResponse, body: opensearchClientResponse.notebookId };
     } catch (error) {
       throw new Error('Creating New Notebook Error:' + error);
     }
@@ -161,8 +161,8 @@ export class DefaultBackend implements NotebookAdaptor {
         name: params.name,
         dateModified: new Date().toISOString(),
       };
-      const esClientResponse = await this.updateNote(client, params.noteId, updateNotebook);
-      return { status: 'OK', message: esClientResponse };
+      const opensearchClientResponse = await this.updateNote(client, params.noteId, updateNotebook);
+      return { status: 'OK', message: opensearchClientResponse };
     } catch (error) {
       throw new Error('Renaming Notebook Error:' + error);
     }
@@ -182,8 +182,8 @@ export class DefaultBackend implements NotebookAdaptor {
       const newNotebook = this.createNewNotebook(params.name);
       const cloneNotebook = { ...newNotebook.object };
       cloneNotebook.paragraphs = noteObject.notebook.paragraphs;
-      const esClientIndexResponse = await this.indexNote(client, cloneNotebook);
-      return { status: 'OK', body: { ...cloneNotebook, id: esClientIndexResponse.notebookId } };
+      const opensearchClientIndexResponse = await this.indexNote(client, cloneNotebook);
+      return { status: 'OK', body: { ...cloneNotebook, id: opensearchClientIndexResponse.notebookId } };
     } catch (error) {
       throw new Error('Cloning Notebook Error:' + error);
     }
@@ -216,8 +216,8 @@ export class DefaultBackend implements NotebookAdaptor {
     _wreckOptions: optionsType
   ) {
     try {
-      const esClientGetResponse = await this.getNote(client, noteId);
-      return { status: 'OK', body: esClientGetResponse };
+      const opensearchClientGetResponse = await this.getNote(client, noteId);
+      return { status: 'OK', body: opensearchClientGetResponse };
     } catch (error) {
       throw new Error('Export Notebook Error:' + error);
     }
@@ -236,8 +236,8 @@ export class DefaultBackend implements NotebookAdaptor {
       newNoteObject.id = 'note_' + uuid();
       newNoteObject.dateCreated = new Date().toISOString();
       newNoteObject.dateModified = new Date().toISOString();
-      const esClientIndexResponse = await this.indexNote(client, newNoteObject);
-      return { status: 'OK', message: esClientIndexResponse, body: esClientIndexResponse.notebookId };
+      const opensearchClientIndexResponse = await this.indexNote(client, newNoteObject);
+      return { status: 'OK', message: opensearchClientIndexResponse, body: opensearchClientIndexResponse.notebookId };
     } catch (error) {
       throw new Error('Import Notebook Error:' + error);
     }
@@ -376,9 +376,9 @@ export class DefaultBackend implements NotebookAdaptor {
     try {
       const scopedClient = client.asScoped(request);
       const params = request.body;
-      const esClientGetResponse = await this.getNote(scopedClient, params.noteId);
+      const opensearchClientGetResponse = await this.getNote(scopedClient, params.noteId);
       const updatedInputParagraphs = this.updateParagraphInput(
-        esClientGetResponse.notebook.paragraphs,
+        opensearchClientGetResponse.notebook.paragraphs,
         params.paragraphId,
         params.paragraphInput
       );
@@ -391,7 +391,7 @@ export class DefaultBackend implements NotebookAdaptor {
         paragraphs: updatedOutputParagraphs,
         dateModified: new Date().toISOString(),
       };
-      const esClientResponse = await this.updateNote(scopedClient, params.noteId, updateNotebook);
+      const opensearchClientResponse = await this.updateNote(scopedClient, params.noteId, updateNotebook);
       let resultParagraph = {};
       let index = 0;
 
@@ -419,9 +419,9 @@ export class DefaultBackend implements NotebookAdaptor {
     _wreckOptions: optionsType
   ) {
     try {
-      const esClientGetResponse = await this.getNote(client, params.noteId);
+      const opensearchClientGetResponse = await this.getNote(client, params.noteId);
       const updatedInputParagraphs = this.updateParagraphInput(
-        esClientGetResponse.notebook.paragraphs,
+        opensearchClientGetResponse.notebook.paragraphs,
         params.paragraphId,
         params.paragraphInput
       );
@@ -430,7 +430,7 @@ export class DefaultBackend implements NotebookAdaptor {
         paragraphs: updatedInputParagraphs,
         dateModified: new Date().toISOString(),
       };
-      const esClientResponse = await this.updateNote(client, params.noteId, updateNotebook);
+      const opensearchClientResponse = await this.updateNote(client, params.noteId, updateNotebook);
 
       let resultParagraph = {};
       updatedInputParagraphs.map((paragraph: DefaultParagraph) => {
@@ -456,15 +456,15 @@ export class DefaultBackend implements NotebookAdaptor {
     _wreckOptions: optionsType
   ) {
     try {
-      const esClientGetResponse = await this.getNote(client, params.noteId);
-      const paragraphs = esClientGetResponse.notebook.paragraphs;
+      const opensearchClientGetResponse = await this.getNote(client, params.noteId);
+      const paragraphs = opensearchClientGetResponse.notebook.paragraphs;
       const newParagraph = this.createParagraph(params.paragraphInput, params.inputType);
       paragraphs.splice(params.paragraphIndex, 0, newParagraph);
       const updateNotebook = {
         paragraphs: paragraphs,
         dateModified: new Date().toISOString(),
       };
-      const esClientResponse = await this.updateNote(client, params.noteId, updateNotebook);
+      const opensearchClientResponse = await this.updateNote(client, params.noteId, updateNotebook);
 
       return newParagraph;
     } catch (error) {
@@ -484,9 +484,9 @@ export class DefaultBackend implements NotebookAdaptor {
     _wreckOptions: optionsType
   ) {
     try {
-      const esClientGetResponse = await this.getNote(client, params.noteId);
+      const opensearchClientGetResponse = await this.getNote(client, params.noteId);
       const updatedparagraphs: DefaultParagraph[] = [];
-      esClientGetResponse.notebook.paragraphs.map((paragraph: DefaultParagraph, index: number) => {
+      opensearchClientGetResponse.notebook.paragraphs.map((paragraph: DefaultParagraph, index: number) => {
         if (paragraph.id !== params.paragraphId) {
           updatedparagraphs.push(paragraph);
         }
@@ -496,7 +496,7 @@ export class DefaultBackend implements NotebookAdaptor {
         paragraphs: updatedparagraphs,
         dateModified: new Date().toISOString(),
       };
-      const esClientResponse = await this.updateNote(client, params.noteId, updateNotebook);
+      const opensearchClientResponse = await this.updateNote(client, params.noteId, updateNotebook);
 
       return { paragraphs: updatedparagraphs };
     } catch (error) {
@@ -516,9 +516,9 @@ export class DefaultBackend implements NotebookAdaptor {
     _wreckOptions: optionsType
   ) {
     try {
-      const esClientGetResponse = await this.getNote(client, params.noteId);
+      const opensearchClientGetResponse = await this.getNote(client, params.noteId);
       let updatedparagraphs: DefaultParagraph[] = [];
-      esClientGetResponse.notebook.paragraphs.map((paragraph: DefaultParagraph, index: number) => {
+      opensearchClientGetResponse.notebook.paragraphs.map((paragraph: DefaultParagraph, index: number) => {
         let updatedParagraph = { ...paragraph };
         updatedParagraph.output = [];
         updatedparagraphs.push(updatedParagraph);
@@ -528,7 +528,7 @@ export class DefaultBackend implements NotebookAdaptor {
         paragraphs: updatedparagraphs,
         dateModified: new Date().toISOString(),
       };
-      const esClientResponse = await this.updateNote(client, params.noteId, updateNotebook);
+      const opensearchClientResponse = await this.updateNote(client, params.noteId, updateNotebook);
 
       return { paragraphs: updatedparagraphs };
     } catch (error) {

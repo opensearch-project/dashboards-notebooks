@@ -38,7 +38,7 @@ export class NotebooksPlugin implements Plugin<NotebooksPluginSetup, NotebooksPl
     const router = core.http.createRouter();
 
     const openSearchNotebooksClient: ILegacyClusterClient = core.opensearch.legacy.createClient(
-      'es_notebooks',
+      'opensearch_notebooks',
       {
         plugins: [OpenSearchNotebooksPlugin, sqlPlugin],
       }
@@ -46,7 +46,7 @@ export class NotebooksPlugin implements Plugin<NotebooksPluginSetup, NotebooksPl
     core.http.registerRouteHandlerContext('notebooks_plugin', (context, request) => {
       return {
         logger: this.logger,
-        esNotebooksClient: openSearchNotebooksClient,
+        opensearchNotebooksClient: openSearchNotebooksClient,
       };
     });
 

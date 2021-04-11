@@ -68,7 +68,7 @@ public class ODFENotebookRepo implements NotebookRepo {
 
 //
 
-    private RestHighLevelClient ESclient;
+    private RestHighLevelClient OpenSearchClient;
     private String user;
     private String password;
     private String host;
@@ -102,7 +102,7 @@ public class ODFENotebookRepo implements NotebookRepo {
     private void CreateNotebooksIndex() throws IOException {
         CreateIndexRequest request = new CreateIndexRequest(rootIndex);
         try {
-            CreateIndexResponse createIndexResponse = ESclient.indices().create(request, RequestOptions.DEFAULT);
+            CreateIndexResponse createIndexResponse = OpenSearchClient.indices().create(request, RequestOptions.DEFAULT);
         } catch (ElasticsearchStatusException e) {
             if (!e.getMessage().contains("resource_already_exists_exception")) {
                 throw e;
@@ -119,7 +119,7 @@ public class ODFENotebookRepo implements NotebookRepo {
         host = "localhost";
         port = 9200;
         protocol = "http";
-        ESclient = client();
+        OpenSearchClient = client();
         CreateNotebooksIndex();
     }
 
@@ -131,7 +131,7 @@ public class ODFENotebookRepo implements NotebookRepo {
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
         searchSourceBuilder.query(QueryBuilders.matchAllQuery());
         searchRequest.source(searchSourceBuilder);
-        SearchResponse searchResponse = ESclient.search(searchRequest, RequestOptions.DEFAULT);
+        SearchResponse searchResponse = OpenSearchClient.search(searchRequest, RequestOptions.DEFAULT);
 
         SearchHits hits = searchResponse.getHits();
 
@@ -150,7 +150,7 @@ public class ODFENotebookRepo implements NotebookRepo {
     @Override
     public Note get(String noteId, String notePath, AuthenticationInfo subject) throws IOException {
         GetRequest getRequest = new GetRequest(rootIndex, noteId);
-        GetResponse getResponse = ESclient.get(getRequest, RequestOptions.DEFAULT);
+        GetResponse getResponse = OpenSearchClient.get(getRequest, RequestOptions.DEFAULT);
         if (getResponse.isExists()) {
             String json = getResponse.getSourceAsString();
             return Note.fromJson(json);
@@ -172,7 +172,7 @@ public class ODFENotebookRepo implements NotebookRepo {
             IndexRequest request = new IndexRequest(rootIndex);
             request.id(note.getId());
             request.source(json.toString(), XContentType.JSON);
-            IndexResponse indexResponse = ESclient.index(request, RequestOptions.DEFAULT);
+            IndexResponse indexResponse = OpenSearchClient.index(request, RequestOptions.DEFAULT);
         } catch (IOException e) {
             throw new IOException("Fail to store note: " + note.getPath() + " in ODFE", e);
         }
@@ -193,7 +193,7 @@ public class ODFENotebookRepo implements NotebookRepo {
     public void remove(String noteId, String notePath, AuthenticationInfo subject)
             throws IOException {
         DeleteRequest request = new DeleteRequest(rootIndex, noteId);
-        DeleteResponse deleteResponse = ESclient.delete(request, RequestOptions.DEFAULT);
+        DeleteResponse deleteResponse = OpenSearchClient.delete(request, RequestOptions.DEFAULT);
         if (deleteResponse.getResult() != DocWriteResponse.Result.NOT_FOUND) {
             System.out.println(deleteResponse.toString());
         } else {
@@ -209,7 +209,7 @@ public class ODFENotebookRepo implements NotebookRepo {
     @Override
     public void close() {
         try {
-            ESclient.close();
+            OpenSearchClient.close();
         } catch (IOException exception) {
             exception.printStackTrace();
         }

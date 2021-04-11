@@ -31,11 +31,11 @@ export function vizRouter(router: IRouter) {
         q: 'type:visualization',
       };
       try {
-        const esClientResponse = await context.core.opensearch.legacy.client.callAsCurrentUser(
+        const opensearchClientResponse = await context.core.opensearch.legacy.client.callAsCurrentUser(
           'search',
           params
         );
-        const savedVisualizations = esClientResponse.hits.hits;
+        const savedVisualizations = opensearchClientResponse.hits.hits;
         const vizResponse = savedVisualizations.map((vizDocument) => ({
           label: vizDocument._source.visualization.title,
           key: vizDocument._id.split(':').pop(),

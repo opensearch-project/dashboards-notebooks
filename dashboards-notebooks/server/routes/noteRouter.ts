@@ -31,12 +31,12 @@ export function NoteRouter(router: IRouter) {
       validate: {},
     },
     async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
-      const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
+      const opensearchNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.opensearchNotebooksClient.asScoped(
         request
       );
       let notebooksData = [];
       try {
-        notebooksData = await BACKEND.viewNotes(esNotebooksClient, wreckOptions);
+        notebooksData = await BACKEND.viewNotes(opensearchNotebooksClient, wreckOptions);
         return response.ok({
           body: {
             data: notebooksData,
@@ -63,11 +63,11 @@ export function NoteRouter(router: IRouter) {
       },
     },
     async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
-      const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
+      const opensearchNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.opensearchNotebooksClient.asScoped(
         request
       );
       try {
-        const notebookinfo = await BACKEND.fetchNote(esNotebooksClient, request.params.noteId, wreckOptions);
+        const notebookinfo = await BACKEND.fetchNote(opensearchNotebooksClient, request.params.noteId, wreckOptions);
         return response.ok({
           body: notebookinfo,
         });
@@ -91,11 +91,11 @@ export function NoteRouter(router: IRouter) {
       },
     },
     async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
-      const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
+      const opensearchNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.opensearchNotebooksClient.asScoped(
         request
       );
       try {
-        const addResponse = await BACKEND.addNote(esNotebooksClient, request.body, wreckOptions);
+        const addResponse = await BACKEND.addNote(opensearchNotebooksClient, request.body, wreckOptions);
         return response.ok({
           body: addResponse.message.notebookId,
         });
@@ -120,11 +120,11 @@ export function NoteRouter(router: IRouter) {
       },
     },
     async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
-      const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
+      const opensearchNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.opensearchNotebooksClient.asScoped(
         request
       );
       try {
-        const renameResponse = await BACKEND.renameNote(esNotebooksClient, request.body, wreckOptions);
+        const renameResponse = await BACKEND.renameNote(opensearchNotebooksClient, request.body, wreckOptions);
         return response.ok({
           body: renameResponse,
         });
@@ -149,11 +149,11 @@ export function NoteRouter(router: IRouter) {
       },
     },
     async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
-      const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
+      const opensearchNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.opensearchNotebooksClient.asScoped(
         request
       );
       try {
-        const cloneResponse = await BACKEND.cloneNote(esNotebooksClient, request.body, wreckOptions);
+        const cloneResponse = await BACKEND.cloneNote(opensearchNotebooksClient, request.body, wreckOptions);
         return response.ok({
           body: cloneResponse,
         });
@@ -177,11 +177,11 @@ export function NoteRouter(router: IRouter) {
       },
     },
     async (context, request, response): Promise<IOpenSearchDashboardsResponse<any | ResponseError>> => {
-      const esNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.esNotebooksClient.asScoped(
+      const opensearchNotebooksClient: ILegacyScopedClusterClient = context.notebooks_plugin.opensearchNotebooksClient.asScoped(
         request
       );
       try {
-        const delResponse = await BACKEND.deleteNote(esNotebooksClient, request.params.noteid, wreckOptions);
+        const delResponse = await BACKEND.deleteNote(opensearchNotebooksClient, request.params.noteid, wreckOptions);
         return response.ok({
           body: delResponse,
         });
