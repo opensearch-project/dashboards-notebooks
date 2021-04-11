@@ -51,13 +51,13 @@
     - `cp conf/zeppelin-site.xml.template conf/zeppelin-site.xml`
     - `vi conf/zeppelin-site.xml` and edit the host ip
     - Then restart the service
-- **[Optional] Setup ES Interpreter:**
+- **[Optional] Setup OpenSearch Interpreter:**
 
   - [Zeppelin OpenSearch interpreter Documentation](https://zeppelin.apache.org/docs/0.9.0-preview2/interpreter/elasticsearch.html)
   - This interpreter can be used for ODFE:
 
     - **Note: current issues with OpenSearch Interpreter in Zeppelin**
-    - User needs to remove ssl flag from the ES config as Zeppelin doesn’t support ssl request yet: https://issues.apache.org/jira/browse/ZEPPELIN-2031 so run the ODFE service without ssl enabled
+    - User needs to remove ssl flag from the OpenSearch config as Zeppelin doesn’t support ssl request yet: https://issues.apache.org/jira/browse/ZEPPELIN-2031 so run the ODFE service without ssl enabled
     - Zeppelin has “no support for ssl” (only uses http) in elastic interpreter:
       - [Code](https://github.com/apache/zeppelin/blob/0b8423c62ae52f3716d4bb63d60762fee6910788/elasticsearch/src/main/java/org/apache/zeppelin/elasticsearch/client/HttpBasedClient.java#L105)
       - [Apache Issues](https://issues.apache.org/jira/browse/ZEPPELIN-2031)
@@ -77,10 +77,10 @@
       - host → localhost (if running on same machine as Zeppelin) & port → 9200
       - username: admin & password: admin
       - Once configured the screen should look like this:
-        ![ES Interpreter](images/opensearch-zeppelin.png)
+        ![OpenSearch Interpreter](images/opensearch-zeppelin.png)
 
     - Start a new notebook to try out the below commands
-    - Run a shell command from notebook to check availability of ES:
+    - Run a shell command from notebook to check availability of OpenSearch:
       - `%sh curl -XGET http://localhost:9200 -u admin:admin`
 
 ```
