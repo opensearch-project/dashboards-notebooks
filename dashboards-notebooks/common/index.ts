@@ -15,7 +15,7 @@
 
 import { RefObject } from 'react';
 
-export const PLUGIN_ID = 'opendistro-notebooks';
+export const PLUGIN_ID = 'opensearch-notebooks';
 export const PLUGIN_NAME = 'Notebooks';
 export const API_PREFIX = '/api/notebooks';
 export const SELECTED_BACKEND = 'DEFAULT'; // ZEPPELIN || DEFAULT

@@ -4,7 +4,7 @@ name: Test and Build Dashboards Notebooks
 on: [pull_request, push]
 
 env:
-  PLUGIN_NAME: opendistroNotebooksOpenSearchDashboards
+  PLUGIN_NAME: notebooksDashboards
   OD_VERSION: 1.15.0.0
 
 jobs:

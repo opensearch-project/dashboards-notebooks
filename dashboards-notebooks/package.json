@@ -1,5 +1,5 @@
 {
-  "name": "opendistro-notebooks-opensearch-dashboards",
+  "name": "opensearch-notebooks",
   "version": "1.15.0.0",
   "description": "OpenSearch Dashboards Notebooks",
   "main": "index.ts",

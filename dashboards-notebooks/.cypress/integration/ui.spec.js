@@ -34,7 +34,7 @@ describe('Adding sample data and visualization', () => {
 
 describe('Testing notebooks table', () => {
   beforeEach(() => {
-    cy.visit(`${Cypress.env('opensearchDashboards')}/app/opendistro-notebooks#`);
+    cy.visit(`${Cypress.env('opensearchDashboards')}/app/opensearch-notebooks#`);
     cy.wait(delay * 3);
   });
 
@@ -121,7 +121,7 @@ describe('Testing notebooks table', () => {
 
 describe('Testing paragraphs', () => {
   beforeEach(() => {
-    cy.visit(`${Cypress.env('opensearchDashboards')}/app/opendistro-notebooks#`);
+    cy.visit(`${Cypress.env('opensearchDashboards')}/app/opensearch-notebooks#`);
     cy.get('.euiTableCellContent').contains(TEST_NOTEBOOK).click();
     cy.wait(delay * 3);
   });
