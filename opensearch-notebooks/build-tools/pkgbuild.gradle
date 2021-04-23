@@ -54,7 +54,7 @@ afterEvaluate {
         maintainer 'OpenSearch Team <opensearch@amazon.com>'
         url 'https://opensearch.org/'
         summary '''
-         OpenSearch Reports scheduler.
+         OpenSearch Notebooks.
          Reference documentation can be found at https://opendistro.github.io/elasticsearch/docs.
     '''.stripIndent().replace('\n', ' ').trim()
     }

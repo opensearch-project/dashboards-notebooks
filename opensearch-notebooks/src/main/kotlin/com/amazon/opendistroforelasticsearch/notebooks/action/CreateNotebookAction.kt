@@ -51,7 +51,7 @@ internal class CreateNotebookAction @Inject constructor(
     actionFilters,
     ::CreateNotebookRequest) {
     companion object {
-        private const val NAME = "cluster:admin/opendistro/notebooks/create"
+        private const val NAME = "cluster:admin/opensearch/notebooks/create"
         internal val ACTION_TYPE = ActionType(NAME, ::CreateNotebookResponse)
     }
 

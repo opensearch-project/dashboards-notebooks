@@ -51,7 +51,7 @@ internal class GetAllNotebooksAction @Inject constructor(
     actionFilters,
     ::GetAllNotebooksRequest) {
     companion object {
-        private const val NAME = "cluster:admin/opendistro/notebooks/list"
+        private const val NAME = "cluster:admin/opensearch/notebooks/list"
         internal val ACTION_TYPE = ActionType(NAME, ::GetAllNotebooksResponse)
     }
 

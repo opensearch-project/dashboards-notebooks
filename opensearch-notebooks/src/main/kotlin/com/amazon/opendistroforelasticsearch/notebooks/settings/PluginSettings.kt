@@ -47,7 +47,7 @@ internal object PluginSettings {
     /**
      * Settings Key prefix for this plugin.
      */
-    private const val KEY_PREFIX = "opendistro.notebooks"
+    private const val KEY_PREFIX = "opensearch.notebooks"
 
     /**
      * General settings Key prefix.
