@@ -97,8 +97,8 @@ abstract class PluginRestTestCase : OpenSearchRestTestCase() {
             for (index in parser.list()) {
                 val jsonObject: Map<*, *> = index as java.util.HashMap<*, *>
                 val indexName: String = jsonObject["index"] as String
-                // .opensearch_security isn't allowed to delete from cluster
-                if (indexName != ".opensearch_security") {
+                // .opendistro_security isn't allowed to delete from cluster
+                if (indexName != ".opendistro_security") {
                     client().performRequest(Request("DELETE", "/$indexName"))
                 }
             }
