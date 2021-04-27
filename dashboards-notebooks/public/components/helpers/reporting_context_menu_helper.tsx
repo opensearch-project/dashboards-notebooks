@@ -25,9 +25,7 @@
  */
 
 const getReportSourceURL = (baseURI: string) => {
-  const url = baseURI.substr(baseURI.lastIndexOf('/') + 1, baseURI.length);
-  console.log('url is', url);
-  return url;
+  return baseURI.substr(baseURI.lastIndexOf('/') + 1, baseURI.length);
 }
 
 export const generateInContextReport = (
