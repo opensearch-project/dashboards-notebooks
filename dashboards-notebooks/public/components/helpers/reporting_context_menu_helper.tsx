@@ -33,8 +33,10 @@ const getReportSourceURL = (baseURI: string) => {
 export const generateInContextReport = (
   fileFormat: string,
   props: any,
+  toggleReportingLoadingModal: any,
   rest = {}
 ) => {
+  toggleReportingLoadingModal(true);
   const baseUrl = location.pathname + location.hash;
   const reportSource = 'Notebook';
   const contextMenuOnDemandReport = {
@@ -86,6 +88,7 @@ export const generateInContextReport = (
     }
   )
   .then((response) => {
+    toggleReportingLoadingModal(false);
     if (response.status === 200) {
       // success toast
       props.setToast('Successfully generated report.', 'success');

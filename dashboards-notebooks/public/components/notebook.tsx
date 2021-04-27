@@ -66,8 +66,7 @@ import {
   contextMenuViewReports,
   contextMenuCreateReportDefinition
 } from './helpers/reporting_context_menu_helper';
-import { EuiGlobalToastList } from '@elastic/eui/src/components/toast/global_toast_list';
-
+import { GenerateReportLoadingModal } from './helpers/custom_modals/reporting_loading_modal';
 const panelStyles: CSS.Properties = {
   float: 'left',
   width: '100%',
@@ -116,6 +115,7 @@ type NotebookState = {
   isNoteActionsPopoverOpen: boolean;
   isReportingPluginInstalled: boolean;
   isReportingActionsPopoverOpen: boolean;
+  isReportingLoadingModalOpen: boolean;
   isModalVisible: boolean;
   modalLayout: React.ReactNode;
   showQueryParagraphError: boolean;
@@ -137,11 +137,16 @@ export class Notebook extends Component<NotebookProps, NotebookState> {
       isNoteActionsPopoverOpen: false,
       isReportingPluginInstalled: false,
       isReportingActionsPopoverOpen: false,
+      isReportingLoadingModalOpen: false,
       isModalVisible: false,
       modalLayout: <EuiOverlayMask></EuiOverlayMask>,
       showQueryParagraphError: false,
       queryParagraphErrorMessage: '',
     };
+  }
+
+  toggleReportingLoadingModal = (show: boolean) => {
+    this.setState({isReportingLoadingModalOpen: show});
   }
 
   parseAllParagraphs = () => {
@@ -801,7 +806,7 @@ export class Notebook extends Component<NotebookProps, NotebookState> {
             icon: <EuiIcon type="download" />,
             onClick: () => {
               this.setState({ isReportingActionsPopoverOpen: false });
-              generateInContextReport('pdf', this.props);
+              generateInContextReport('pdf', this.props, this.toggleReportingLoadingModal);
             },
           },
           {
@@ -809,7 +814,7 @@ export class Notebook extends Component<NotebookProps, NotebookState> {
             icon: <EuiIcon type="download" />,
             onClick: () => {
               this.setState({ isReportingActionsPopoverOpen: false });
-              generateInContextReport('png', this.props);
+              generateInContextReport('png', this.props, this.toggleReportingLoadingModal);
             }
           },
           {
@@ -853,6 +858,9 @@ export class Notebook extends Component<NotebookProps, NotebookState> {
         </EuiPopover>
       </div>
     ) : null;
+
+    const showLoadingModal = (this.state.isReportingLoadingModalOpen) ?
+    <GenerateReportLoadingModal setShowLoading={this.toggleReportingLoadingModal} /> : null;
 
     return (
       <div style={pageStyles}>
@@ -1018,6 +1026,7 @@ export class Notebook extends Component<NotebookProps, NotebookState> {
                   </EuiPanel>
                 </div>
               )}
+            {showLoadingModal}
           </EuiPageBody>
         </EuiPage>
         {this.state.isModalVisible && this.state.modalLayout}
