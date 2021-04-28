@@ -70,7 +70,7 @@ export const generateInContextReport = (
     {
       headers: {
         'Content-Type': 'application/json',
-        'osd-version': '7.10.2',
+        'osd-version': '1.0.0',
         accept: '*/*',
         'accept-language': 'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7,zh-TW;q=0.6',
         pragma: 'no-cache',
