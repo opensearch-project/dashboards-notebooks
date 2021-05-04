@@ -30,7 +30,6 @@ import { CoreStart, ChromeBreadcrumb } from '../../../../src/core/public';
 import { DashboardStart } from '../../../../src/plugins/dashboard/public';
 
 import { Notebook } from './notebook';
-import { onDownload } from './helpers/download_json';
 import { API_PREFIX, DOCUMENTATION_URL } from '../../common';
 import { NoteTable } from './note_table';
 import { HashRouter } from 'react-router-dom';
@@ -228,6 +227,7 @@ export class Main extends React.Component<MainProps, MainState> {
                 <Notebook
                   basename={this.props.basename}
                   openedNoteId={props.match.params.id}
+                  view={props.match.params.view}
                   DashboardContainerByValueRenderer={this.props.DashboardContainerByValueRenderer}
                   http={this.props.http}
                   setBreadcrumbs={this.props.setBreadcrumbs}
