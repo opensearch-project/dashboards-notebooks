@@ -92,7 +92,6 @@ const pageStyles: CSS.Properties = {
 type NotebookProps = {
   basename: string;
   openedNoteId: string;
-  view: string;
   DashboardContainerByValueRenderer: DashboardStart['DashboardContainerByValueRenderer'];
   http: CoreStart['http'];
   setBreadcrumbs: (newBreadcrumbs: ChromeBreadcrumb[]) => void;

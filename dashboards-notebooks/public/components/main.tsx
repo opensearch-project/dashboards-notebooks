@@ -227,7 +227,6 @@ export class Main extends React.Component<MainProps, MainState> {
                 <Notebook
                   basename={this.props.basename}
                   openedNoteId={props.match.params.id}
-                  view={props.match.params.view}
                   DashboardContainerByValueRenderer={this.props.DashboardContainerByValueRenderer}
                   http={this.props.http}
                   setBreadcrumbs={this.props.setBreadcrumbs}
