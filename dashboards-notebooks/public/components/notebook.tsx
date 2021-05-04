@@ -648,10 +648,10 @@ export class Notebook extends Component<NotebookProps, NotebookState> {
     if (url.searchParams.get('view') === null) {
       this.configureViewParameter('view_both');
     }
-    if (window.location.href.includes('output_only')) {
+    if (url.searchParams.get('view') === 'output_only') {
       this.setState({selectedViewId: 'output_only'});
     }
-    else if (window.location.href.includes('input_only')) {
+    else if (url.searchParams.get('view') === 'input_only') {
       this.setState({selectedViewId: 'input_only'});
     }
   }

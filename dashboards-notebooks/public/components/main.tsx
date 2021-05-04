@@ -36,6 +36,7 @@ import { HashRouter } from 'react-router-dom';
 import { Switch, Route } from 'react-router';
 import { EuiGlobalToastList, EuiLink } from '@elastic/eui';
 import { Toast } from '@elastic/eui/src/components/toast/global_toast_list';
+import { useHistory } from "react-router-dom";
 
 /*
  * "Main" component renders the whole Notebooks as a single page application
