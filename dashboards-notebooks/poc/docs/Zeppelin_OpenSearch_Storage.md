@@ -1,4 +1,4 @@
-# **Custom ODFE Storage in Zeppelin**
+# **Custom OpenSearch Storage in Zeppelin**
 
 ### **Requirement:**
 
@@ -14,7 +14,7 @@
 ### **Design Details:**
 
 1. Implements the interface common for all Zeppelin Storage adaptors
-2. Implementation of functions in ODFE Zeppelin storage adaptor:
+2. Implementation of functions in OpenSearch Zeppelin storage adaptor:
 
    - Init - Get all config params
    - List - List all notebooks
@@ -42,25 +42,25 @@ git checkout v0.9.0-preview2
 git apply /path/to/dashboards-notebooks/poc/zeppelin-patch.txt
 ```
 
-4. Once, in this branch copy "odfe" storage adaptor to your zeppelin files
+4. Once, in this branch copy "opensearch" storage adaptor to your zeppelin files
 
 ```
-cp -r /path/to/dashboards-notebooks/poc/zeppelin/zeppelin-plugins/notebookrepo/odfe path/to/your/zeppelin/zeppelin-plugins/notebookrepo/.
+cp -r /path/to/dashboards-notebooks/poc/zeppelin/zeppelin-plugins/notebookrepo/opensearch path/to/your/zeppelin/zeppelin-plugins/notebookrepo/.
 ```
 
-5. Add ODFE storage property in zeppelin config file "conf/zeppelin-site.xml" and you should comment default git storage
+5. Add OpenSearch storage property in zeppelin config file "conf/zeppelin-site.xml" and you should comment default git storage
 
 ```
 <property>
   <name>zeppelin.notebook.storage</name>
-  <value>org.apache.zeppelin.notebook.repo.ODFENotebookRepo</value>
+  <value>org.apache.zeppelin.notebook.repo.OpenSearchNotebookRepo</value>
   <description>versioned notebook persistence layer implementation</description>
 </property>
 
 <!--
 <property>
   <name>zeppelin.notebook.storage</name>
-  <value>org.apache.zeppelin.notebook.repo.ODFENotebookRepo</value>
+  <value>org.apache.zeppelin.notebook.repo.OpenSearchNotebookRepo</value>
   <description>versioned notebook persistence layer implementation</description>
 </property>
 -->

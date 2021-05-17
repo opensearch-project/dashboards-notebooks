@@ -61,10 +61,10 @@ import java.util.Map;
 
 
 /**
- * Backend for storing Notebooks on ODFE
+ * Backend for storing Notebooks on OpenSearch
  */
-public class ODFENotebookRepo implements NotebookRepo {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ODFENotebookRepo.class);
+public class OpenSearchNotebookRepo implements NotebookRepo {
+    private static final Logger LOGGER = LoggerFactory.getLogger(OpenSearchNotebookRepo.class);
 
 //
 
@@ -77,7 +77,7 @@ public class ODFENotebookRepo implements NotebookRepo {
     private String rootIndex = ".notebooks";
     private ZeppelinConfiguration conf;
 
-    public ODFENotebookRepo() {
+    public OpenSearchNotebookRepo() {
 
     }
 
@@ -155,7 +155,7 @@ public class ODFENotebookRepo implements NotebookRepo {
             String json = getResponse.getSourceAsString();
             return Note.fromJson(json);
         } else {
-            throw new IOException("Note '" + noteId + "' in path '" + notePath + "'not found in ODFE");
+            throw new IOException("Note '" + noteId + "' in path '" + notePath + "'not found in OpenSearch");
         }
     }
 
@@ -174,7 +174,7 @@ public class ODFENotebookRepo implements NotebookRepo {
             request.source(json.toString(), XContentType.JSON);
             IndexResponse indexResponse = OpenSearchClient.index(request, RequestOptions.DEFAULT);
         } catch (IOException e) {
-            throw new IOException("Fail to store note: " + note.getPath() + " in ODFE", e);
+            throw new IOException("Fail to store note: " + note.getPath() + " in OpenSearch", e);
         }
     }
 

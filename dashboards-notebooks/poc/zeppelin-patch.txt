@@ -2883,7 +2883,7 @@ index cef5f418d..d9b3e806d 100644
  
      <modules>
          <module>notebookrepo/s3</module>
-+        <module>notebookrepo/odfe</module>
++        <module>notebookrepo/opensearch</module>
          <module>notebookrepo/github</module>
          <module>notebookrepo/azure</module>
          <module>notebookrepo/gcs</module>
