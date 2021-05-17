@@ -42,7 +42,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.elasticsearch.client</groupId>
+            <groupId>org.opensearch.client</groupId>
             <artifactId>elasticsearch-rest-high-level-client</artifactId>
             <version>${elasticsearch.client.version}</version>
         </dependency>
