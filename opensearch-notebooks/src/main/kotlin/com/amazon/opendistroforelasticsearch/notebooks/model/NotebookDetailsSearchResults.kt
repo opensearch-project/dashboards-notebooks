@@ -25,9 +25,9 @@
  *
  */
 
-package com.amazon.opendistroforelasticsearch.notebooks.model
+package org.opensearch.notebooks.model
 
-import com.amazon.opendistroforelasticsearch.notebooks.model.RestTag.NOTEBOOK_LIST_FIELD
+import org.opensearch.notebooks.model.RestTag.NOTEBOOK_LIST_FIELD
 import org.opensearch.action.search.SearchResponse
 import org.opensearch.common.xcontent.XContentParser
 

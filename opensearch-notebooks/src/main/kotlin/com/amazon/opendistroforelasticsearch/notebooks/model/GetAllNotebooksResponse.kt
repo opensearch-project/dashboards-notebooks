@@ -25,9 +25,9 @@
  *
  */
 
-package com.amazon.opendistroforelasticsearch.notebooks.model
+package org.opensearch.notebooks.model
 
-import com.amazon.opendistroforelasticsearch.notebooks.util.createJsonParser
+import org.opensearch.notebooks.util.createJsonParser
 import org.opensearch.common.io.stream.StreamInput
 import org.opensearch.common.io.stream.StreamOutput
 import org.opensearch.common.xcontent.ToXContent
@@ -45,7 +45,7 @@ import java.io.IOException
  *   "totalHits":"100",
  *   "totalHitRelation":"eq",
  *   "notebookDetailsList":[
- *      // refer [com.amazon.opendistroforelasticsearch.notebooks.model.notebookDetails]
+ *      // refer [org.opensearch.notebooks.model.notebookDetails]
  *   ]
  * }
  * }</pre>

@@ -25,7 +25,7 @@
  *
  */
 
-package com.amazon.opendistroforelasticsearch.notebooks.util
+package org.opensearch.notebooks.util
 
 /**
  * Annotation to elevate access for testing purpose.

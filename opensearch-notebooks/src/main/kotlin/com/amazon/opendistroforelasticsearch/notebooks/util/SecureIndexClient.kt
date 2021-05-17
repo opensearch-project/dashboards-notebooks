@@ -25,7 +25,7 @@
  *
  */
 
-package com.amazon.opendistroforelasticsearch.notebooks.util
+package org.opensearch.notebooks.util
 
 import org.opensearch.action.ActionFuture
 import org.opensearch.action.ActionListener

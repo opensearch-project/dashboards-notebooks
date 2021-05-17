@@ -25,17 +25,17 @@
  *
  */
 
-package com.amazon.opendistroforelasticsearch.notebooks.index
+package org.opensearch.notebooks.index
 
-import com.amazon.opendistroforelasticsearch.notebooks.NotebooksPlugin.Companion.LOG_PREFIX
-import com.amazon.opendistroforelasticsearch.notebooks.model.NotebookDetails
-import com.amazon.opendistroforelasticsearch.notebooks.model.NotebookDetailsSearchResults
-import com.amazon.opendistroforelasticsearch.notebooks.model.RestTag.ACCESS_LIST_FIELD
-import com.amazon.opendistroforelasticsearch.notebooks.model.RestTag.TENANT_FIELD
-import com.amazon.opendistroforelasticsearch.notebooks.model.RestTag.UPDATED_TIME_FIELD
-import com.amazon.opendistroforelasticsearch.notebooks.settings.PluginSettings
-import com.amazon.opendistroforelasticsearch.notebooks.util.SecureIndexClient
-import com.amazon.opendistroforelasticsearch.notebooks.util.logger
+import org.opensearch.notebooks.NotebooksPlugin.Companion.LOG_PREFIX
+import org.opensearch.notebooks.model.NotebookDetails
+import org.opensearch.notebooks.model.NotebookDetailsSearchResults
+import org.opensearch.notebooks.model.RestTag.ACCESS_LIST_FIELD
+import org.opensearch.notebooks.model.RestTag.TENANT_FIELD
+import org.opensearch.notebooks.model.RestTag.UPDATED_TIME_FIELD
+import org.opensearch.notebooks.settings.PluginSettings
+import org.opensearch.notebooks.util.SecureIndexClient
+import org.opensearch.notebooks.util.logger
 import org.opensearch.ResourceAlreadyExistsException
 import org.opensearch.action.DocWriteResponse
 import org.opensearch.action.admin.indices.create.CreateIndexRequest

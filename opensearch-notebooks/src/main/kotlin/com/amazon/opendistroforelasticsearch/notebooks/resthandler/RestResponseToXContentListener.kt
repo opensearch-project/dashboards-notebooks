@@ -25,9 +25,9 @@
  *
  */
 
-package com.amazon.opendistroforelasticsearch.notebooks.resthandler
+package org.opensearch.notebooks.resthandler
 
-import com.amazon.opendistroforelasticsearch.notebooks.model.BaseResponse
+import org.opensearch.notebooks.model.BaseResponse
 import org.opensearch.rest.RestChannel
 import org.opensearch.rest.RestStatus
 import org.opensearch.rest.action.RestToXContentListener

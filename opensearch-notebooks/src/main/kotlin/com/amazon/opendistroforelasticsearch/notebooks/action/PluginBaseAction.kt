@@ -25,12 +25,12 @@
  *
  */
 
-package com.amazon.opendistroforelasticsearch.notebooks.action
+package org.opensearch.notebooks.action
 
-import com.amazon.opendistroforelasticsearch.commons.ConfigConstants.OPENDISTRO_SECURITY_USER_INFO_THREAD_CONTEXT
-import com.amazon.opendistroforelasticsearch.commons.authuser.User
-import com.amazon.opendistroforelasticsearch.notebooks.NotebooksPlugin.Companion.LOG_PREFIX
-import com.amazon.opendistroforelasticsearch.notebooks.util.logger
+import org.opensearch.commons.ConfigConstants.OPENDISTRO_SECURITY_USER_INFO_THREAD_CONTEXT
+import org.opensearch.commons.authuser.User
+import org.opensearch.notebooks.NotebooksPlugin.Companion.LOG_PREFIX
+import org.opensearch.notebooks.util.logger
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

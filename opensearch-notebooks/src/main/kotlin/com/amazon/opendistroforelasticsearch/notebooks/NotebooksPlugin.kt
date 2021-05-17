@@ -24,17 +24,17 @@
  * permissions and limitations under the License.
  *
  */
-package com.amazon.opendistroforelasticsearch.notebooks
+package org.opensearch.notebooks
 
-import com.amazon.opendistroforelasticsearch.notebooks.action.CreateNotebookAction
-import com.amazon.opendistroforelasticsearch.notebooks.action.DeleteNotebookAction
-import com.amazon.opendistroforelasticsearch.notebooks.action.GetAllNotebooksAction
-import com.amazon.opendistroforelasticsearch.notebooks.action.GetNotebookAction
-import com.amazon.opendistroforelasticsearch.notebooks.action.UpdateNotebookAction
-import com.amazon.opendistroforelasticsearch.notebooks.index.NotebooksIndex
-import com.amazon.opendistroforelasticsearch.notebooks.resthandler.NotebookListRestHandler
-import com.amazon.opendistroforelasticsearch.notebooks.resthandler.NotebookRestHandler
-import com.amazon.opendistroforelasticsearch.notebooks.settings.PluginSettings
+import org.opensearch.notebooks.action.CreateNotebookAction
+import org.opensearch.notebooks.action.DeleteNotebookAction
+import org.opensearch.notebooks.action.GetAllNotebooksAction
+import org.opensearch.notebooks.action.GetNotebookAction
+import org.opensearch.notebooks.action.UpdateNotebookAction
+import org.opensearch.notebooks.index.NotebooksIndex
+import org.opensearch.notebooks.resthandler.NotebookListRestHandler
+import org.opensearch.notebooks.resthandler.NotebookRestHandler
+import org.opensearch.notebooks.settings.PluginSettings
 import org.opensearch.action.ActionRequest
 import org.opensearch.action.ActionResponse
 import org.opensearch.client.Client

@@ -25,12 +25,12 @@
  *
  */
 
-package com.amazon.opendistroforelasticsearch.notebooks.model
+package org.opensearch.notebooks.model
 
-import com.amazon.opendistroforelasticsearch.notebooks.NotebooksPlugin.Companion.LOG_PREFIX
-import com.amazon.opendistroforelasticsearch.notebooks.model.RestTag.NOTEBOOK_FIELD
-import com.amazon.opendistroforelasticsearch.notebooks.util.createJsonParser
-import com.amazon.opendistroforelasticsearch.notebooks.util.logger
+import org.opensearch.notebooks.NotebooksPlugin.Companion.LOG_PREFIX
+import org.opensearch.notebooks.model.RestTag.NOTEBOOK_FIELD
+import org.opensearch.notebooks.util.createJsonParser
+import org.opensearch.notebooks.util.logger
 import org.opensearch.action.ActionRequest
 import org.opensearch.action.ActionRequestValidationException
 import org.opensearch.common.io.stream.StreamInput
@@ -50,7 +50,7 @@ import java.io.IOException
  * {@code
  * {
  *   "notebook":{
- *      // refer [com.amazon.opendistroforelasticsearch.notebooks.model.Notebook]
+ *      // refer [org.opensearch.notebooks.model.Notebook]
  *   }
  * }
  * }</pre>

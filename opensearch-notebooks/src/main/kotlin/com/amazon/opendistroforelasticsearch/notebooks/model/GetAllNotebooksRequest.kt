@@ -25,13 +25,13 @@
  *
  */
 
-package com.amazon.opendistroforelasticsearch.notebooks.model
+package org.opensearch.notebooks.model
 
-import com.amazon.opendistroforelasticsearch.notebooks.NotebooksPlugin.Companion.LOG_PREFIX
-import com.amazon.opendistroforelasticsearch.notebooks.model.RestTag.FROM_INDEX_FIELD
-import com.amazon.opendistroforelasticsearch.notebooks.model.RestTag.MAX_ITEMS_FIELD
-import com.amazon.opendistroforelasticsearch.notebooks.settings.PluginSettings
-import com.amazon.opendistroforelasticsearch.notebooks.util.logger
+import org.opensearch.notebooks.NotebooksPlugin.Companion.LOG_PREFIX
+import org.opensearch.notebooks.model.RestTag.FROM_INDEX_FIELD
+import org.opensearch.notebooks.model.RestTag.MAX_ITEMS_FIELD
+import org.opensearch.notebooks.settings.PluginSettings
+import org.opensearch.notebooks.util.logger
 import org.opensearch.action.ActionRequest
 import org.opensearch.action.ActionRequestValidationException
 import org.opensearch.common.io.stream.StreamInput

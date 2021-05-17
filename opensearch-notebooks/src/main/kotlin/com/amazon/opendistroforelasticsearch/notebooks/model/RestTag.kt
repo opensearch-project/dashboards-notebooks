@@ -24,7 +24,7 @@
  * permissions and limitations under the License.
  *
  */
-package com.amazon.opendistroforelasticsearch.notebooks.model
+package org.opensearch.notebooks.model
 
 import org.opensearch.common.xcontent.ToXContent
 import org.opensearch.common.xcontent.ToXContent.Params

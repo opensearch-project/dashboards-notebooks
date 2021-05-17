@@ -24,20 +24,20 @@
  * permissions and limitations under the License.
  *
  */
-package com.amazon.opendistroforelasticsearch.notebooks.resthandler
+package org.opensearch.notebooks.resthandler
 
-import com.amazon.opendistroforelasticsearch.notebooks.NotebooksPlugin.Companion.BASE_NOTEBOOKS_URI
-import com.amazon.opendistroforelasticsearch.notebooks.action.CreateNotebookAction
-import com.amazon.opendistroforelasticsearch.notebooks.action.DeleteNotebookAction
-import com.amazon.opendistroforelasticsearch.notebooks.action.GetNotebookAction
-import com.amazon.opendistroforelasticsearch.notebooks.action.NotebookActions
-import com.amazon.opendistroforelasticsearch.notebooks.action.UpdateNotebookAction
-import com.amazon.opendistroforelasticsearch.notebooks.model.CreateNotebookRequest
-import com.amazon.opendistroforelasticsearch.notebooks.model.DeleteNotebookRequest
-import com.amazon.opendistroforelasticsearch.notebooks.model.GetNotebookRequest
-import com.amazon.opendistroforelasticsearch.notebooks.model.RestTag.NOTEBOOK_ID_FIELD
-import com.amazon.opendistroforelasticsearch.notebooks.model.UpdateNotebookRequest
-import com.amazon.opendistroforelasticsearch.notebooks.util.contentParserNextToken
+import org.opensearch.notebooks.NotebooksPlugin.Companion.BASE_NOTEBOOKS_URI
+import org.opensearch.notebooks.action.CreateNotebookAction
+import org.opensearch.notebooks.action.DeleteNotebookAction
+import org.opensearch.notebooks.action.GetNotebookAction
+import org.opensearch.notebooks.action.NotebookActions
+import org.opensearch.notebooks.action.UpdateNotebookAction
+import org.opensearch.notebooks.model.CreateNotebookRequest
+import org.opensearch.notebooks.model.DeleteNotebookRequest
+import org.opensearch.notebooks.model.GetNotebookRequest
+import org.opensearch.notebooks.model.RestTag.NOTEBOOK_ID_FIELD
+import org.opensearch.notebooks.model.UpdateNotebookRequest
+import org.opensearch.notebooks.util.contentParserNextToken
 import org.opensearch.client.node.NodeClient
 import org.opensearch.rest.BaseRestHandler
 import org.opensearch.rest.BaseRestHandler.RestChannelConsumer
@@ -75,29 +75,29 @@ internal class NotebookRestHandler : BaseRestHandler() {
             /**
              * Create a new notebook
              * Request URL: POST NOTEBOOKS_URL
-             * Request body: Ref [com.amazon.opendistroforelasticsearch.notebooks.model.CreateNotebookRequest]
-             * Response body: Ref [com.amazon.opendistroforelasticsearch.notebooks.model.CreateNotebookResponse]
+             * Request body: Ref [org.opensearch.notebooks.model.CreateNotebookRequest]
+             * Response body: Ref [org.opensearch.notebooks.model.CreateNotebookResponse]
              */
             Route(POST, NOTEBOOKS_URL),
             /**
              * Update notebook
              * Request URL: PUT NOTEBOOKS_URL/{notebookId}
-             * Request body: Ref [com.amazon.opendistroforelasticsearch.notebooks.model.UpdateNotebookRequest]
-             * Response body: Ref [com.amazon.opendistroforelasticsearch.notebooks.model.UpdateNotebookResponse]
+             * Request body: Ref [org.opensearch.notebooks.model.UpdateNotebookRequest]
+             * Response body: Ref [org.opensearch.notebooks.model.UpdateNotebookResponse]
              */
             Route(PUT, "$NOTEBOOKS_URL/{$NOTEBOOK_ID_FIELD}"),
             /**
              * Get a notebook
              * Request URL: GET NOTEBOOKS_URL/{notebookId}
-             * Request body: Ref [com.amazon.opendistroforelasticsearch.notebooks.model.GetNotebookRequest]
-             * Response body: Ref [com.amazon.opendistroforelasticsearch.notebooks.model.GetNotebookResponse]
+             * Request body: Ref [org.opensearch.notebooks.model.GetNotebookRequest]
+             * Response body: Ref [org.opensearch.notebooks.model.GetNotebookResponse]
              */
             Route(GET, "$NOTEBOOKS_URL/{$NOTEBOOK_ID_FIELD}"),
             /**
              * Delete notebook
              * Request URL: DELETE NOTEBOOKS_URL/{notebookId}
-             * Request body: Ref [com.amazon.opendistroforelasticsearch.notebooks.model.DeleteNotebookRequest]
-             * Response body: Ref [com.amazon.opendistroforelasticsearch.notebooks.model.DeleteNotebookResponse]
+             * Request body: Ref [org.opensearch.notebooks.model.DeleteNotebookRequest]
+             * Response body: Ref [org.opensearch.notebooks.model.DeleteNotebookResponse]
              */
             Route(DELETE, "$NOTEBOOKS_URL/{$NOTEBOOK_ID_FIELD}")
         )

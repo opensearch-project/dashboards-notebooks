@@ -72,11 +72,11 @@ check.dependsOn jacocoTestReport
 opensearchplugin {
     name 'opensearch-notebooks'
     description 'OpenSearch Plugin for OpenSearch Dashboards Notebooks'
-    classname "com.amazon.opendistroforelasticsearch.notebooks.NotebooksPlugin"
+    classname "org.opensearch.notebooks.NotebooksPlugin"
 }
 
 allOpen {
-    annotation("com.amazon.opendistroforelasticsearch.notebooks.util.OpenForTesting")
+    annotation("org.opensearch.notebooks.util.OpenForTesting")
 }
 
 configurations {
@@ -129,7 +129,7 @@ plugins.withId('org.jetbrains.kotlin.jvm') {
 }
 
 allprojects {
-    group = "com.amazon.opendistroforelasticsearch"
+    group = "org.opensearch"
     version = "${opensearchVersion}.0-beta1"
 
     plugins.withId('java') {

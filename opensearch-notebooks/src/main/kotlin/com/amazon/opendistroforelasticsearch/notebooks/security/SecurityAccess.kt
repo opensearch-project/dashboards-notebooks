@@ -25,7 +25,7 @@
  *
  */
 
-package com.amazon.opendistroforelasticsearch.notebooks.security
+package org.opensearch.notebooks.security
 
 import org.opensearch.SpecialPermission
 import java.security.AccessController

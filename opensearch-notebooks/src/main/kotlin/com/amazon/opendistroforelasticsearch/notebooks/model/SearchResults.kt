@@ -25,11 +25,11 @@
  *
  */
 
-package com.amazon.opendistroforelasticsearch.notebooks.model
+package org.opensearch.notebooks.model
 
-import com.amazon.opendistroforelasticsearch.notebooks.NotebooksPlugin.Companion.LOG_PREFIX
-import com.amazon.opendistroforelasticsearch.notebooks.model.RestTag.REST_OUTPUT_PARAMS
-import com.amazon.opendistroforelasticsearch.notebooks.util.logger
+import org.opensearch.notebooks.NotebooksPlugin.Companion.LOG_PREFIX
+import org.opensearch.notebooks.model.RestTag.REST_OUTPUT_PARAMS
+import org.opensearch.notebooks.util.logger
 import org.apache.lucene.search.TotalHits
 import org.apache.lucene.search.TotalHits.Relation
 import org.apache.lucene.search.TotalHits.Relation.EQUAL_TO

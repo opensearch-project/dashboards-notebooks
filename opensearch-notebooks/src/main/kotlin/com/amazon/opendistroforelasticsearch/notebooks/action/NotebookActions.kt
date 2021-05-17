@@ -25,24 +25,24 @@
  *
  */
 
-package com.amazon.opendistroforelasticsearch.notebooks.action
+package org.opensearch.notebooks.action
 
-import com.amazon.opendistroforelasticsearch.commons.authuser.User
-import com.amazon.opendistroforelasticsearch.notebooks.NotebooksPlugin.Companion.LOG_PREFIX
-import com.amazon.opendistroforelasticsearch.notebooks.index.NotebooksIndex
-import com.amazon.opendistroforelasticsearch.notebooks.model.CreateNotebookRequest
-import com.amazon.opendistroforelasticsearch.notebooks.model.CreateNotebookResponse
-import com.amazon.opendistroforelasticsearch.notebooks.model.DeleteNotebookRequest
-import com.amazon.opendistroforelasticsearch.notebooks.model.DeleteNotebookResponse
-import com.amazon.opendistroforelasticsearch.notebooks.model.GetAllNotebooksRequest
-import com.amazon.opendistroforelasticsearch.notebooks.model.GetAllNotebooksResponse
-import com.amazon.opendistroforelasticsearch.notebooks.model.GetNotebookRequest
-import com.amazon.opendistroforelasticsearch.notebooks.model.GetNotebookResponse
-import com.amazon.opendistroforelasticsearch.notebooks.model.NotebookDetails
-import com.amazon.opendistroforelasticsearch.notebooks.model.UpdateNotebookRequest
-import com.amazon.opendistroforelasticsearch.notebooks.model.UpdateNotebookResponse
-import com.amazon.opendistroforelasticsearch.notebooks.security.UserAccessManager
-import com.amazon.opendistroforelasticsearch.notebooks.util.logger
+import org.opensearch.commons.authuser.User
+import org.opensearch.notebooks.NotebooksPlugin.Companion.LOG_PREFIX
+import org.opensearch.notebooks.index.NotebooksIndex
+import org.opensearch.notebooks.model.CreateNotebookRequest
+import org.opensearch.notebooks.model.CreateNotebookResponse
+import org.opensearch.notebooks.model.DeleteNotebookRequest
+import org.opensearch.notebooks.model.DeleteNotebookResponse
+import org.opensearch.notebooks.model.GetAllNotebooksRequest
+import org.opensearch.notebooks.model.GetAllNotebooksResponse
+import org.opensearch.notebooks.model.GetNotebookRequest
+import org.opensearch.notebooks.model.GetNotebookResponse
+import org.opensearch.notebooks.model.NotebookDetails
+import org.opensearch.notebooks.model.UpdateNotebookRequest
+import org.opensearch.notebooks.model.UpdateNotebookResponse
+import org.opensearch.notebooks.security.UserAccessManager
+import org.opensearch.notebooks.util.logger
 import org.opensearch.OpenSearchStatusException
 import org.opensearch.rest.RestStatus
 import java.time.Instant

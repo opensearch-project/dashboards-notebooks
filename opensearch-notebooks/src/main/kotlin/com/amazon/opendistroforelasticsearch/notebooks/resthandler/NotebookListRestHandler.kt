@@ -24,15 +24,15 @@
  * permissions and limitations under the License.
  *
  */
-package com.amazon.opendistroforelasticsearch.notebooks.resthandler
+package org.opensearch.notebooks.resthandler
 
-import com.amazon.opendistroforelasticsearch.notebooks.NotebooksPlugin.Companion.BASE_NOTEBOOKS_URI
-import com.amazon.opendistroforelasticsearch.notebooks.action.GetAllNotebooksAction
-import com.amazon.opendistroforelasticsearch.notebooks.action.NotebookActions
-import com.amazon.opendistroforelasticsearch.notebooks.model.GetAllNotebooksRequest
-import com.amazon.opendistroforelasticsearch.notebooks.model.RestTag.FROM_INDEX_FIELD
-import com.amazon.opendistroforelasticsearch.notebooks.model.RestTag.MAX_ITEMS_FIELD
-import com.amazon.opendistroforelasticsearch.notebooks.settings.PluginSettings
+import org.opensearch.notebooks.NotebooksPlugin.Companion.BASE_NOTEBOOKS_URI
+import org.opensearch.notebooks.action.GetAllNotebooksAction
+import org.opensearch.notebooks.action.NotebookActions
+import org.opensearch.notebooks.model.GetAllNotebooksRequest
+import org.opensearch.notebooks.model.RestTag.FROM_INDEX_FIELD
+import org.opensearch.notebooks.model.RestTag.MAX_ITEMS_FIELD
+import org.opensearch.notebooks.settings.PluginSettings
 import org.opensearch.client.node.NodeClient
 import org.opensearch.rest.BaseRestHandler
 import org.opensearch.rest.BaseRestHandler.RestChannelConsumer
@@ -68,7 +68,7 @@ internal class NotebookListRestHandler : BaseRestHandler() {
              * Get all notebooks (from optional fromIndex)
              * Request URL: GET LIST_NOTEBOOKS_URL[?[fromIndex=1000]&[maxItems=100]]
              * Request body: None
-             * Response body: Ref [com.amazon.opendistroforelasticsearch.notebooks.model.GetAllNotebooksResponse]
+             * Response body: Ref [org.opensearch.notebooks.model.GetAllNotebooksResponse]
              */
             Route(GET, LIST_NOTEBOOKS_URL)
         )

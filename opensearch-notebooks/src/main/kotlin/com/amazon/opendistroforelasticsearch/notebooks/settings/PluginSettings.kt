@@ -25,10 +25,10 @@
  *
  */
 
-package com.amazon.opendistroforelasticsearch.notebooks.settings
+package org.opensearch.notebooks.settings
 
-import com.amazon.opendistroforelasticsearch.notebooks.NotebooksPlugin.Companion.LOG_PREFIX
-import com.amazon.opendistroforelasticsearch.notebooks.NotebooksPlugin.Companion.PLUGIN_NAME
+import org.opensearch.notebooks.NotebooksPlugin.Companion.LOG_PREFIX
+import org.opensearch.notebooks.NotebooksPlugin.Companion.PLUGIN_NAME
 import org.apache.logging.log4j.LogManager
 import org.opensearch.bootstrap.BootstrapInfo
 import org.opensearch.cluster.service.ClusterService

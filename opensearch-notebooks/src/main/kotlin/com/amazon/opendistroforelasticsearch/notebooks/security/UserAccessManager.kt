@@ -25,11 +25,11 @@
  *
  */
 
-package com.amazon.opendistroforelasticsearch.notebooks.security
+package org.opensearch.notebooks.security
 
-import com.amazon.opendistroforelasticsearch.commons.authuser.User
-import com.amazon.opendistroforelasticsearch.notebooks.settings.PluginSettings
-import com.amazon.opendistroforelasticsearch.notebooks.settings.PluginSettings.FilterBy
+import org.opensearch.commons.authuser.User
+import org.opensearch.notebooks.settings.PluginSettings
+import org.opensearch.notebooks.settings.PluginSettings.FilterBy
 import org.opensearch.OpenSearchStatusException
 import org.opensearch.rest.RestStatus
 import java.util.stream.Collectors

@@ -25,18 +25,18 @@
  *
  */
 
-package com.amazon.opendistroforelasticsearch.notebooks.model
+package org.opensearch.notebooks.model
 
-import com.amazon.opendistroforelasticsearch.notebooks.NotebooksPlugin.Companion.LOG_PREFIX
-import com.amazon.opendistroforelasticsearch.notebooks.model.RestTag.ACCESS_LIST_FIELD
-import com.amazon.opendistroforelasticsearch.notebooks.model.RestTag.CREATED_TIME_FIELD
-import com.amazon.opendistroforelasticsearch.notebooks.model.RestTag.ID_FIELD
-import com.amazon.opendistroforelasticsearch.notebooks.model.RestTag.NOTEBOOK_FIELD
-import com.amazon.opendistroforelasticsearch.notebooks.model.RestTag.TENANT_FIELD
-import com.amazon.opendistroforelasticsearch.notebooks.model.RestTag.UPDATED_TIME_FIELD
-import com.amazon.opendistroforelasticsearch.notebooks.security.UserAccessManager.DEFAULT_TENANT
-import com.amazon.opendistroforelasticsearch.notebooks.util.logger
-import com.amazon.opendistroforelasticsearch.notebooks.util.stringList
+import org.opensearch.notebooks.NotebooksPlugin.Companion.LOG_PREFIX
+import org.opensearch.notebooks.model.RestTag.ACCESS_LIST_FIELD
+import org.opensearch.notebooks.model.RestTag.CREATED_TIME_FIELD
+import org.opensearch.notebooks.model.RestTag.ID_FIELD
+import org.opensearch.notebooks.model.RestTag.NOTEBOOK_FIELD
+import org.opensearch.notebooks.model.RestTag.TENANT_FIELD
+import org.opensearch.notebooks.model.RestTag.UPDATED_TIME_FIELD
+import org.opensearch.notebooks.security.UserAccessManager.DEFAULT_TENANT
+import org.opensearch.notebooks.util.logger
+import org.opensearch.notebooks.util.stringList
 import org.opensearch.common.xcontent.ToXContent
 import org.opensearch.common.xcontent.ToXContent.EMPTY_PARAMS
 import org.opensearch.common.xcontent.ToXContentObject
@@ -57,7 +57,7 @@ import java.time.Instant
  *   "tenant":"__user__",
  *   "access":["User:user", "Role:sample_role", "BERole:sample_backend_role"]
  *   "notebook":{
- *      // refer [com.amazon.opendistroforelasticsearch.notebooks.model.Notebook]
+ *      // refer [org.opensearch.notebooks.model.Notebook]
  *   }
  * }
  * }</pre>
