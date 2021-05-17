@@ -61,7 +61,7 @@ import org.opensearch.watcher.ResourceWatcherService
 import java.util.function.Supplier
 
 /**
- * Entry point of the OpenDistro for Elasticsearch Notebooks plugin.
+ * Entry point of the OpenSearch Notebooks plugin.
  * This class initializes the rest handlers.
  */
 class NotebooksPlugin : Plugin(), ActionPlugin {
