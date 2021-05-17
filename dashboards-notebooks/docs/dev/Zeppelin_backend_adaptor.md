@@ -97,7 +97,7 @@ index movies/default/1 {
 - **[Optional] Setup ODFE-SQL JDBC Interpreter:**
   - [Zeppelin JDBC Interpreter Documentation](https://zeppelin.apache.org/docs/0.9.0-preview2/interpreter/jdbc.html)
   - Zeppelin has a generic JDBC interpreter, we can use this to add our ODFE-SQL Driver
-  - Download [ODFE-SQL Driver](https://opendistro.github.io/for-elasticsearch/downloads.html) Jar file
+  - Download [OpenSearch-SQL Driver](https://opensearch.org/) Jar file
   - To Use JDBC interpreter:
     - **To add the JDBC interpreter settings for ODFE-SQL:**
       - Open Zeppelin in browser `localhost:8080`
@@ -108,7 +108,7 @@ index movies/default/1 {
       - Edit config for with ODFE-SQL Driver details (Please refer to the [Github README](https://github.com/opensearch-project/sql/tree/main/sql-jdbc))
     - **If using the default settings, add below mentioned changes in interpreter config:**
       - Edit the url: `jdbc:elasticsearch://localhost:9200`
-      - Edit the driver class: `com.amazon.opendistroforelasticsearch.jdbc.Driver`
+      - Edit the driver class: `org.opensearch.jdbc.Driver`
       - Edit the username to admin
       - Edit the password to admin
       - Add absolute path to the Jar in the last input box
