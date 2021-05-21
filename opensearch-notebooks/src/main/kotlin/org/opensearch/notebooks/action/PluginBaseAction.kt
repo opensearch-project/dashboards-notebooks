@@ -27,7 +27,7 @@
 
 package org.opensearch.notebooks.action
 
-import org.opensearch.commons.ConfigConstants.OPENDISTRO_SECURITY_USER_INFO_THREAD_CONTEXT
+import org.opensearch.commons.ConfigConstants.OPENSEARCH_SECURITY_USER_INFO_THREAD_CONTEXT
 import org.opensearch.commons.authuser.User
 import org.opensearch.notebooks.NotebooksPlugin.Companion.LOG_PREFIX
 import org.opensearch.notebooks.util.logger
@@ -72,7 +72,7 @@ abstract class PluginBaseAction<Request : ActionRequest, Response : ActionRespon
         request: Request,
         listener: ActionListener<Response>
     ) {
-        val userStr: String? = client.threadPool().threadContext.getTransient<String>(OPENDISTRO_SECURITY_USER_INFO_THREAD_CONTEXT)
+        val userStr: String? = client.threadPool().threadContext.getTransient<String>(OPENSEARCH_SECURITY_USER_INFO_THREAD_CONTEXT)
         val user: User? = User.parse(userStr)
         scope.launch {
             try {
