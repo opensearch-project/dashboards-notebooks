@@ -51,7 +51,7 @@ internal class DeleteNotebookAction @Inject constructor(
     actionFilters,
     ::DeleteNotebookRequest) {
     companion object {
-        private const val NAME = "cluster:admin/opensearch/notebooks/delete"
+        private const val NAME = "cluster:admin/opendistro/notebooks/delete"
         internal val ACTION_TYPE = ActionType(NAME, ::DeleteNotebookResponse)
     }
 

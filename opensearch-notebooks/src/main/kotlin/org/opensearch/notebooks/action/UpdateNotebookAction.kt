@@ -51,7 +51,7 @@ internal class UpdateNotebookAction @Inject constructor(
     actionFilters,
     ::UpdateNotebookRequest) {
     companion object {
-        private const val NAME = "cluster:admin/opensearch/notebooks/update"
+        private const val NAME = "cluster:admin/opendistro/notebooks/update"
         internal val ACTION_TYPE = ActionType(NAME, ::UpdateNotebookResponse)
     }
 
