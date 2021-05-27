@@ -161,6 +161,19 @@ describe('Testing paragraphs', () => {
     cy.get('td').contains('b2').should('exist');
   });
 
+  it('Shows output message', () => {
+    cy.get('button[aria-label="Toggle show input"]').click();
+    cy.wait(delay);
+    cy.get('.euiTextColor').contains('Last successful run').should('exist');
+
+    cy.get('pre.input').eq(0).click();
+    cy.wait(delay);
+    cy.get('.euiTextArea').type('Another text');
+    cy.wait(delay);
+
+    cy.get('.euiTextColor').contains('Last successful run').should('exist');
+  });
+
   it('Renders input only mode', () => {
     cy.get('.euiToggle__input[title="Input only"]').click();
     cy.wait(delay);
