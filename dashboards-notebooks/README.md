@@ -4,7 +4,7 @@ Dashboards offer a solution for a few selected use cases, and are great tools if
 
 ## Documentation
 
-Please see our technical [documentation](https://docs-beta.opensearch.org/docs/opensearch-dashboards/notebooks/) to learn more about its features.
+Please see our technical [documentation](https://docs-beta.opensearch.org/dashboards/notebooks/) to learn more about its features.
 
 ## Setup
 
