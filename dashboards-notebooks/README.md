@@ -8,7 +8,7 @@ Please see our technical [documentation](https://docs-beta.opensearch.org/dashbo
 
 ## Contributing
 
-See [developer guide](DEVELOPER_GUIDE.md) and [how to contribute to this project](CONTRIBUTING.md). 
+See [developer guide](DEVELOPER_GUIDE.md) and [how to contribute to this project](../CONTRIBUTING.md). 
 
 ## Getting Help
 
@@ -18,7 +18,7 @@ For more information, see [project website](https://opensearch.org/) and [docume
 
 ## Code of Conduct
 
-This project has adopted the [Amazon Open Source Code of Conduct](CODE_OF_CONDUCT.md). For more information see the [Code of Conduct FAQ](https://aws.github.io/code-of-conduct-faq), or contact [opensource-codeofconduct@amazon.com](mailto:opensource-codeofconduct@amazon.com) with any additional questions or comments.
+This project has adopted the [Amazon Open Source Code of Conduct](../CODE_OF_CONDUCT.md). For more information see the [Code of Conduct FAQ](https://aws.github.io/code-of-conduct-faq), or contact [opensource-codeofconduct@amazon.com](mailto:opensource-codeofconduct@amazon.com) with any additional questions or comments.
 
 ## Security
 
@@ -26,7 +26,7 @@ If you discover a potential security issue in this project we ask that you notif
 
 ## License
 
-This project is licensed under the [Apache v2.0 License](LICENSE.txt).
+This project is licensed under the [Apache v2.0 License](../LICENSE.txt).
 
 ## Copyright
 
