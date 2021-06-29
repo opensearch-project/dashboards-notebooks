@@ -19,6 +19,7 @@ Compatible with OpenSearch 1.0.0
 
 ### Documentation
 * Level up markdown content and add link checker workflow ([#37](https://github.com/opensearch-project/dashboards-notebooks/pull/37))
+* Add release notes for version 1.0.0.0 ([#46](https://github.com/opensearch-project/dashboards-notebooks/pull/46))
 
 ### Maintenance
 * Bump version to 1.0.0.0 ([#45](https://github.com/opensearch-project/dashboards-notebooks/pull/45))
