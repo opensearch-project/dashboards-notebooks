@@ -22,6 +22,7 @@ Compatible with OpenSearch 1.0.0
 * Add more delay for cypress when running sql ([#21](https://github.com/opensearch-project/dashboards-notebooks/pull/21))
 
 ### Documentation
+* Update dependency versions and release notes ([#47](https://github.com/opensearch-project/dashboards-notebooks/pull/47))
 * Level up markdown content and add link checker workflow ([#37](https://github.com/opensearch-project/dashboards-notebooks/pull/37))
 * Add release notes for version 1.0.0.0 ([#46](https://github.com/opensearch-project/dashboards-notebooks/pull/46))
 
