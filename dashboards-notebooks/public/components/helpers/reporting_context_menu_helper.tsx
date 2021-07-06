@@ -97,10 +97,10 @@ export const generateInContextReport = (
         },
       },
       delivery: {
-        delivery_type: 'OpenSearch Dashboards user',
-        delivery_params: {
-          opensearch_dashboards_recipients: [],
-        },
+        configIds: [],
+        title: '',
+        textDescription: '',
+        htmlDescription: '',
       },
       trigger: {
         trigger_type: 'On demand',
