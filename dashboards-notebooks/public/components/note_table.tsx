@@ -63,6 +63,7 @@ const pageStyles: CSS.Properties = {
 }
 
 type NoteTableProps = {
+  loading: boolean;
   fetchNotebooks: () => void;
   addSampleNotebooks: () => void;
   notebooks: Array<NotebookType>;
@@ -318,6 +319,7 @@ export function NoteTable(props: NoteTableProps) {
             <EuiHorizontalRule margin='m' />
             {notebooks.length > 0 ? (
               <EuiInMemoryTable
+                loading={props.loading}
                 items={searchQuery ?
                   notebooks.filter((notebook) => notebook.path.toLowerCase().includes(searchQuery.toLowerCase())) :
                   notebooks}

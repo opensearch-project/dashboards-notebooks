@@ -59,6 +59,7 @@ type MainState = {
   data: Array<NotebookType>;
   openedNotebook: NotebookType | undefined;
   toasts: Toast[];
+  loading: boolean;
 };
 
 export type NotebookType = {
@@ -75,6 +76,7 @@ export class Main extends React.Component<MainProps, MainState> {
       data: [],
       openedNotebook: undefined,
       toasts: [],
+      loading: false,
     };
   }
 
@@ -209,6 +211,7 @@ export class Main extends React.Component<MainProps, MainState> {
   
   addSampleNotebooks = async () => {
     try {
+      this.setState({ loading: true });
       const flights = await this.props.http
         .get('../api/saved_objects/_find', {
           query: {
@@ -271,6 +274,8 @@ export class Main extends React.Component<MainProps, MainState> {
     } catch (err) {
       this.setToast('Error adding sample notebooks.', 'danger');
       console.error(err.body.message);
+    } finally {
+      this.setState({ loading: false });
     }
   };
 
@@ -308,6 +313,7 @@ export class Main extends React.Component<MainProps, MainState> {
               path='/'
               render={(props) =>
                 <NoteTable
+                  loading={this.state.loading}
                   fetchNotebooks={this.fetchNotebooks}
                   addSampleNotebooks={this.addSampleNotebooks}
                   notebooks={this.state.data}
