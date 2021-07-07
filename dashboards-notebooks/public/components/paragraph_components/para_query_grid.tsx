@@ -44,7 +44,7 @@ type RenderCellValueProps = {
   columnId: string
 }
 
-export function QueryDataGrid(props: QueryDataGridProps) {
+function QueryDataGrid(props: QueryDataGridProps) {
   const {
     rowCount,
     queryColumns,
