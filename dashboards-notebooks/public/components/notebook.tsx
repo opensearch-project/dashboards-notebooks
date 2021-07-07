@@ -882,101 +882,6 @@ export class Notebook extends Component<NotebookProps, NotebookState> {
     const showLoadingModal = (this.state.isReportingLoadingModalOpen) ?
     <GenerateReportLoadingModal setShowLoading={this.toggleReportingLoadingModal} /> : null;
 
-    const paragraphDisplay = (this.state.parsedPara.length > 0) ? (
-      <>
-      <Cells>
-        {/* <PanelWrapper> */}
-          {this.state.parsedPara.map((para: ParaType, index: number) => (
-            <div ref={this.state.parsedPara[index].paraDivRef} key={`para_div_${para.uniqueId}`} style={panelStyles}>
-              <Paragraphs
-                ref={this.state.parsedPara[index].paraRef}
-                para={para}
-                setPara={(para: ParaType) => this.setPara(para, index)}
-                dateModified={this.state.paragraphs[index]?.dateModified}
-                index={index}
-                paraCount={this.state.parsedPara.length}
-                paragraphSelector={this.paragraphSelector}
-                textValueEditor={(textValue: React.ChangeEvent<HTMLTextAreaElement>, index: number) => this.textValueEditor(textValue, index)}
-                handleKeyPress={this.handleKeyPress}
-                addPara={this.addPara}
-                DashboardContainerByValueRenderer={this.props.DashboardContainerByValueRenderer}
-                deleteVizualization={this.deleteVizualization}
-                http={this.props.http}
-                selectedViewId={this.state.selectedViewId}
-                setSelectedViewId={this.updateView}
-                deletePara={this.showDeleteParaModal}
-                runPara={this.updateRunParagraph}
-                clonePara={this.cloneParaButton}
-                movePara={this.movePara}
-                showQueryParagraphError={this.state.showQueryParagraphError}
-                queryParagraphErrorMessage={this.state.queryParagraphErrorMessage}
-              />
-            </div>
-          ))}
-        {/* </PanelWrapper> */}
-      </Cells>
-      {this.state.selectedViewId !== 'output_only' &&
-        <EuiPopover
-          panelPaddingSize="none"
-          withTitle
-          button={
-            <EuiButton
-              iconType='arrowDown'
-              iconSide='right'
-              onClick={() => this.setState({ isAddParaPopoverOpen: true })}
-            >Add paragraph</EuiButton>
-          }
-          isOpen={this.state.isAddParaPopoverOpen}
-          closePopover={() => this.setState({ isAddParaPopoverOpen: false })}>
-          <EuiContextMenu initialPanelId={0} panels={addParaPanels} />
-        </EuiPopover>
-      }
-    </>
-    ) : (
-      // show default paragraph if no paragraphs in this notebook
-      <div style={panelStyles}>
-        <EuiPanel>
-          <EuiSpacer size='xxl' />
-          <EuiText textAlign='center'>
-            <h2>No paragraphs</h2>
-            <EuiText>
-              Add a paragraph to compose your document or story. Notebooks now support two types of input:
-            </EuiText>
-          </EuiText>
-          <EuiSpacer size='xl' />
-          <EuiFlexGroup justifyContent='spaceEvenly'>
-            <EuiFlexItem grow={2} />
-            <EuiFlexItem grow={3}>
-              <EuiCard
-                icon={<EuiIcon size="xxl" type="editorCodeBlock" />}
-                title="Code block"
-                description="Write contents directly using markdown, SQL or PPL."
-                footer={
-                  <EuiButton onClick={() => this.addPara(0, '', 'CODE')} style={{ marginBottom: 17 }}>
-                    Add code block
-                  </EuiButton>
-                }
-              />
-            </EuiFlexItem>
-            <EuiFlexItem grow={3}>
-              <EuiCard
-                icon={<EuiIcon size="xxl" type="visArea" />}
-                title="OpenSearch Dashboards visualization"
-                description="Import OpenSearch Dashboards visualizations to the notes."
-                footer={
-                  <EuiButton onClick={() => this.addPara(0, '', 'VISUALIZATION')} style={{ marginBottom: 17 }}>
-                    Add visualization
-                  </EuiButton>
-                }
-              />
-            </EuiFlexItem>
-            <EuiFlexItem grow={2} />
-          </EuiFlexGroup>
-          <EuiSpacer size='xxl' />
-        </EuiPanel>
-      </div>
-    );
-
     return (
       <div style={pageStyles}>
         <EuiPage>
@@ -1061,7 +966,7 @@ export class Notebook extends Component<NotebookProps, NotebookState> {
                           index={index}
                           paraCount={this.state.parsedPara.length}
                           paragraphSelector={this.paragraphSelector}
-                          textValueEditor={(textValue: React.ChangeEvent<HTMLTextAreaElement>, index: number) => this.textValueEditor(textValue, index)}
+                          textValueEditor={this.textValueEditor}
                           handleKeyPress={this.handleKeyPress}
                           addPara={this.addPara}
                           DashboardContainerByValueRenderer={this.props.DashboardContainerByValueRenderer}
