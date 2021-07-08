@@ -35,6 +35,8 @@ import {
   PPL_QUERY_TEXT
 } from "../utils/constants";
 
+import { skipOn } from '@cypress/skip-test'
+
 describe('Adding sample data and visualization', () => {
   it('Adds sample flights data for visualization paragraph', () => {
     cy.visit(`${Cypress.env('opensearchDashboards')}/app/home#/tutorial_directory/sampleData`);
