@@ -640,7 +640,7 @@ export class Notebook extends Component<NotebookProps, NotebookState> {
   configureViewParameter(id: string) {
     const url = new URL(window.location);
     url.searchParams.set('view', id);
-    window.history.replaceState({}, '', url);
+    window.history.pushState({}, '', url);
   }
 
   componentDidMount() {
