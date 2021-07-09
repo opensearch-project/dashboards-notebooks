@@ -144,12 +144,15 @@ export const generateInContextReport = async (
   // Add selected tenant info to url
   try {
     const tenant = await getTenantInfoIfExists();
-    console.log('tenant is', tenant);
     if (tenant) {
       baseUrl = addTenantToURL(baseUrl, tenant) 
     }
   } catch (error) {
-    // add toast
+    props.setToast(
+      'Tenant error',
+      'danger',
+      'Failed to get user tenant.'
+    );
     console.log(`failed to get user tenant: ${error}`);
   }
 
@@ -181,7 +184,6 @@ export const generateInContextReport = async (
       },
     },
   };
-  console.log('context menu report body is', contextMenuOnDemandReport);
   fetch(
     '../api/reporting/generateReport',
     {
