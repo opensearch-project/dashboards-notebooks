@@ -147,7 +147,6 @@ describe('Test reporting integration if plugin installed', () => {
     cy.wait(delay);
     cy.get('button.euiContextMenuItem:nth-child(1)').contains('Download PDF').click();
     cy.get('#downloadInProgressLoadingModal').should('exist');
-    cy.get('div.euiFlexGroup:nth-child(6) > div:nth-child(1) > button:nth-child(1)').click();
   });
 
   it('Create in-context PNG report from notebook', () => {
@@ -155,7 +154,6 @@ describe('Test reporting integration if plugin installed', () => {
     cy.wait(delay);
     cy.get('button.euiContextMenuItem:nth-child(2)').contains('Download PNG').click();
     cy.get('#downloadInProgressLoadingModal').should('exist');
-    cy.get('div.euiFlexGroup:nth-child(6) > div:nth-child(1) > button:nth-child(1)').click();
   });
 
   it('Create on-demand report definition from context menu', () => {
