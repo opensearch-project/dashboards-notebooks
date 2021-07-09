@@ -130,6 +130,56 @@ describe('Testing notebooks table', () => {
   });
 });
 
+describe('Test reporting integration if plugin installed', () => {
+  beforeEach(() => {
+    cy.visit(`${Cypress.env('opensearchDashboards')}/app/notebooks-dashboards#`);
+    cy.get('.euiTableCellContent').contains(TEST_NOTEBOOK).click();
+    cy.wait(delay * 3);
+    cy.get('body').then($body => {
+      skipOn($body.find('#reportingActionsButton').length <= 0);
+    });
+  });
+
+  it('Create in-context PDF report from notebook', () => {
+    cy.get('#reportingActionsButton').click();
+    cy.wait(delay);
+    cy.get('button.euiContextMenuItem:nth-child(1)').contains('Download PDF').click();
+    cy.get('#downloadInProgressLoadingModal').should('exist');
+  });
+
+  it('Create in-context PNG report from notebook', () => {
+    cy.get('#reportingActionsButton').click();
+    cy.wait(delay);
+    cy.get('button.euiContextMenuItem:nth-child(2)').contains('Download PNG').click();
+    cy.get('#downloadInProgressLoadingModal').should('exist');
+  });
+
+  it('Create on-demand report definition from context menu', () => {
+    cy.get('#reportingActionsButton').click();
+    cy.wait(delay);
+    cy.get('button.euiContextMenuItem:nth-child(3)').contains('Create report definition').click();
+    cy.wait(delay);
+    cy.location('pathname', { timeout: 60000 }).should(
+      'include',
+      '/reports-dashboards'
+    );
+    cy.wait(delay);
+    cy.get('#reportSettingsName').type('Create notebook on-demand report');
+    cy.get('#createNewReportDefinition').click({ force: true });
+  });
+
+  it ('View reports homepage from context menu', () => {
+    cy.get('#reportingActionsButton').click();
+    cy.wait(delay);
+    cy.get('button.euiContextMenuItem:nth-child(4)').contains('View reports').click();
+    cy.wait(delay);
+    cy.location('pathname', { timeout: 60000 }).should(
+      'include',
+      '/reports-dashboards'
+    );
+  });
+});
+
 describe('Testing paragraphs', () => {
   beforeEach(() => {
     cy.visit(`${Cypress.env('opensearchDashboards')}/app/notebooks-dashboards#`);
