@@ -85,7 +85,6 @@ fi
 
 if [ "$DIRECTORY" = "dashboards-notebooks" ]
 then
-    cd dashboards-notebooks
     mv -v dashboards-notebooks ../dashboards-notebooks-temp
     cd ../
     rm -rf dashboards-notebooks/
