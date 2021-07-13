@@ -717,18 +717,18 @@ const getSQLNotebook = (dateString: string) => {
         output: [
           {
             result:
-              `OpenSearch SQL lets you write queries in SQL rather than the [OpenSearch query domain-specific language (DSL)](https://docs-beta.opensearch.org/opensearch/query-dsl/full-text/). If you’re already familiar with SQL and don’t want to learn the query DSL, this feature is a great option.
+              `OpenSearch SQL lets you write queries in SQL rather than the [OpenSearch query domain-specific language (DSL)](https://opensearch.org/docs/opensearch/query-dsl/full-text/). If you’re already familiar with SQL and don’t want to learn the query DSL, this feature is a great option.
 
-For more information, please refer to the [documentation](https://docs-beta.opensearch.org/search-plugins/sql/index/).`,
+For more information, please refer to the [documentation](https://opensearch.org/docs/search-plugins/sql/index/).`,
             outputType: 'MARKDOWN',
             execution_time: '0.013 ms',
           },
         ],
         input: {
           inputText: `%md
-OpenSearch SQL lets you write queries in SQL rather than the [OpenSearch query domain-specific language (DSL)](https://docs-beta.opensearch.org/opensearch/query-dsl/full-text/). If you’re already familiar with SQL and don’t want to learn the query DSL, this feature is a great option.
+OpenSearch SQL lets you write queries in SQL rather than the [OpenSearch query domain-specific language (DSL)](https://opensearch.org/docs/opensearch/query-dsl/full-text/). If you’re already familiar with SQL and don’t want to learn the query DSL, this feature is a great option.
 
-For more information, please refer to the [documentation](https://docs-beta.opensearch.org/search-plugins/sql/index/).`,
+For more information, please refer to the [documentation](https://opensearch.org/docs/search-plugins/sql/index/).`,
           inputType: 'MARKDOWN',
         },
         dateCreated: dateString,
@@ -1012,7 +1012,7 @@ Even if you're new to OpenSearch and are only familiar with the pipe (|) syntax,
           {
             result: `Piped Processing Language (PPL) is a query language that lets you use pipe (|) syntax to explore, discover, and query data stored in OpenSearch.
 
-For more information, refer to the [documentation](https://docs-beta.opensearch.org/search-plugins/ppl/index/).`,
+For more information, refer to the [documentation](https://opensearch.org/docs/search-plugins/ppl/index/).`,
             outputType: 'MARKDOWN',
             execution_time: '0.009 ms',
           },
@@ -1021,7 +1021,7 @@ For more information, refer to the [documentation](https://docs-beta.opensearch.
           inputText: `%md
 Piped Processing Language (PPL) is a query language that lets you use pipe (|) syntax to explore, discover, and query data stored in OpenSearch.
 
-For more information, refer to the [documentation](https://docs-beta.opensearch.org/search-plugins/ppl/index/).`,
+For more information, refer to the [documentation](https://opensearch.org/docs/search-plugins/ppl/index/).`,
           inputType: 'MARKDOWN',
         },
         dateCreated: dateString,
@@ -1191,7 +1191,7 @@ source=opensearch_dashboards_sample_data_logs | where response='503' or response
       {
         output: [
           {
-            result: `For more information, refer to the [documentation](https://docs-beta.opensearch.org/search-plugins/ppl/index/).
+            result: `For more information, refer to the [documentation](https://opensearch.org/docs/search-plugins/ppl/index/).
 
 To see how to perform sample root cause event analysis using PPL and visualizations, see the "\[Logs\] Sample Root Cause Event Analysis" notebook.`,
             outputType: 'MARKDOWN',
@@ -1200,7 +1200,7 @@ To see how to perform sample root cause event analysis using PPL and visualizati
         ],
         input: {
           inputText: `%md
-For more information, refer to the [documentation](https://docs-beta.opensearch.org/search-plugins/ppl/index/).
+For more information, refer to the [documentation](https://opensearch.org/docs/search-plugins/ppl/index/).
 
 To see how to perform sample root cause event analysis using PPL and visualizations, see the "\[Logs\] Sample Root Cause Event Analysis" notebook.`,
           inputType: 'MARKDOWN',
