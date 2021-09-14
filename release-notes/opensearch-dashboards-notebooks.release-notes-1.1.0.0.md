@@ -7,6 +7,7 @@ Compatible with OpenSearch 1.1.0
 
 ### Infrastructure
 * Fix snapshot build and depend on OpenSearch 1.1. ([#62](https://github.com/opensearch-project/dashboards-notebooks/pull/62))
+* Bump opensearch ref to 1.1 in CI ([#73](https://github.com/opensearch-project/dashboards-reports/pull/73))
 
 ### Documentation
 * Update release notes for 1.1.0 release ([#71](https://github.com/opensearch-project/dashboards-notebooks/pull/71))
