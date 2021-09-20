@@ -48,4 +48,4 @@ Example output: `./build/notebooks-dashboards*.zip`
 
 ### Submitting Changes
 
-See [CONTRIBUTING](CONTRIBUTING.md).
+See [CONTRIBUTING](../CONTRIBUTING.md).

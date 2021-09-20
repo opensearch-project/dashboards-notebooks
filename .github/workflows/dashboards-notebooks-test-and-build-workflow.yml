@@ -5,8 +5,8 @@ on: [pull_request, push]
 
 env:
   PLUGIN_NAME: notebooks-dashboards
-  OPENSEARCH_DASHBOARDS_VERSION: '1.0'
-  OPENSEARCH_PLUGIN_VERSION: 1.0.0.0
+  OPENSEARCH_DASHBOARDS_VERSION: '1.x'
+  OPENSEARCH_PLUGIN_VERSION: 1.1.0.0
 
 jobs:
 
@@ -39,7 +39,7 @@ jobs:
       - name: Move Notebooks to Plugins Dir
         run: mv dashboards-notebooks OpenSearch-Dashboards/plugins/dashboards-notebooks
 
-      - name: OpenSearch Dashboards Pluign Bootstrap
+      - name: OpenSearch Dashboards Plugin Bootstrap
         run: |
           cd OpenSearch-Dashboards/plugins/dashboards-notebooks
           yarn osd bootstrap

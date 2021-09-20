@@ -3,11 +3,14 @@
 Compatible with OpenSearch 1.0.0
 
 ### Enhancements
+* Add sample notebooks ([#50](https://github.com/opensearch-project/dashboards-notebooks/pull/50))
+* Memoize QueryDataGrid to Reduce Re-renders ([#49](https://github.com/opensearch-project/dashboards-notebooks/pull/49))
 * Update placeholder for search bar to "Search notebook name" ([#42](https://github.com/opensearch-project/dashboards-notebooks/pull/42))
 * Add output only parameter to Context Menu Base URL ([#18](https://github.com/opensearch-project/dashboards-notebooks/pull/18))
 * Add Query Parameter for Selected View ([#17](https://github.com/opensearch-project/dashboards-notebooks/pull/17))
 
 ### Bug Fixes
+* Remove dependency on dashboards version for requests ([#48](https://github.com/opensearch-project/dashboards-notebooks/pull/48))
 * Bump prismjs from 1.23.0 to 1.24.0 in /dashboards-notebooks ([#44](https://github.com/opensearch-project/dashboards-notebooks/pull/44))
 * Fix error message when paragraph exceeds max_payload ([#40](https://github.com/opensearch-project/dashboards-notebooks/pull/40))
 * Update glob-parent dependency ([#35](https://github.com/opensearch-project/dashboards-notebooks/pull/35))

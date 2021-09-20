@@ -35,6 +35,8 @@ import {
   PPL_QUERY_TEXT
 } from "../utils/constants";
 
+import { skipOn } from '@cypress/skip-test'
+
 describe('Adding sample data and visualization', () => {
   it('Adds sample flights data for visualization paragraph', () => {
     cy.visit(`${Cypress.env('opensearchDashboards')}/app/home#/tutorial_directory/sampleData`);
@@ -65,7 +67,7 @@ describe('Testing notebooks table', () => {
     cy.get('.euiButton__text').contains(/^Create$/).click();
     cy.wait(delay);
 
-    cy.get('.euiPageHeaderSection').contains(TEST_NOTEBOOK).should('exist');
+    cy.contains(TEST_NOTEBOOK).should('exist');
   });
 
   it('Duplicates and renames a notebook', () => {
@@ -127,6 +129,56 @@ describe('Testing notebooks table', () => {
     cy.get('input.euiFieldText').type(TEST_NOTEBOOK);
     cy.get('.euiButton__text').contains(/^Create$/).click();
     cy.wait(delay * 2);
+  });
+});
+
+describe('Test reporting integration if plugin installed', () => {
+  beforeEach(() => {
+    cy.visit(`${Cypress.env('opensearchDashboards')}/app/notebooks-dashboards#`);
+    cy.get('.euiTableCellContent').contains(TEST_NOTEBOOK).click();
+    cy.wait(delay * 3);
+    cy.get('body').then($body => {
+      skipOn($body.find('#reportingActionsButton').length <= 0);
+    });
+  });
+
+  it('Create in-context PDF report from notebook', () => {
+    cy.get('#reportingActionsButton').click();
+    cy.wait(delay);
+    cy.get('button.euiContextMenuItem:nth-child(1)').contains('Download PDF').click();
+    cy.get('#downloadInProgressLoadingModal').should('exist');
+  });
+
+  it('Create in-context PNG report from notebook', () => {
+    cy.get('#reportingActionsButton').click();
+    cy.wait(delay);
+    cy.get('button.euiContextMenuItem:nth-child(2)').contains('Download PNG').click();
+    cy.get('#downloadInProgressLoadingModal').should('exist');
+  });
+
+  it('Create on-demand report definition from context menu', () => {
+    cy.get('#reportingActionsButton').click();
+    cy.wait(delay);
+    cy.get('button.euiContextMenuItem:nth-child(3)').contains('Create report definition').click();
+    cy.wait(delay);
+    cy.location('pathname', { timeout: 60000 }).should(
+      'include',
+      '/reports-dashboards'
+    );
+    cy.wait(delay);
+    cy.get('#reportSettingsName').type('Create notebook on-demand report');
+    cy.get('#createNewReportDefinition').click({ force: true });
+  });
+
+  it ('View reports homepage from context menu', () => {
+    cy.get('#reportingActionsButton').click();
+    cy.wait(delay);
+    cy.get('button.euiContextMenuItem:nth-child(4)').contains('View reports').click();
+    cy.wait(delay);
+    cy.location('pathname', { timeout: 60000 }).should(
+      'include',
+      '/reports-dashboards'
+    );
   });
 });
 
@@ -286,13 +338,13 @@ describe('Testing paragraphs', () => {
     cy.wait(delay);
     cy.get('.euiContextMenuItem__text').contains('Add paragraph to top').click();
     cy.wait(delay);
-    cy.get('.euiContextMenuItem__text').contains('Markdown').click();
+    cy.get('.euiContextMenuItem__text').contains('Code block').click();
     cy.wait(delay);
     cy.get('.euiButton__text').contains('Paragraph actions').click();
     cy.wait(delay);
     cy.get('.euiContextMenuItem__text').contains('Add paragraph to bottom').click();
     cy.wait(delay);
-    cy.get('.euiContextMenuItem__text').contains('Markdown').click();
+    cy.get('.euiContextMenuItem__text').contains('Code block').click();
     cy.wait(delay);
 
     cy.get('.euiText').contains('[4] OpenSearch Dashboards visualization').should('exist');
