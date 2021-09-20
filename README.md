@@ -12,7 +12,7 @@ Complete OpenSearch Dashboards Notebooks is composed of 2 plugins.
 
 ## Contributing
 
-See [developer guide](DEVELOPER_GUIDE.md) and [how to contribute to this project](CONTRIBUTING.md). 
+See [developer guide](./dashboards-notebooks/DEVELOPER_GUIDE.md) and [how to contribute to this project](CONTRIBUTING.md). 
 
 ## Getting Help
 
@@ -30,8 +30,8 @@ If you discover a potential security issue in this project we ask that you notif
 
 ## License
 
-This project is licensed under the [Apache v2.0 License](LICENSE.txt).
+This project is licensed under the [Apache v2.0 License](LICENSE).
 
 ## Copyright
 
-Copyright OpenSearch Contributors. See [NOTICE](NOTICE.txt) for details.
+Copyright OpenSearch Contributors. See [NOTICE](NOTICE) for details.
