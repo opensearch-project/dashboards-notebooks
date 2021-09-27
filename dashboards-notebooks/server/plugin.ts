@@ -35,6 +35,7 @@ import {
 import { OpenSearchNotebooksPlugin } from './adaptors/opensearch_notebooks_plugin';
 import sqlPlugin from './clusters/sql/sqlPlugin';
 import { serverRoute } from './routes';
+import { AccessInfoType } from 'server';
 import { NotebooksPluginSetup, NotebooksPluginStart } from './types';
 
 export class NotebooksPlugin implements Plugin<NotebooksPluginSetup, NotebooksPluginStart> {
@@ -46,6 +47,14 @@ export class NotebooksPlugin implements Plugin<NotebooksPluginSetup, NotebooksPl
 
   public setup(core: CoreSetup) {
     this.logger.debug('opensearch_dashboards_notebooks: Setup');
+
+    const config = core.http.getServerInfo();
+    const serverBasePath = core.http.basePath.serverBasePath;
+    const accessInfo: AccessInfoType = {
+      basePath: serverBasePath,
+      serverInfo: config,
+    };
+
     const router = core.http.createRouter();
 
     const openSearchNotebooksClient: ILegacyClusterClient = core.opensearch.legacy.createClient(
@@ -62,7 +71,7 @@ export class NotebooksPlugin implements Plugin<NotebooksPluginSetup, NotebooksPl
     });
 
     // Register server side APIs
-    serverRoute(router, openSearchNotebooksClient);
+    serverRoute(router, openSearchNotebooksClient, accessInfo);
 
     return {};
   }

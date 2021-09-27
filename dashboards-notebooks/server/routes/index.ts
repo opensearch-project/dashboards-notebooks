@@ -30,11 +30,14 @@ import { vizRouter } from './vizRouter';
 import { sqlRouter } from './sqlRouter';
 import { ILegacyClusterClient, IRouter } from '../../../../src/core/server';
 import QueryService from '../services/queryService';
+import { HealthRouter } from './healthRouter';
+import { AccessInfoType } from '..';
 
-export function serverRoute(router: IRouter, client: ILegacyClusterClient) {
+export function serverRoute(router: IRouter, client: ILegacyClusterClient, accessInfo: AccessInfoType) {
   ParaRouter(router);
   NoteRouter(router);
   vizRouter(router);
+  HealthRouter(router, accessInfo);
 
   const queryService = new QueryService(client);
   sqlRouter(router, queryService);

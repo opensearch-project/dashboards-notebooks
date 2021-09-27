@@ -29,6 +29,7 @@ import { RefObject } from 'react';
 export const PLUGIN_ID = 'notebooks-dashboards';
 export const PLUGIN_NAME = 'Notebooks';
 export const API_PREFIX = '/api/notebooks';
+export const HEALTHCHECK_API_PREFIX = '/api/health';
 export const SELECTED_BACKEND = 'DEFAULT'; // ZEPPELIN || DEFAULT
 export const DATE_FORMAT = 'MM/DD/YYYY hh:mm A';
 export const FETCH_SIZE = 1000;

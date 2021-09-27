@@ -24,7 +24,7 @@
  * permissions and limitations under the License.
  */
 
-import { PluginInitializerContext } from '../../../src/core/server';
+import { HttpServerInfo, PluginInitializerContext } from '../../../src/core/server';
 import { NotebooksPlugin } from './plugin';
 
 //  This exports static code and TypeScript types,
@@ -33,5 +33,10 @@ import { NotebooksPlugin } from './plugin';
 export function plugin(initializerContext: PluginInitializerContext) {
   return new NotebooksPlugin(initializerContext);
 }
+
+export type AccessInfoType = {
+  basePath: string;
+  serverInfo: HttpServerInfo;
+};
 
 export { NotebooksPluginSetup, NotebooksPluginStart } from './types';
