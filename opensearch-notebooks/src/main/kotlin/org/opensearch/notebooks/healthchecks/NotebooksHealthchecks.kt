@@ -9,22 +9,6 @@
  * GitHub history for details.
  */
 
-/*
- * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License").
- * You may not use this file except in compliance with the License.
- * A copy of the License is located at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * or in the "license" file accompanying this file. This file is distributed
- * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
- * express or implied. See the License for the specific language governing
- * permissions and limitations under the License.
- *
- */
-
 package org.opensearch.notebooks.healthchecks
 
 import org.opensearch.action.admin.cluster.health.ClusterHealthRequest
@@ -63,9 +47,9 @@ internal object NotebooksHealthchecks {
 
     /**
      * Make the health check requests
-     * @return index health status and dependency plugin availability
+     * @return [Map] index health status and dependency plugin availability
      */
-    fun checks(): Map<String,String> {
+    fun checks(): Map<String, String> {
         val kibanaIndexStatus = checkIndexHealth(KIBANA_INDEX_NAME)
         val notebooksIndexStatus = checkIndexHealth(NOTEBOOKS_INDEX_NAME)
         val checkPluginStatus = checkPluginAvailability(SQL_PLUGIN_NAME)
@@ -76,20 +60,18 @@ internal object NotebooksHealthchecks {
 
     /**
      * Check the availability of a plugin
-     * @param pluginName to be checked for availability
-     * @return string value is the plugin "available" or "not available"
+     * @param pluginName [String] to be checked for availability
+     * @return [String] value if the plugin "available" or "not available"
      */
     private fun checkPluginAvailability(pluginName: String): String {
         val nodesInfoRequest = NodesInfoRequest()
         nodesInfoRequest.addMetric(NodesInfoRequest.Metric.PLUGINS.metricName())
         val nodesInfoResponse = this.client.admin().cluster().nodesInfo(nodesInfoRequest).actionGet()
         val pluginInfos = nodesInfoResponse.nodes[0].getInfo(PluginsAndModules::class.java).pluginInfos
-        return if(pluginInfos.stream()
-                .anyMatch { pluginInfo: PluginInfo -> pluginInfo.name == pluginName })
-        {
+        return if (pluginInfos.stream()
+                .anyMatch { pluginInfo: PluginInfo -> pluginInfo.name == pluginName }) {
             "available"
-        }
-        else{
+        } else {
             "not available"
         }
     }
@@ -97,12 +79,12 @@ internal object NotebooksHealthchecks {
     /**
      * Check the health of an index
      * @param indexName to be used for health check
-     * @return health value of the index red, green or blue
+     * @return [String] health value of the index "red", "green" or "yellow"
      */
-    private fun checkIndexHealth(indexName:String): String {
+    private fun checkIndexHealth(indexName: String): String {
         val request = ClusterHealthRequest()
         val response = this.client.admin().cluster().health(request.indices(indexName)).actionGet()
-        return when(response.status){
+        return when (response.status) {
             ClusterHealthStatus.GREEN -> "green"
             ClusterHealthStatus.YELLOW -> "yellow"
             ClusterHealthStatus.RED -> "red"

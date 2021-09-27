@@ -24,7 +24,10 @@ import org.opensearch.common.xcontent.XContentParser.Token
 import org.opensearch.common.xcontent.XContentParserUtils
 import org.opensearch.notebooks.healthchecks.NotebooksHealthchecks
 import org.opensearch.notebooks.index.NotebooksIndex
+import org.opensearch.notebooks.model.RestTag.HEALTHCHECK_CUSTOM_MESSAGE
+import org.opensearch.notebooks.model.RestTag.HEALTHCHECK_DEPENDENCIES
 import org.opensearch.notebooks.model.RestTag.HEALTHCHECK_DESCRIPTION
+import org.opensearch.notebooks.model.RestTag.HEALTHCHECK_INDICES
 import org.opensearch.notebooks.model.RestTag.HEALTHCHECK_KIBANA_INDEX
 import org.opensearch.notebooks.model.RestTag.HEALTHCHECK_MESSAGE
 import org.opensearch.notebooks.model.RestTag.HEALTHCHECK_NOTEBOOK_INDEX
@@ -32,7 +35,27 @@ import org.opensearch.notebooks.model.RestTag.HEALTHCHECK_SQL_PLUGIN
 import org.opensearch.notebooks.util.createJsonParser
 import java.io.IOException
 
-internal class LivenessNotebookResponse: BaseResponse {
+/**
+ * Get Notebook liveness healthcheck response.
+ * <pre> JSON format
+ * {@code
+ * {
+ *   "message": "Alive",
+ *   "description": "Accepting Traffic",
+ *   "dependencies": [
+ *               {"dependency1": "available"},
+ *               {"dependency2": "not available"}
+ *             ],
+ *
+ *   "indices": [
+ *              {"index1": "green"},
+ *              {"index2": "green"}
+ *          ],
+ *   "customMessage":{}
+ * }
+ * }</pre>
+ */
+internal class LivenessNotebookResponse : BaseResponse {
 
     var message: String = ""
     var description: String = ""
@@ -113,12 +136,12 @@ internal class LivenessNotebookResponse: BaseResponse {
             .startObject()
             .field(HEALTHCHECK_MESSAGE, message)
             .field(HEALTHCHECK_DESCRIPTION, description)
-            .startArray(RestTag.HEALTHCHECK_DEPENDENCIES)
+            .startArray(HEALTHCHECK_DEPENDENCIES)
             .startObject()
             .field(NotebooksHealthchecks.SQL_PLUGIN_NAME, sqlPluginStatus)
             .endObject()
             .endArray()
-            .startArray(RestTag.HEALTHCHECK_INDICES)
+            .startArray(HEALTHCHECK_INDICES)
             .startObject()
             .field(NotebooksHealthchecks.KIBANA_INDEX_NAME, kibanaIndexStatus)
             .endObject()
@@ -126,7 +149,7 @@ internal class LivenessNotebookResponse: BaseResponse {
             .field(NotebooksIndex.NOTEBOOKS_INDEX_NAME, notebookIndexStatus)
             .endObject()
             .endArray()
-            .startObject(RestTag.HEALTHCHECK_CUSTOM_MESSAGE)
+            .startObject(HEALTHCHECK_CUSTOM_MESSAGE)
             .endObject()
             .endObject()
 

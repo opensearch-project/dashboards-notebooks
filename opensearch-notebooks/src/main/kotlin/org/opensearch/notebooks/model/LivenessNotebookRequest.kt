@@ -29,16 +29,16 @@ import org.opensearch.notebooks.util.createJsonParser
 import java.io.IOException
 
 /**
- * Notebook-delete request.
- * notebookId is from request query params
+ * Notebook liveness healthcheck request.
+ * triggerType is from request query params
  * <pre> JSON format
  * {@code
  * {
- *   "notebookId":"notebookId"
+ *   "triggerType":"Manual"
  * }
  * }</pre>
  */
-internal class LivenessNotebookRequest: ActionRequest, ToXContentObject {
+internal class LivenessNotebookRequest : ActionRequest, ToXContentObject {
     var triggerType: String = ""
 
     companion object {

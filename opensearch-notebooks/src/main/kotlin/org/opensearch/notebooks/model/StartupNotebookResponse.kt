@@ -35,7 +35,27 @@ import org.opensearch.notebooks.model.RestTag.HEALTHCHECK_SQL_PLUGIN
 import org.opensearch.notebooks.util.createJsonParser
 import java.io.IOException
 
-internal class StartupNotebookResponse: BaseResponse {
+/**
+ * Get Notebook startup healthcheck response.
+ * <pre> JSON format
+ * {@code
+ * {
+ *   "message": "Initialized",
+ *   "description": "Accepting Traffic",
+ *   "dependencies": [
+ *               {"dependency1": "available"},
+ *               {"dependency2": "not available"}
+ *             ],
+ *
+ *   "indices": [
+ *              {"index1": "green"},
+ *              {"index2": "green"}
+ *          ],
+ *   "customMessage":{}
+ * }
+ * }</pre>
+ */
+internal class StartupNotebookResponse : BaseResponse {
 
     var message: String = ""
     var description: String = ""
@@ -64,40 +84,40 @@ internal class StartupNotebookResponse: BaseResponse {
      * @param parser data referenced at parser
      */
     constructor(parser: XContentParser) : super() {
-            var message: String? = null
-            var description: String? = null
-            var kibanaIndexStatus: String? = null
-            var notebookIndexStatus: String? = null
-            var sqlPluginStatus: String? = null
+        var message: String? = null
+        var description: String? = null
+        var kibanaIndexStatus: String? = null
+        var notebookIndexStatus: String? = null
+        var sqlPluginStatus: String? = null
 
-            XContentParserUtils.ensureExpectedToken(Token.START_OBJECT, parser.currentToken(), parser)
-            while (Token.END_OBJECT != parser.nextToken()) {
-                val fieldName = parser.currentName()
-                parser.nextToken()
-                when (fieldName) {
-                    HEALTHCHECK_MESSAGE -> message = parser.text()
-                    HEALTHCHECK_DESCRIPTION -> description = parser.text()
-                    HEALTHCHECK_KIBANA_INDEX -> kibanaIndexStatus = parser.text()
-                    HEALTHCHECK_NOTEBOOK_INDEX -> notebookIndexStatus = parser.text()
-                    HEALTHCHECK_SQL_PLUGIN -> sqlPluginStatus = parser.text()
-                    else -> {
-                        parser.skipChildren()
-                        log.info("$LOG_PREFIX:Skipping Unknown field $fieldName")
-                    }
+        XContentParserUtils.ensureExpectedToken(Token.START_OBJECT, parser.currentToken(), parser)
+        while (Token.END_OBJECT != parser.nextToken()) {
+            val fieldName = parser.currentName()
+            parser.nextToken()
+            when (fieldName) {
+                HEALTHCHECK_MESSAGE -> message = parser.text()
+                HEALTHCHECK_DESCRIPTION -> description = parser.text()
+                HEALTHCHECK_KIBANA_INDEX -> kibanaIndexStatus = parser.text()
+                HEALTHCHECK_NOTEBOOK_INDEX -> notebookIndexStatus = parser.text()
+                HEALTHCHECK_SQL_PLUGIN -> sqlPluginStatus = parser.text()
+                else -> {
+                    parser.skipChildren()
+                    log.info("$LOG_PREFIX:Skipping Unknown field $fieldName")
                 }
             }
-            message ?: throw IllegalArgumentException("$HEALTHCHECK_MESSAGE field absent")
-            description ?: throw IllegalArgumentException("$HEALTHCHECK_DESCRIPTION field absent")
-            kibanaIndexStatus ?: throw IllegalArgumentException("$HEALTHCHECK_KIBANA_INDEX field absent")
-            notebookIndexStatus ?: throw IllegalArgumentException("$HEALTHCHECK_NOTEBOOK_INDEX field absent")
-            sqlPluginStatus ?: throw IllegalArgumentException("$HEALTHCHECK_SQL_PLUGIN field absent")
-
-            this.message = message
-            this.description = description
-            this.kibanaIndexStatus = kibanaIndexStatus
-            this.notebookIndexStatus = notebookIndexStatus
-            this.sqlPluginStatus = sqlPluginStatus
         }
+        message ?: throw IllegalArgumentException("$HEALTHCHECK_MESSAGE field absent")
+        description ?: throw IllegalArgumentException("$HEALTHCHECK_DESCRIPTION field absent")
+        kibanaIndexStatus ?: throw IllegalArgumentException("$HEALTHCHECK_KIBANA_INDEX field absent")
+        notebookIndexStatus ?: throw IllegalArgumentException("$HEALTHCHECK_NOTEBOOK_INDEX field absent")
+        sqlPluginStatus ?: throw IllegalArgumentException("$HEALTHCHECK_SQL_PLUGIN field absent")
+
+        this.message = message
+        this.description = description
+        this.kibanaIndexStatus = kibanaIndexStatus
+        this.notebookIndexStatus = notebookIndexStatus
+        this.sqlPluginStatus = sqlPluginStatus
+    }
 
     /**
      * {@inheritDoc}
@@ -113,25 +133,25 @@ internal class StartupNotebookResponse: BaseResponse {
     override fun toXContent(builder: XContentBuilder?, params: ToXContent.Params?): XContentBuilder {
 
         return builder!!
-                    .startObject()
-                    .field(HEALTHCHECK_MESSAGE, message)
-                    .field(HEALTHCHECK_DESCRIPTION, description)
-                    .startArray(HEALTHCHECK_DEPENDENCIES)
-                        .startObject()
-                        .field(NotebooksHealthchecks.SQL_PLUGIN_NAME, sqlPluginStatus)
-                        .endObject()
-                        .endArray()
-                    .startArray(HEALTHCHECK_INDICES)
-                        .startObject()
-                            .field(NotebooksHealthchecks.KIBANA_INDEX_NAME, kibanaIndexStatus)
-                        .endObject()
-                        .startObject()
-                            .field(NotebooksIndex.NOTEBOOKS_INDEX_NAME, notebookIndexStatus)
-                        .endObject()
-                        .endArray()
-                    .startObject(HEALTHCHECK_CUSTOM_MESSAGE)
-                    .endObject()
-                    .endObject()
+            .startObject()
+            .field(HEALTHCHECK_MESSAGE, message)
+            .field(HEALTHCHECK_DESCRIPTION, description)
+            .startArray(HEALTHCHECK_DEPENDENCIES)
+            .startObject()
+            .field(NotebooksHealthchecks.SQL_PLUGIN_NAME, sqlPluginStatus)
+            .endObject()
+            .endArray()
+            .startArray(HEALTHCHECK_INDICES)
+            .startObject()
+            .field(NotebooksHealthchecks.KIBANA_INDEX_NAME, kibanaIndexStatus)
+            .endObject()
+            .startObject()
+            .field(NotebooksIndex.NOTEBOOKS_INDEX_NAME, notebookIndexStatus)
+            .endObject()
+            .endArray()
+            .startObject(HEALTHCHECK_CUSTOM_MESSAGE)
+            .endObject()
+            .endObject()
 
     }
 }

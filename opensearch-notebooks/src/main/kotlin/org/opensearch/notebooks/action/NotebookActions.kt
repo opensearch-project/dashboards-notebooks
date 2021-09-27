@@ -194,15 +194,16 @@ internal object NotebookActions {
      * @param triggerType [String]
      * @return [Boolean]
      */
-    private fun validateTriggerType (triggerType : String): Boolean{
+    private fun validateTriggerType(triggerType: String): Boolean {
         return triggerType == "Manual" || triggerType == "Time-Based"
     }
 
     /**
      * Build a response for health checks using status information of dependencies and indices
+     * @param checkType [String] type of healthcheck calling this function
      * @return [Map] map of message and description
      */
-    private fun buildMessageResponse (): Map<String, String> {
+    private fun buildMessageResponse(checkType: String): Map<String, String> {
         var message = ""
         var description = ""
 
@@ -211,17 +212,17 @@ internal object NotebookActions {
         val notebookIndexStatus = healthChecks[NOTEBOOKS_INDEX_NAME] ?: ""
         val sqlPluginStatus = healthChecks[SQL_PLUGIN_NAME] ?: ""
 
-        if (kibanaIndexStatus == "green" && notebookIndexStatus == "green" && sqlPluginStatus == "available"){
-            message = "Alive"
+        if (kibanaIndexStatus == "green" && notebookIndexStatus == "green" && sqlPluginStatus == "available") {
+            message = if (checkType == "startup") "Initialized" else "Alive"
             description = "Accepting Traffic"
         }
 
-        if (kibanaIndexStatus == "red" || notebookIndexStatus == "red" || sqlPluginStatus == "not available"){
+        if (kibanaIndexStatus == "red" || notebookIndexStatus == "red" || sqlPluginStatus == "not available") {
             message = "Waiting"
             description = "Waiting for a Dependency to load"
         }
 
-        if (kibanaIndexStatus == "" || notebookIndexStatus == "" || sqlPluginStatus == ""){
+        if (kibanaIndexStatus == "" || notebookIndexStatus == "" || sqlPluginStatus == "") {
             message = "Error"
             description = "Error in Fetching Index/Plugin status"
         }
@@ -235,13 +236,13 @@ internal object NotebookActions {
      * @param request [StartupNotebookRequest] object
      * @return [StartupNotebookResponse]
      */
-    fun startupCheck(request: StartupNotebookRequest, user: User?): StartupNotebookResponse{
+    fun startupCheck(request: StartupNotebookRequest, user: User?): StartupNotebookResponse {
         log.info("$LOG_PREFIX:Notebook-startup healthcheck")
         UserAccessManager.validateUser(user)
 
-        val builtMessageResponse = buildMessageResponse()
-        val message = builtMessageResponse["message"]?: ""
-        val description = builtMessageResponse["description"]?: ""
+        val builtMessageResponse = buildMessageResponse("startup")
+        val message = builtMessageResponse["message"] ?: ""
+        val description = builtMessageResponse["description"] ?: ""
         val kibanaIndexStatus = builtMessageResponse[KIBANA_INDEX_NAME] ?: ""
         val notebookIndexStatus = builtMessageResponse[NOTEBOOKS_INDEX_NAME] ?: ""
         val sqlPluginStatus = builtMessageResponse[SQL_PLUGIN_NAME] ?: ""
@@ -254,17 +255,17 @@ internal object NotebookActions {
      * @param request [LivenessNotebookRequest] object
      * @return [LivenessNotebookResponse]
      */
-    fun livenessCheck(request: LivenessNotebookRequest, user: User?): LivenessNotebookResponse{
+    fun livenessCheck(request: LivenessNotebookRequest, user: User?): LivenessNotebookResponse {
         log.info("$LOG_PREFIX:Notebook-liveness healthcheck")
         UserAccessManager.validateUser(user)
 
-        if (!validateTriggerType(request.triggerType)){
+        if (!validateTriggerType(request.triggerType)) {
             throw IllegalArgumentException("Invalid type of Trigger for liveness healthcheck request")
         }
 
-        val builtMessageResponse = buildMessageResponse()
-        val message = builtMessageResponse["message"]?: ""
-        val description = builtMessageResponse["description"]?: ""
+        val builtMessageResponse = buildMessageResponse("liveness")
+        val message = builtMessageResponse["message"] ?: ""
+        val description = builtMessageResponse["description"] ?: ""
         val kibanaIndexStatus = builtMessageResponse[KIBANA_INDEX_NAME] ?: ""
         val notebookIndexStatus = builtMessageResponse[NOTEBOOKS_INDEX_NAME] ?: ""
         val sqlPluginStatus = builtMessageResponse[SQL_PLUGIN_NAME] ?: ""

@@ -11,24 +11,17 @@
 
 package org.opensearch.notebooks.model
 
-import org.opensearch.notebooks.NotebooksPlugin.Companion.LOG_PREFIX
-import org.opensearch.notebooks.model.RestTag.NOTEBOOK_ID_FIELD
-import org.opensearch.notebooks.util.logger
 import org.opensearch.action.ActionRequest
 import org.opensearch.action.ActionRequestValidationException
 import org.opensearch.common.io.stream.StreamInput
-import org.opensearch.common.io.stream.StreamOutput
 import org.opensearch.common.xcontent.ToXContent
 import org.opensearch.common.xcontent.ToXContentObject
 import org.opensearch.common.xcontent.XContentBuilder
 import org.opensearch.common.xcontent.XContentFactory
-import org.opensearch.common.xcontent.XContentParser
-import org.opensearch.common.xcontent.XContentParser.Token
-import org.opensearch.common.xcontent.XContentParserUtils
 import java.io.IOException
 
 internal class StartupNotebookRequest(
-) : ActionRequest(), ToXContentObject{
+) : ActionRequest(), ToXContentObject {
 
     @Throws(IOException::class)
     constructor(input: StreamInput) : this(
