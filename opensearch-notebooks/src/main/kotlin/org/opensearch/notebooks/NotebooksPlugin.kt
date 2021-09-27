@@ -26,14 +26,10 @@
  */
 package org.opensearch.notebooks
 
-import org.opensearch.notebooks.action.CreateNotebookAction
-import org.opensearch.notebooks.action.DeleteNotebookAction
-import org.opensearch.notebooks.action.GetAllNotebooksAction
-import org.opensearch.notebooks.action.GetNotebookAction
-import org.opensearch.notebooks.action.UpdateNotebookAction
 import org.opensearch.notebooks.index.NotebooksIndex
 import org.opensearch.notebooks.resthandler.NotebookListRestHandler
 import org.opensearch.notebooks.resthandler.NotebookRestHandler
+import org.opensearch.notebooks.resthandler.NotebookHealthRestHandler
 import org.opensearch.notebooks.settings.PluginSettings
 import org.opensearch.action.ActionRequest
 import org.opensearch.action.ActionResponse
@@ -50,6 +46,14 @@ import org.opensearch.common.settings.SettingsFilter
 import org.opensearch.common.xcontent.NamedXContentRegistry
 import org.opensearch.env.Environment
 import org.opensearch.env.NodeEnvironment
+import org.opensearch.notebooks.action.CreateNotebookAction
+import org.opensearch.notebooks.action.DeleteNotebookAction
+import org.opensearch.notebooks.action.GetAllNotebooksAction
+import org.opensearch.notebooks.action.GetNotebookAction
+import org.opensearch.notebooks.action.LivenessNotebookAction
+import org.opensearch.notebooks.action.StartupNotebookAction
+import org.opensearch.notebooks.action.UpdateNotebookAction
+import org.opensearch.notebooks.healthchecks.NotebooksHealthchecks
 import org.opensearch.plugins.ActionPlugin
 import org.opensearch.plugins.Plugin
 import org.opensearch.repositories.RepositoriesService
@@ -70,6 +74,7 @@ class NotebooksPlugin : Plugin(), ActionPlugin {
         const val PLUGIN_NAME = "opensearch-notebooks"
         const val LOG_PREFIX = "notebooks"
         const val BASE_NOTEBOOKS_URI = "/_plugins/_notebooks"
+        const val BASE_HEALTHCHECKS_URI = "/_plugins/_health"
     }
 
     /**
@@ -97,6 +102,7 @@ class NotebooksPlugin : Plugin(), ActionPlugin {
     ): Collection<Any> {
         PluginSettings.addSettingsUpdateConsumer(clusterService)
         NotebooksIndex.initialize(client, clusterService)
+        NotebooksHealthchecks.initialize(client, clusterService)
         return emptyList()
     }
 
@@ -114,7 +120,8 @@ class NotebooksPlugin : Plugin(), ActionPlugin {
     ): List<RestHandler> {
         return listOf(
             NotebookRestHandler(),
-            NotebookListRestHandler()
+            NotebookListRestHandler(),
+            NotebookHealthRestHandler(),
         )
     }
 
@@ -127,7 +134,9 @@ class NotebooksPlugin : Plugin(), ActionPlugin {
             ActionPlugin.ActionHandler(DeleteNotebookAction.ACTION_TYPE, DeleteNotebookAction::class.java),
             ActionPlugin.ActionHandler(GetAllNotebooksAction.ACTION_TYPE, GetAllNotebooksAction::class.java),
             ActionPlugin.ActionHandler(GetNotebookAction.ACTION_TYPE, GetNotebookAction::class.java),
-            ActionPlugin.ActionHandler(UpdateNotebookAction.ACTION_TYPE, UpdateNotebookAction::class.java)
+            ActionPlugin.ActionHandler(UpdateNotebookAction.ACTION_TYPE, UpdateNotebookAction::class.java),
+            ActionPlugin.ActionHandler(StartupNotebookAction.ACTION_TYPE, StartupNotebookAction::class.java),
+            ActionPlugin.ActionHandler(LivenessNotebookAction.ACTION_TYPE, LivenessNotebookAction::class.java),
         )
     }
 }

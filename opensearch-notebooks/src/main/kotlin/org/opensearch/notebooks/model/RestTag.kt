@@ -44,6 +44,15 @@ internal object RestTag {
     const val NOTEBOOK_DETAILS_FIELD = "notebookDetails"
     const val FROM_INDEX_FIELD = "fromIndex"
     const val MAX_ITEMS_FIELD = "maxItems"
+    const val HEALTHCHECK_TRIGGER_TYPE = "triggerType"
+    const val HEALTHCHECK_MESSAGE = "message"
+    const val HEALTHCHECK_DESCRIPTION = "description"
+    const val HEALTHCHECK_KIBANA_INDEX = "kibanaIndexStatus"
+    const val HEALTHCHECK_NOTEBOOK_INDEX = "notebookIndexStatus"
+    const val HEALTHCHECK_SQL_PLUGIN = "sqlPluginStatus"
+    const val HEALTHCHECK_DEPENDENCIES = "dependencies"
+    const val HEALTHCHECK_INDICES = "indices"
+    const val HEALTHCHECK_CUSTOM_MESSAGE = "customMessage"
     private val INCLUDE_ID = Pair(ID_FIELD, "true")
     private val EXCLUDE_ACCESS = Pair(ACCESS_LIST_FIELD, "false")
     val REST_OUTPUT_PARAMS: Params = ToXContent.MapParams(mapOf(INCLUDE_ID))

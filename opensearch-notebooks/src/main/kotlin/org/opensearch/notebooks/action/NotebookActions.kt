@@ -30,6 +30,13 @@ package org.opensearch.notebooks.action
 import org.opensearch.commons.authuser.User
 import org.opensearch.notebooks.NotebooksPlugin.Companion.LOG_PREFIX
 import org.opensearch.notebooks.index.NotebooksIndex
+import org.opensearch.notebooks.security.UserAccessManager
+import org.opensearch.notebooks.util.logger
+import org.opensearch.OpenSearchStatusException
+import org.opensearch.notebooks.healthchecks.NotebooksHealthchecks
+import org.opensearch.notebooks.healthchecks.NotebooksHealthchecks.KIBANA_INDEX_NAME
+import org.opensearch.notebooks.healthchecks.NotebooksHealthchecks.SQL_PLUGIN_NAME
+import org.opensearch.notebooks.index.NotebooksIndex.NOTEBOOKS_INDEX_NAME
 import org.opensearch.notebooks.model.CreateNotebookRequest
 import org.opensearch.notebooks.model.CreateNotebookResponse
 import org.opensearch.notebooks.model.DeleteNotebookRequest
@@ -38,12 +45,13 @@ import org.opensearch.notebooks.model.GetAllNotebooksRequest
 import org.opensearch.notebooks.model.GetAllNotebooksResponse
 import org.opensearch.notebooks.model.GetNotebookRequest
 import org.opensearch.notebooks.model.GetNotebookResponse
+import org.opensearch.notebooks.model.LivenessNotebookRequest
+import org.opensearch.notebooks.model.LivenessNotebookResponse
 import org.opensearch.notebooks.model.NotebookDetails
+import org.opensearch.notebooks.model.StartupNotebookRequest
+import org.opensearch.notebooks.model.StartupNotebookResponse
 import org.opensearch.notebooks.model.UpdateNotebookRequest
 import org.opensearch.notebooks.model.UpdateNotebookResponse
-import org.opensearch.notebooks.security.UserAccessManager
-import org.opensearch.notebooks.util.logger
-import org.opensearch.OpenSearchStatusException
 import org.opensearch.rest.RestStatus
 import java.time.Instant
 
@@ -179,5 +187,88 @@ internal object NotebookActions {
             request.maxItems
         )
         return GetAllNotebooksResponse(notebooksList, UserAccessManager.hasAllInfoAccess(user))
+    }
+
+    /**
+     * Validates type of trigger for liveness healthcheck
+     * @param triggerType [String]
+     * @return [Boolean]
+     */
+    private fun validateTriggerType (triggerType : String): Boolean{
+        return triggerType == "Manual" || triggerType == "Time-Based"
+    }
+
+    /**
+     * Build a response for health checks using status information of dependencies and indices
+     * @return [Map] map of message and description
+     */
+    private fun buildMessageResponse (): Map<String, String> {
+        var message = ""
+        var description = ""
+
+        val healthChecks = NotebooksHealthchecks.checks()
+        val kibanaIndexStatus = healthChecks[KIBANA_INDEX_NAME] ?: ""
+        val notebookIndexStatus = healthChecks[NOTEBOOKS_INDEX_NAME] ?: ""
+        val sqlPluginStatus = healthChecks[SQL_PLUGIN_NAME] ?: ""
+
+        if (kibanaIndexStatus == "green" && notebookIndexStatus == "green" && sqlPluginStatus == "available"){
+            message = "Alive"
+            description = "Accepting Traffic"
+        }
+
+        if (kibanaIndexStatus == "red" || notebookIndexStatus == "red" || sqlPluginStatus == "not available"){
+            message = "Waiting"
+            description = "Waiting for a Dependency to load"
+        }
+
+        if (kibanaIndexStatus == "" || notebookIndexStatus == "" || sqlPluginStatus == ""){
+            message = "Error"
+            description = "Error in Fetching Index/Plugin status"
+        }
+
+        return mapOf("message" to message, "description" to description, KIBANA_INDEX_NAME to kibanaIndexStatus,
+            NOTEBOOKS_INDEX_NAME to notebookIndexStatus, SQL_PLUGIN_NAME to sqlPluginStatus)
+    }
+
+    /**
+     * Perform startupCheck
+     * @param request [StartupNotebookRequest] object
+     * @return [StartupNotebookResponse]
+     */
+    fun startupCheck(request: StartupNotebookRequest, user: User?): StartupNotebookResponse{
+        log.info("$LOG_PREFIX:Notebook-startup healthcheck")
+        UserAccessManager.validateUser(user)
+
+        val builtMessageResponse = buildMessageResponse()
+        val message = builtMessageResponse["message"]?: ""
+        val description = builtMessageResponse["description"]?: ""
+        val kibanaIndexStatus = builtMessageResponse[KIBANA_INDEX_NAME] ?: ""
+        val notebookIndexStatus = builtMessageResponse[NOTEBOOKS_INDEX_NAME] ?: ""
+        val sqlPluginStatus = builtMessageResponse[SQL_PLUGIN_NAME] ?: ""
+
+        return StartupNotebookResponse(message, description, kibanaIndexStatus, notebookIndexStatus, sqlPluginStatus)
+    }
+
+    /**
+     * Perform livenessCheck
+     * @param request [LivenessNotebookRequest] object
+     * @return [LivenessNotebookResponse]
+     */
+    fun livenessCheck(request: LivenessNotebookRequest, user: User?): LivenessNotebookResponse{
+        log.info("$LOG_PREFIX:Notebook-liveness healthcheck")
+        UserAccessManager.validateUser(user)
+
+        if (!validateTriggerType(request.triggerType)){
+            throw IllegalArgumentException("Invalid type of Trigger for liveness healthcheck request")
+        }
+
+        val builtMessageResponse = buildMessageResponse()
+        val message = builtMessageResponse["message"]?: ""
+        val description = builtMessageResponse["description"]?: ""
+        val kibanaIndexStatus = builtMessageResponse[KIBANA_INDEX_NAME] ?: ""
+        val notebookIndexStatus = builtMessageResponse[NOTEBOOKS_INDEX_NAME] ?: ""
+        val sqlPluginStatus = builtMessageResponse[SQL_PLUGIN_NAME] ?: ""
+
+        return LivenessNotebookResponse(message, description, kibanaIndexStatus, notebookIndexStatus, sqlPluginStatus)
     }
 }
