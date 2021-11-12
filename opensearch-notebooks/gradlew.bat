@@ -1,4 +1,14 @@
 @rem
+@rem SPDX-License-Identifier: Apache-2.0
+@rem
+@rem The OpenSearch Contributors require contributions made to this file be licensed 
+@rem under the Apache-2.0 license or a compatible open source license.
+@rem 
+@rem Modifications Copyright OpenSearch Contributors. See
+@rem GitHub history for details.
+@rem
+
+@rem
 @rem Copyright 2015 the original author or authors.
 @rem
 @rem Licensed under the Apache License, Version 2.0 (the "License");
