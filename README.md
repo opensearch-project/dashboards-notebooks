@@ -1,3 +1,6 @@
+__NOTE:__ We have merged this plugin into [Observability Plugin](https://github.com/opensearch-project/trace-analytics/) since OpenSearch 1.2, please use notebooks in Observability Dashboards plugin. Thanks.
+---
+
 # OpenSearch Dashboards Notebooks
 
 Dashboards offer a solution for a few selected use cases, and are great tools if you’re focused on monitoring a known set of metrics over time. Notebooks enables contextual use of data with detailed explanations by allowing a user to combine saved visualizations, text, graphs and decorate data in elastic with other reference data sources.
