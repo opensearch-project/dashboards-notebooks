@@ -1,4 +1,4 @@
-__NOTE:__ We have merged this plugin into [Observability Plugin](https://github.com/opensearch-project/trace-analytics/) since OpenSearch 1.2, please use notebooks in Observability Dashboards plugin.
+__NOTE:__ We have merged this plugin into [Observability Plugin](https://github.com/opensearch-project/observability/) since OpenSearch 1.2, please use notebooks in Observability Dashboards plugin.
 ---
 
 # OpenSearch Dashboards Notebooks
