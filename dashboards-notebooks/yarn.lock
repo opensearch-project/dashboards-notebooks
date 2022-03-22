@@ -113,10 +113,10 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
-"@nteract/markdown@^4.5.2":
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/@nteract/markdown/-/markdown-4.5.2.tgz#a1eaa58961a26219a1e1f7beaef42d41ef06e864"
-  integrity sha512-qf7kbNzYohwj0dKI0qDY8dOv4kubj6lN3KcM5Xaev433q+4iTSKIgtD6ffCC4Jryq3AqN957V1YsY9ZwBZ1GUQ==
+"@nteract/markdown@4.6.2", "@nteract/markdown@^4.5.2":
+  version "4.6.2"
+  resolved "https://registry.yarnpkg.com/@nteract/markdown/-/markdown-4.6.2.tgz#5e3dc44047f7af761b3fb8cf76f6d239e7bb65c3"
+  integrity sha512-WI+VvaiL9ihIkmPHCYSwziuMJcSUTKBi+hrf5V74jYYq1b5LWJyDa9O5B137KVEdgYwr0w4JiZHFm7wvEWXlZw==
   dependencies:
     "@nteract/mathjax" "^4.0.11"
     "@nteract/presentational-components" "^3.3.11"
